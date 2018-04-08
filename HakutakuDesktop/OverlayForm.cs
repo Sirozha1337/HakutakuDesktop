@@ -30,6 +30,7 @@ namespace HakutakuDesktop
 			Width = Screen.PrimaryScreen.Bounds.Width;
 			Height = Screen.PrimaryScreen.Bounds.Height;
 			_engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default);
+			Logger.WriteLog("Overlay form initialized");
 		}
 
 		protected override void OnMouseDown(MouseEventArgs e)
@@ -81,28 +82,32 @@ namespace HakutakuDesktop
 		
 		Bitmap GetScreenCapture(Point point1, Point point2)
 		{
+			Logger.WriteLog("Start screen capture");
 			int x = Math.Min(point1.X, point2.X);
 			int y = Math.Min(point1.Y, point2.Y);
 			int width = Math.Abs(point1.X - point2.X);
 			int height = Math.Abs(point1.Y - point2.Y);
+			Logger.WriteLog(String.Format("Capturing screen at specified location: {0}, {1}", x, y));
 			Rectangle bounds = new Rectangle(x, y, width, height);
 			Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height);
 			using (Graphics g = Graphics.FromImage(bitmap))
 			{
 				g.CopyFromScreen(bounds.Left, bounds.Top, 0, 0, bitmap.Size, CopyPixelOperation.SourceCopy);
 			}
+			Logger.WriteLog("Screen captured");
 			return bitmap;
 		}
 
 		public static byte[] ImageToByte(Image img)
 		{
+			Logger.WriteLog("Converting image to byte stream");
 			ImageConverter converter = new ImageConverter();
 			return (byte[])converter.ConvertTo(img, typeof(byte[]));
 		}
 
 		void Execute(Point point1, Point point2)
 		{
-			System.Diagnostics.Debug.WriteLine("Start executing " + executing);
+			Logger.WriteLog("Start text recognition");
 			if (!this.executing)
 			{
 				this.executing = true;
@@ -125,37 +130,45 @@ namespace HakutakuDesktop
 					}
 				}
 				this.executing = false;
-				System.Diagnostics.Debug.WriteLine("Finish executing " + executing);
+				Logger.WriteLog("Finish text recognition");
 			}
 		}
 
 		TextOverlay[] ProccessPage(Page page)
 		{
+			Logger.WriteLog("Start page processing");
 			List<TextOverlay> textOverlays = new List<TextOverlay>();
-			using (var iter = page.GetIterator())
+			try
 			{
-				do
+				using (var iter = page.GetIterator())
 				{
-					string text = iter.GetText(PageIteratorLevel.TextLine);
-					var t = iter.GetProperties();
-					if (!string.IsNullOrEmpty(text))
+					do
 					{
-						string translatedText = text;
-						Rect rect;
-						if (iter.TryGetBoundingBox(PageIteratorLevel.TextLine, out rect))
+						string text = iter.GetText(PageIteratorLevel.TextLine);
+						if (!string.IsNullOrEmpty(text))
 						{
-							textOverlays.Add(new TextOverlay
+							string translatedText = text;
+							Rect rect;
+							if (iter.TryGetBoundingBox(PageIteratorLevel.TextLine, out rect))
 							{
-								x = rect.X1,
-								y = rect.Y1,
-								ySize = Math.Abs(rect.Y1 - rect.Y2),
-								Text = translatedText
-							});
+								textOverlays.Add(new TextOverlay
+								{
+									x = rect.X1,
+									y = rect.Y1,
+									ySize = Math.Abs(rect.Y1 - rect.Y2),
+									Text = translatedText
+								});
+							}
+							Console.WriteLine(translatedText);
 						}
-						Console.WriteLine(translatedText);
-					}
-				} while (iter.Next(PageIteratorLevel.TextLine));
+					} while (iter.Next(PageIteratorLevel.TextLine));
+				}
 			}
+			catch(Exception ex)
+			{
+				Logger.WriteLog("Error processing page: " + ex.Message);
+			}
+			Logger.WriteLog("Finish page processing");
 			return textOverlays.ToArray();
 		}
 	}

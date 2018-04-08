@@ -22,7 +22,7 @@ namespace HakutakuDesktop
 			_mainForm = new OverlayForm();
 			_selectionForm = new SelectionForm();
 			InterceptKeys.SetCallback(HotKey);
-
+			Logger.WriteLog("Launching app");
 			Application.Run(_mainForm);
 			InterceptKeys.RemoveCallback();
 		}
@@ -33,17 +33,20 @@ namespace HakutakuDesktop
 			{
 				if (_mainForm.Visible)
 				{
+					Logger.WriteLog("Hiding form");
 					_mainForm.Hide();
 					_selectionForm.Hide();
 				}
 				else
 				{
+					Logger.WriteLog("Showing form");
 					_mainForm.Show();
 					_selectionForm.Show();
 				}
 			}
 			if (key == Keys.F6)
 			{
+				Logger.WriteLog("Exiting app");
 				Application.Exit();
 			}
 		}
