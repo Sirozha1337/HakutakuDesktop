@@ -1,0 +1,11 @@
+/packages/
+/*/bin
+/*/obj
+/**/*.user
+/**/*.pubxml
+/**/*.suo
+.idea/
+.vs/
+*.jfm
+*.dbmdl
+*.log
