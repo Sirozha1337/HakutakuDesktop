@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Tesseract;
-using HakutakuDesktop.Util;
 
 namespace HakutakuDesktop
 {
 	public partial class OverlayForm : Form
 	{
-		private TesseractEngine _engine;
-		private bool executing = false;
 		bool mouseDown = false;
 		Point mouseDownPoint = Point.Empty;
 		Point mousePoint = Point.Empty;
@@ -27,10 +23,9 @@ namespace HakutakuDesktop
 			this.Top = 0;
 			Width = Screen.PrimaryScreen.Bounds.Width;
 			Height = Screen.PrimaryScreen.Bounds.Height;
-			_engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default);
 			Logger.WriteLog(String.Format("Overlay form initialized. Width: {0}. Height: {1}. Left: {2}. Top: {3}", Width, Height, Left, Top));
 		}
-
+		
 		protected override void OnMouseDown(MouseEventArgs e)
 		{
 			base.OnMouseDown(e);
@@ -44,17 +39,19 @@ namespace HakutakuDesktop
 		{
 			base.OnMouseUp(e);
 			mouseDown = false;
-			Program._selectionForm._repaintSelection = false;
-			Execute(mouseDownPoint, mousePoint);
+			Program._selectionForm._endPoint = mousePoint;
+			Program._selectionForm.RegionSelected();
 		}
 
 		protected override void OnMouseMove(MouseEventArgs e)
 		{
 			base.OnMouseMove(e);
-			mousePoint = e.Location;
-			Program._selectionForm._endPoint = mousePoint;
-			if(mouseDown)
+			if (mouseDown)
+			{
+				mousePoint = e.Location;
+				Program._selectionForm._endPoint = mousePoint;
 				Invalidate();
+			}
 		}
 
 		protected override void OnPaint(PaintEventArgs e)
@@ -76,35 +73,6 @@ namespace HakutakuDesktop
 			if (!Program._selectionForm.Visible)
 				Program._selectionForm.Show();
 			Program._selectionForm.Refresh();
-		}
-		
-		void Execute(Point point1, Point point2)
-		{
-			Logger.WriteLog("Start text recognition");
-			if (!this.executing)
-			{
-				this.executing = true;
-				if (point1.X != point2.X && point1.Y != point2.Y)
-				{
-					var sc = ImageUtil.GetScreenCapture(point1, point2);
-					using (var img = PixConverter.ToPix(sc))
-					{
-						using (var page = _engine.Process(img))
-						{
-							Program._selectionForm.SetPage(
-								TesseractUtil.ProccessPage(page),
-								Math.Min(point1.X, point2.X),
-								Math.Min(point1.Y, point2.Y),
-								Math.Abs(point1.X - point2.X),
-								Math.Abs(point1.Y - point2.Y)
-							);
-							Program._selectionForm.Refresh();
-						}
-					}
-				}
-				this.executing = false;
-				Logger.WriteLog("Finish text recognition");
-			}
 		}
 	}
 }

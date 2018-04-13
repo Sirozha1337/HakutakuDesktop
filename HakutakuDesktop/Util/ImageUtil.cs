@@ -6,14 +6,12 @@ namespace HakutakuDesktop.Util
 {
 	public static class ImageUtil
 	{
-		public static Bitmap GetScreenCapture(Point point1, Point point2)
+		public static Bitmap GetScreenCapture(int x, int y, int width, int height)
 		{
 			Logger.WriteLog("Start screen capture");
-
-			int x = Math.Min(point1.X, point2.X);
-			int y = Math.Min(point1.Y, point2.Y);
-			int width = Math.Abs(point1.X - point2.X) - 1;
-			int height = Math.Abs(point1.Y - point2.Y) - 1;
+			
+			width -= 1;
+			height -= 1;
 
 			Logger.WriteLog(String.Format("Capturing screen at specified location: {0}, {1}", x, y));
 
@@ -28,13 +26,13 @@ namespace HakutakuDesktop.Util
 
 			bitmap.Save("captured_image.png");
 
-			return MagnifyBitmap(bitmap);
+			return bitmap;
 		}
 
-		public static Bitmap MagnifyBitmap(Bitmap original)
+		public static Bitmap MagnifyBitmap(Bitmap original, int scaleFactor)
 		{
-			float width = original.Width * 2;
-			float height = original.Height * 2;
+			float width = original.Width * scaleFactor;
+			float height = original.Height * scaleFactor;
 			var brush = new SolidBrush(Color.Black);
 			float scale = Math.Min(width / original.Width, height / original.Height);
 
@@ -50,7 +48,7 @@ namespace HakutakuDesktop.Util
 				var scaleHeight = (int)(original.Height * scale);
 
 				graphics.FillRectangle(brush, new RectangleF(0, 0, width, height));
-				graphics.DrawImage(original, ((int)width - scaleWidth) / 2, ((int)height - scaleHeight) / 2, scaleWidth, scaleHeight);
+				graphics.DrawImage(original, ((int)width - scaleWidth) / scaleFactor, ((int)height - scaleHeight) / scaleFactor, scaleWidth, scaleHeight);
 			}
 			scaled.Save("magnified_image.png");
 			return scaled;

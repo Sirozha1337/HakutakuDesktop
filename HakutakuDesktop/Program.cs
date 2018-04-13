@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HakutakuDesktop
@@ -21,6 +18,7 @@ namespace HakutakuDesktop
 			Application.SetCompatibleTextRenderingDefault(false);
 			_mainForm = new OverlayForm();
 			_selectionForm = new SelectionForm();
+			_selectionForm.Owner = _mainForm;
 			InterceptKeys.SetCallback(HotKey);
 			Logger.WriteLog("Launching app");
 			Application.Run(_mainForm);
