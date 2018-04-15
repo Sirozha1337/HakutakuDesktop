@@ -54,24 +54,29 @@ namespace HakutakuDesktop
 			}
 		}
 
+		public void Clear()
+		{
+			mouseDown = false;
+			mouseDownPoint = mousePoint = new Point();
+			this.Refresh();
+		}
+
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			base.OnPaint(e);
-
-			if (mouseDown)
-			{
-				Rectangle window = new Rectangle(
-					Math.Min(mouseDownPoint.X, mousePoint.X),
-					Math.Min(mouseDownPoint.Y, mousePoint.Y),
-					Math.Abs(mouseDownPoint.X - mousePoint.X),
-					Math.Abs(mouseDownPoint.Y - mousePoint.Y));
-				Region r = new Region(window);
-				if (window.Height > 0 && window.Width > 0)
-					e.Graphics.FillRegion(Brushes.Red, r);
-			}
+			
+			Rectangle window = new Rectangle(
+				Math.Min(mouseDownPoint.X, mousePoint.X),
+				Math.Min(mouseDownPoint.Y, mousePoint.Y),
+				Math.Abs(mouseDownPoint.X - mousePoint.X),
+				Math.Abs(mouseDownPoint.Y - mousePoint.Y));
+			Region r = new Region(window);
+			if (window.Height > 0 && window.Width > 0)
+				e.Graphics.FillRegion(Brushes.Red, r);
 
 			if (!Program._selectionForm.Visible)
 				Program._selectionForm.Show();
+
 			Program._selectionForm.Refresh();
 		}
 	}

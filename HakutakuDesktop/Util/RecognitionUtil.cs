@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Tesseract;
+﻿using Tesseract;
 
 namespace HakutakuDesktop.Util
 {
@@ -41,12 +39,12 @@ namespace HakutakuDesktop.Util
 
 					using (var img = PixConverter.ToPix(sc))
 					{
-						using (var page = GetEngine("eng").Process(img))
+						using (var page = GetEngine(srcLang).Process(img))
 						{
 							string text = page.GetText();
-							Console.WriteLine(text);
+							Logger.WriteLog("Recognized text: " + text);
 							translatedText = TranslationUtil.Translate(text, srcLang, dstLang);
-							Console.WriteLine(translatedText);
+							Logger.WriteLog("Translated text: " + translatedText);
 						}
 					}
 				}

@@ -50,7 +50,6 @@ namespace HakutakuDesktop.Util
 				graphics.FillRectangle(brush, new RectangleF(0, 0, width, height));
 				graphics.DrawImage(original, ((int)width - scaleWidth) / scaleFactor, ((int)height - scaleHeight) / scaleFactor, scaleWidth, scaleHeight);
 			}
-			scaled.Save("magnified_image.png");
 			return scaled;
 		}
 

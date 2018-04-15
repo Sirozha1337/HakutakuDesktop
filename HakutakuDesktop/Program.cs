@@ -8,7 +8,7 @@ namespace HakutakuDesktop
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>
-		public static Form _mainForm;
+		public static OverlayForm _mainForm;
 		public static SelectionForm _selectionForm;
 
 		[STAThread]
