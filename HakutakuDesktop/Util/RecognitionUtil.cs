@@ -24,10 +24,10 @@ namespace HakutakuDesktop.Util
 			return _engine;
 		}
 
-		public static TextOverlay[] Execute(int x, int y, int width, int height, string srcLang, string dstLang)
+		public static string Execute(int x, int y, int width, int height, string srcLang, string dstLang)
 		{
 			Logger.WriteLog("Start text recognition");
-			TextOverlay[] textOverlays = null;
+			string translatedText = "";
 			if (!_engineBusy)
 			{
 				_engineBusy = true;
@@ -43,54 +43,17 @@ namespace HakutakuDesktop.Util
 					{
 						using (var page = GetEngine("eng").Process(img))
 						{
-							textOverlays = ProccessPage(page, srcLang, dstLang, 2);
+							string text = page.GetText();
+							Console.WriteLine(text);
+							translatedText = TranslationUtil.Translate(text, srcLang, dstLang);
+							Console.WriteLine(translatedText);
 						}
 					}
 				}
 				_engineBusy = false;
 				Logger.WriteLog("Finish text recognition");
 			}
-			return textOverlays;
-		}
-
-		private static TextOverlay[] ProccessPage(Page page, string srcLang, string dstLang, int scaleFactor)
-		{
-			Logger.WriteLog("Start page processing");
-			List<TextOverlay> textOverlays = new List<TextOverlay>();
-			try
-			{
-				using (var iter = page.GetIterator())
-				{
-					do
-					{
-						string text = iter.GetText(PageIteratorLevel.TextLine);
-						if (!string.IsNullOrEmpty(text))
-						{
-							string translatedText = TranslationUtil.Translate(text, srcLang, dstLang);
-							//string translatedText = text;
-							Rect rect;
-							if (iter.TryGetBoundingBox(PageIteratorLevel.TextLine, out rect))
-							{
-								textOverlays.Add(new TextOverlay
-								{
-									x = rect.X1 / scaleFactor,
-									y = rect.Y1 / scaleFactor,
-									ySize = Math.Max(Math.Abs(rect.Y1 - rect.Y2) / scaleFactor, 1),
-									Text = translatedText
-								});
-							}
-							Console.WriteLine(translatedText);
-						}
-					} while (iter.Next(PageIteratorLevel.TextLine));
-				}
-			}
-			catch (Exception ex)
-			{
-				Logger.WriteLog("Error processing page: " + ex.Message);
-			}
-			Logger.WriteLog("Finish page processing");
-
-			return textOverlays.ToArray();
+			return translatedText;
 		}
 	}
 }

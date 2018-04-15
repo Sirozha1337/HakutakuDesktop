@@ -1,26 +1,20 @@
 ﻿using HakutakuDesktop.Util;
 using System;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HakutakuDesktop
 {
-	public class TextOverlay
-	{
-		public int x;
-		public int y;
-		public string Text;
-		public int ySize;
-	}
-
 	public partial class SelectionForm : Form
 	{
 		public Point _startPoint;
 		public Point _endPoint;
 		public bool _repaintSelection;
-		private TextOverlay[] _page;
+		private string _page;
 		private Rectangle _pageRectangle;
 		private Button _translateButton;
+		private RichTextBox _textArea;
 
 		public SelectionForm()
 		{
@@ -37,9 +31,15 @@ namespace HakutakuDesktop
 			_translateButton = new Button();
 			_translateButton.BackColor = Color.Wheat;
 			_translateButton.Text = "Translate";
-			_translateButton.Click += new EventHandler(Translate_Click);
+			_translateButton.Click += new EventHandler(Translate_ClickAsync);
 			_translateButton.Visible = false;
 			this.Controls.Add(_translateButton);
+
+			_textArea = new RichTextBox();
+			_textArea.Multiline = true;
+			_textArea.Visible = false;
+			_textArea.Font = new Font("Arial", 14);
+			this.Controls.Add(_textArea);
 		}
 
 		protected override void OnShown(EventArgs e)
@@ -48,7 +48,7 @@ namespace HakutakuDesktop
 
 		}
 
-		private void Translate_Click(object sender, EventArgs e)
+		private async void Translate_ClickAsync(object sender, EventArgs e)
 		{
 			Logger.WriteLog("Translate Button Clicked");
 			if (!RecognitionUtil._engineBusy)
@@ -57,14 +57,11 @@ namespace HakutakuDesktop
 				int y = Math.Min(_startPoint.Y, _endPoint.Y);
 				int width = Math.Abs(_startPoint.X - _endPoint.X);
 				int height = Math.Abs(_startPoint.Y - _endPoint.Y);
-
-				SetPage(
-					RecognitionUtil.Execute(x, y, width, height, "en", "ru"),
-					x,
-					y,
-					width,
-					height
-				);
+				string text = await Task.Run(() => RecognitionUtil.Execute(x, y, width, height, "en", "ru"));
+				
+				_textArea.Visible = true;
+				_textArea.SetBounds(x, y, width, height);
+				_textArea.Text = text;
 			}
 		}
 
@@ -76,20 +73,15 @@ namespace HakutakuDesktop
 			_repaintSelection = false;
 		}
 
-		public void SetPage(TextOverlay[] page, int x, int y, int width, int height)
-		{
-			_page = page;
-			_pageRectangle = new Rectangle(x, y, width, height);
-			this.Refresh();
-		}
-
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			base.OnPaint(e);
 
 			if (_repaintSelection)
 			{
-				_page = null;
+				_textArea.Visible = false;
+				_translateButton.Visible = false;
+
 				Region r = new Region(e.ClipRectangle);
 
 				Rectangle window = new Rectangle(
@@ -101,25 +93,6 @@ namespace HakutakuDesktop
 				Pen pen = new Pen(Brushes.Red);
 				if (window.Height > 0 && window.Width > 0)
 					e.Graphics.DrawRectangle(pen, window);
-			}
-
-			if(_page != null)
-			{
-				e.Graphics.FillRegion(Brushes.White, new Region(_pageRectangle));
-
-				foreach (var line in _page)
-				{
-					int x = line.x + Math.Min(_pageRectangle.X, _pageRectangle.X);
-					int y = line.y + Math.Min(_pageRectangle.Y, _pageRectangle.Y);
-					Font drawFont = new Font("Arial", line.ySize);
-					e.Graphics.DrawString(
-										line.Text,
-										drawFont, 
-										Brushes.Black, 
-										x,
-										y);
-					drawFont.Dispose();
-				}
 			}
 		}
 	}
