@@ -70,7 +70,7 @@ namespace HakutakuDesktop
 			{
 				_textArea.Visible = false;
 				ControlsSetState(false);
-				Program._mainForm.Clear();
+				CustomApplicationContext._mainForm.Clear();
 			});
 			this.Controls.Add(_hideControlsButton);
 

@@ -31,16 +31,16 @@ namespace HakutakuDesktop
 			base.OnMouseDown(e);
 			mouseDown = true;
 			mousePoint = mouseDownPoint = e.Location;
-			Program._selectionForm._startPoint = mouseDownPoint;
-			Program._selectionForm._repaintSelection = mouseDown;
+			CustomApplicationContext._selectionForm._startPoint = mouseDownPoint;
+			CustomApplicationContext._selectionForm._repaintSelection = mouseDown;
 		}
 
 		protected override void OnMouseUp(MouseEventArgs e)
 		{
 			base.OnMouseUp(e);
 			mouseDown = false;
-			Program._selectionForm._endPoint = mousePoint;
-			Program._selectionForm.RegionSelected();
+			CustomApplicationContext._selectionForm._endPoint = mousePoint;
+			CustomApplicationContext._selectionForm.RegionSelected();
 		}
 
 		protected override void OnMouseMove(MouseEventArgs e)
@@ -49,7 +49,7 @@ namespace HakutakuDesktop
 			if (mouseDown)
 			{
 				mousePoint = e.Location;
-				Program._selectionForm._endPoint = mousePoint;
+				CustomApplicationContext._selectionForm._endPoint = mousePoint;
 				Invalidate();
 			}
 		}
@@ -74,10 +74,10 @@ namespace HakutakuDesktop
 			if (window.Height > 0 && window.Width > 0)
 				e.Graphics.FillRegion(Brushes.Red, r);
 
-			if (!Program._selectionForm.Visible)
-				Program._selectionForm.Show();
+			if (!CustomApplicationContext._selectionForm.Visible)
+				CustomApplicationContext._selectionForm.Show();
 
-			Program._selectionForm.Refresh();
+			CustomApplicationContext._selectionForm.Refresh();
 		}
 	}
 }
