@@ -25,8 +25,8 @@ namespace HakutakuDesktop
 			FormBorderStyle = FormBorderStyle.None;
 			BackColor = Color.LightGreen;
 			TransparencyKey = Color.LightGreen;
-			Width = Screen.PrimaryScreen.Bounds.Width;
-			Height = Screen.PrimaryScreen.Bounds.Height;
+			Width = LayoutUtil.ScreenWidth;
+			Height = LayoutUtil.ScreenHeight;
 			this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
 
 			_translateButton = new Button();
@@ -111,7 +111,6 @@ namespace HakutakuDesktop
 		public void RegionSelected()
 		{
 			_repaintSelection = false;
-			PaintRegion(this.CreateGraphics());
 			ControlsSetState(true);
 			int x = Math.Min(_startPoint.X, _endPoint.X);
 			int y = Math.Max(_startPoint.Y, _endPoint.Y);

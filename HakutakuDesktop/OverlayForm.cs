@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HakutakuDesktop.Util;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -21,8 +22,8 @@ namespace HakutakuDesktop
 			Opacity = 0.1;
 			this.Left = 0;
 			this.Top = 0;
-			Width = Screen.PrimaryScreen.Bounds.Width;
-			Height = Screen.PrimaryScreen.Bounds.Height;
+			Width = LayoutUtil.ScreenWidth;
+			Height = LayoutUtil.ScreenHeight;
 			Logger.WriteLog(String.Format("Overlay form initialized. Width: {0}. Height: {1}. Left: {2}. Top: {3}", Width, Height, Left, Top));
 		}
 		
@@ -32,7 +33,9 @@ namespace HakutakuDesktop
 			mouseDown = true;
 			mousePoint = mouseDownPoint = e.Location;
 			CustomApplicationContext._selectionForm._startPoint = mouseDownPoint;
+			CustomApplicationContext._selectionForm._endPoint = mouseDownPoint;
 			CustomApplicationContext._selectionForm._repaintSelection = mouseDown;
+			Invalidate();
 		}
 
 		protected override void OnMouseUp(MouseEventArgs e)
@@ -74,9 +77,6 @@ namespace HakutakuDesktop
 			Region r = new Region(window);
 			if (window.Height > 0 && window.Width > 0)
 				e.Graphics.FillRegion(Brushes.Red, r);
-
-			if (!CustomApplicationContext._selectionForm.Visible)
-				CustomApplicationContext._selectionForm.Show();
 
 			CustomApplicationContext._selectionForm.Refresh();
 		}
