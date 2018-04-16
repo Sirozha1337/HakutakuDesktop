@@ -58,6 +58,7 @@ namespace HakutakuDesktop
 		{
 			mouseDown = false;
 			mouseDownPoint = mousePoint = new Point();
+			CustomApplicationContext._selectionForm._endPoint = CustomApplicationContext._selectionForm._startPoint = mousePoint;
 			this.Refresh();
 		}
 

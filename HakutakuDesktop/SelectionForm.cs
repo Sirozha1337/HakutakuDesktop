@@ -71,6 +71,7 @@ namespace HakutakuDesktop
 				_textArea.Visible = false;
 				ControlsSetState(false);
 				CustomApplicationContext._mainForm.Clear();
+				this.Refresh();
 			});
 			this.Controls.Add(_hideControlsButton);
 
@@ -121,12 +122,13 @@ namespace HakutakuDesktop
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			base.OnPaint(e);
+			
+			PaintRegion(e.Graphics);
 
-			if (_repaintSelection)
+			if (!RecognitionUtil._engineBusy && _repaintSelection)
 			{
-				ControlsSetState(false);
 				_textArea.Visible = false;
-				PaintRegion(e.Graphics);
+				ControlsSetState(false);
 			}
 		}
 

@@ -28,8 +28,7 @@ namespace HakutakuDesktop
 			notifyIcon.ContextMenuStrip.Items.Clear();
 			notifyIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("&Exit", null, exitItem_Click));
 		}
-
-
+		
 		private void ContextMenuStrip_Opening(object sender, System.ComponentModel.CancelEventArgs e)
 		{
 			e.Cancel = false;
@@ -53,7 +52,7 @@ namespace HakutakuDesktop
 			if (key == Keys.F6)
 			{
 				Logger.WriteLog("Exiting app");
-				Application.Exit();
+				ExitThread();
 			}
 		}
 
