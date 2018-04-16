@@ -43,7 +43,8 @@ namespace HakutakuDesktop.Util
 						{
 							string text = page.GetText();
 							Logger.WriteLog("Recognized text: " + text);
-							translatedText = TranslationUtil.Translate(text, srcLang, dstLang);
+							if(!string.IsNullOrEmpty(text.Trim(' ', '\n', '\r')))
+								translatedText = TranslationUtil.Translate(text, srcLang, dstLang);
 							Logger.WriteLog("Translated text: " + translatedText);
 						}
 					}

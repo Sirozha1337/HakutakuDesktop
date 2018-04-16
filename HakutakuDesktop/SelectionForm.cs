@@ -99,9 +99,10 @@ namespace HakutakuDesktop
 				string srcLang = (string)_srcLangSelector.SelectedValue;
 				string dstLang = (string)_dstLangSelector.SelectedValue;
 				string text = await Task.Run(() => RecognitionUtil.Execute(x, y, width, height, srcLang, dstLang));
-				
+
+				Point point = LayoutUtil.GetPositionForTextArea(new Rectangle(x, y, width, height), 400, 200);
 				_textArea.Visible = true;
-				_textArea.SetBounds(x, y, width, height);
+				_textArea.SetBounds(point.X, point.Y, 400, 200);
 				_textArea.Text = text;
 			}
 		}
