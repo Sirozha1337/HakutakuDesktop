@@ -56,6 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomApplicationContext.cs" />
+    <Compile Include="ResizableTextArea.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Util\ImageUtil.cs" />
     <Compile Include="InterceptKeys.cs" />
     <Compile Include="Logger.cs" />

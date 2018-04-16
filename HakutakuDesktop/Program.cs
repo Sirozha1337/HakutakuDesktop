@@ -38,7 +38,6 @@ namespace HakutakuDesktop
 					MessageBox.Show(ex.Message, "Program Terminated Unexpectedly",
 						MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
-				InterceptKeys.RemoveCallback();
 			}
 		}
 	}

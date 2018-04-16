@@ -35,10 +35,11 @@ namespace HakutakuDesktop
 			_translateButton.Click += new EventHandler(Translate_ClickAsync);
 			this.Controls.Add(_translateButton);
 
-			_textArea = new RichTextBox();
+			_textArea = new ResizableTextArea();
 			_textArea.Multiline = true;
 			_textArea.Font = new Font("Arial Unicode MS", 14);
 			_textArea.Visible = false;
+			_textArea.ReadOnly = true;
 			this.Controls.Add(_textArea);
 			
 			_srcLangSelector = new ComboBox();

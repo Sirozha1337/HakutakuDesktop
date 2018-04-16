@@ -132,6 +132,7 @@ namespace HakutakuDesktop
 			if (_mainForm != null) { _mainForm.Close(); }
 			if (_selectionForm != null) { _selectionForm.Close(); }
 
+			InterceptKeys.RemoveCallback();
 			notifyIcon.Visible = false; // should remove lingering tray icon
 			base.ExitThreadCore();
 		}
