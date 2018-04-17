@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using Newtonsoft.Json.Linq;
 
@@ -22,8 +23,10 @@ namespace HakutakuDesktop.Util
 			{
 				try
 				{
-					text = text.Replace('\n', ' ').Replace('\r', ' ');
-					
+					Regex regex = new Regex("[ ]{2,}");
+					text = text.Replace('\n', ' ').Replace('\r', ' ').Trim();
+					text = regex.Replace(text, " ");
+
 					string encodedText = HttpUtility.UrlEncode(text, Encoding.UTF8);
 					
 					srcLang = srcLang.Substring(0, 2);

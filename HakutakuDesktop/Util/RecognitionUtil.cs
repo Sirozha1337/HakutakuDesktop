@@ -1,4 +1,5 @@
-﻿using Tesseract;
+﻿using System;
+using Tesseract;
 
 namespace HakutakuDesktop.Util
 {
@@ -17,6 +18,7 @@ namespace HakutakuDesktop.Util
 				else
 					_engine.Dispose();
 			}
+			Logger.WriteLog("Recreating engine for language: " + language);
 			_engine = new TesseractEngine(@"./tessdata", language, EngineMode.Default);
 			_engine_lang = language;
 			return _engine;
@@ -24,33 +26,42 @@ namespace HakutakuDesktop.Util
 
 		public static string Execute(int x, int y, int width, int height, string srcLang, string dstLang)
 		{
-			Logger.WriteLog("Start text recognition");
+			Logger.WriteLog("Start execution");
 			string translatedText = "";
 			if (!_engineBusy)
 			{
 				_engineBusy = true;
+				
 				if (width - 1 > 0 && height - 1 > 0)
 				{
-					var sc = ImageUtil.GetScreenCapture(x, y, width, height);
-					if(sc.Width < 500 || sc.Height < 500)
+					try
 					{
-						sc = ImageUtil.MagnifyBitmap(sc, 2);
-					}
-
-					using (var img = PixConverter.ToPix(sc))
-					{
-						using (var page = GetEngine(srcLang).Process(img))
+						var sc = ImageUtil.GetScreenCapture(x, y, width, height);
+						if (sc.Width < 500 || sc.Height < 500)
 						{
-							string text = page.GetText();
-							Logger.WriteLog("Recognized text: " + text);
-							if(!string.IsNullOrEmpty(text.Trim(' ', '\n', '\r')))
-								translatedText = TranslationUtil.Translate(text, srcLang, dstLang);
-							Logger.WriteLog("Translated text: " + translatedText);
+							sc = ImageUtil.MagnifyBitmap(sc, 2);
 						}
+						Logger.WriteLog("Start recognition");
+						using (var img = PixConverter.ToPix(sc))
+						{
+							using (var page = GetEngine(srcLang).Process(img))
+							{
+								string text = page.GetText();
+								Logger.WriteLog("Recognized text: " + text);
+								if (!string.IsNullOrEmpty(text.Trim(' ', '\n', '\r')))
+									translatedText = TranslationUtil.Translate(text, srcLang, dstLang);
+								Logger.WriteLog("Translated text: " + translatedText);
+							}
+						}
+						Logger.WriteLog("End recognition");
+					}
+					catch (Exception ex)
+					{
+						Logger.WriteLog("Error in text recognition: " + ex.Message);
 					}
 				}
 				_engineBusy = false;
-				Logger.WriteLog("Finish text recognition");
+				Logger.WriteLog("Finish execution");
 			}
 			return translatedText;
 		}

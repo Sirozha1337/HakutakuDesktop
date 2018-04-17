@@ -3,6 +3,7 @@ using System;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HakutakuDesktop.Controls;
 
 namespace HakutakuDesktop
 {
@@ -16,6 +17,7 @@ namespace HakutakuDesktop
 		private RichTextBox _textArea;
 		private ComboBox _srcLangSelector;
 		private ComboBox _dstLangSelector;
+		private LoadingCircle _loadingCircle;
 
 		public SelectionForm()
 		{
@@ -23,8 +25,8 @@ namespace HakutakuDesktop
 			TopMost = true;
 			ShowInTaskbar = false;
 			FormBorderStyle = FormBorderStyle.None;
-			BackColor = Color.LightGreen;
-			TransparencyKey = Color.LightGreen;
+			BackColor = Color.LightGray;
+			TransparencyKey = Color.LightGray;
 			Width = LayoutUtil.ScreenWidth;
 			Height = LayoutUtil.ScreenHeight;
 			this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
@@ -76,6 +78,24 @@ namespace HakutakuDesktop
 			});
 			this.Controls.Add(_hideControlsButton);
 
+			_loadingCircle = new LoadingCircle();
+			_loadingCircle.Active = false;
+			_loadingCircle.BackColor = Color.White;
+			_loadingCircle.Color = Color.Black;
+			_loadingCircle.ForeColor = SystemColors.HotTrack;
+			_loadingCircle.InnerCircleRadius = 15;
+			_loadingCircle.Location = new Point(151, 138);
+			_loadingCircle.Name = "loadingCircle";
+			_loadingCircle.NumberSpoke = 12;
+			_loadingCircle.OuterCircleRadius = 30;
+			_loadingCircle.RotationSpeed = 80;
+			_loadingCircle.SpokeThickness = 2;
+			_loadingCircle.StylePreset = LoadingCircle.StylePresets.MacOSX;
+			_loadingCircle.TabIndex = 14;
+			_loadingCircle.Text = "loadingCircle";
+			_loadingCircle.Visible = false;
+			this.Controls.Add(_loadingCircle);
+
 			ControlsSetState(false);
 		}
 
@@ -99,12 +119,23 @@ namespace HakutakuDesktop
 				int height = Math.Abs(_startPoint.Y - _endPoint.Y);
 				string srcLang = (string)_srcLangSelector.SelectedValue;
 				string dstLang = (string)_dstLangSelector.SelectedValue;
+
+				_loadingCircle.Visible = true;
+				_loadingCircle.BringToFront();
+				Point buttonLocation = _translateButton.Location;
+				_loadingCircle.Size = new Size(width, height);
+				_loadingCircle.SetBounds(buttonLocation.X, buttonLocation.Y, _translateButton.Width, _translateButton.Height);
+				_loadingCircle.Active = true;
+
 				string text = await Task.Run(() => RecognitionUtil.Execute(x, y, width, height, srcLang, dstLang));
 
 				Point point = LayoutUtil.GetPositionForTextArea(new Rectangle(x, y, width, height), 400, 200);
 				_textArea.Visible = true;
 				_textArea.SetBounds(point.X, point.Y, 400, 200);
 				_textArea.Text = text;
+
+				_loadingCircle.Visible = false;
+				_loadingCircle.Active = false;
 			}
 		}
 
