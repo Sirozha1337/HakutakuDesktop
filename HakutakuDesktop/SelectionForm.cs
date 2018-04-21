@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HakutakuDesktop.Controls;
+using System.Collections.Generic;
 
 namespace HakutakuDesktop
 {
@@ -13,11 +14,11 @@ namespace HakutakuDesktop
 		public Point _endPoint;
 		public bool _repaintSelection;
 		private Button _translateButton;
-		private Button _hideControlsButton;
-		private RichTextBox _textArea;
 		private ComboBox _srcLangSelector;
 		private ComboBox _dstLangSelector;
 		private LoadingCircle _loadingCircle;
+		private List<TextDisplay> textDisplays = new List<TextDisplay>();
+		private bool selectionChanged = false;
 
 		public SelectionForm()
 		{
@@ -27,6 +28,8 @@ namespace HakutakuDesktop
 			FormBorderStyle = FormBorderStyle.None;
 			BackColor = Color.LightGray;
 			TransparencyKey = Color.LightGray;
+			Left = 0;
+			Top = 0;
 			Width = LayoutUtil.ScreenWidth;
 			Height = LayoutUtil.ScreenHeight;
 			this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
@@ -36,13 +39,6 @@ namespace HakutakuDesktop
 			_translateButton.Text = "Translate";
 			_translateButton.Click += new EventHandler(Translate_ClickAsync);
 			this.Controls.Add(_translateButton);
-
-			_textArea = new ResizableTextArea();
-			_textArea.Multiline = true;
-			_textArea.Font = new Font("Arial Unicode MS", 14);
-			_textArea.Visible = false;
-			_textArea.ReadOnly = true;
-			this.Controls.Add(_textArea);
 			
 			_srcLangSelector = new ComboBox();
 			_srcLangSelector.DataSource = new Language[]
@@ -66,18 +62,6 @@ namespace HakutakuDesktop
 			_dstLangSelector.ValueMember = "Code";
 			this.Controls.Add(_dstLangSelector);
 
-			_hideControlsButton = new Button();
-			_hideControlsButton.Text = "X";
-			_hideControlsButton.BackColor = Color.Wheat;
-			_hideControlsButton.Click += new EventHandler((object sender, EventArgs e) =>
-			{
-				_textArea.Visible = false;
-				ControlsSetState(false);
-				CustomApplicationContext._mainForm.Clear();
-				this.Refresh();
-			});
-			this.Controls.Add(_hideControlsButton);
-
 			_loadingCircle = new LoadingCircle();
 			_loadingCircle.Active = false;
 			_loadingCircle.BackColor = Color.White;
@@ -99,12 +83,48 @@ namespace HakutakuDesktop
 			ControlsSetState(false);
 		}
 
+		protected override void OnVisibleChanged(EventArgs e)
+		{
+			base.OnVisibleChanged(e);
+			foreach (var txt in textDisplays)
+				if (!txt.IsDisposed)
+					if (this.Visible)
+						txt.Show();
+					else
+						txt.Hide();
+		}
+
+		private void RemoveGarbageText()
+		{
+			for (int i = 0; i < textDisplays.Count; i++)
+			{
+				if (textDisplays[i].IsDisposed)
+				{
+					textDisplays.Remove(textDisplays[i]);
+					i--;
+				}
+			}
+		}
+
+		private void ShowText(string text, int x, int y, int width, int height, bool showInPrevious)
+		{
+			if (!(showInPrevious && !textDisplays[textDisplays.Count - 1].IsDisposed))
+			{
+				var textDisplay = new TextDisplay(text, x, y, width, height);
+				textDisplay.Owner = this;
+				textDisplay.Show();
+				textDisplays.Add(textDisplay);
+			}
+			else
+				textDisplays[textDisplays.Count - 1].SetText(text);
+			RemoveGarbageText();
+		}
+
 		private void ControlsSetState(bool state)
 		{
 			_translateButton.Visible = state;
 			_srcLangSelector.Visible = state;
 			_dstLangSelector.Visible = state;
-			_hideControlsButton.Visible = state;
 		}
 
 		private async void Translate_ClickAsync(object sender, EventArgs e)
@@ -112,7 +132,6 @@ namespace HakutakuDesktop
 			Logger.WriteLog("Translate Button Clicked");
 			if (!RecognitionUtil._engineBusy)
 			{
-				_textArea.Visible = false;
 				int x = Math.Min(_startPoint.X, _endPoint.X);
 				int y = Math.Min(_startPoint.Y, _endPoint.Y);
 				int width = Math.Abs(_startPoint.X - _endPoint.X);
@@ -130,25 +149,24 @@ namespace HakutakuDesktop
 				string text = await Task.Run(() => RecognitionUtil.Execute(x, y, width, height, srcLang, dstLang));
 
 				Point point = LayoutUtil.GetPositionForTextArea(new Rectangle(x, y, width, height), 400, 200);
-				_textArea.Visible = true;
-				_textArea.SetBounds(point.X, point.Y, 400, 200);
-				_textArea.Text = text;
+				ShowText(text, point.X, point.Y, Math.Max(width, 400), Math.Max(height, 200), selectionChanged);
 
 				_loadingCircle.Visible = false;
 				_loadingCircle.Active = false;
+				selectionChanged = true;
 			}
 		}
 
 		public void RegionSelected()
 		{
+			selectionChanged = false;
 			_repaintSelection = false;
 			ControlsSetState(true);
-			int x = Math.Min(_startPoint.X, _endPoint.X);
+			int x = Math.Max(_startPoint.X, _endPoint.X);
 			int y = Math.Max(_startPoint.Y, _endPoint.Y);
-			_translateButton.SetBounds(x, y, 100, 50);
-			_srcLangSelector.SetBounds(x + 100, y, 100, 50);
-			_dstLangSelector.SetBounds(x + 200, y, 100, 50);
-			_hideControlsButton.SetBounds(x + 300, y, 50, 50);
+			_translateButton.SetBounds(x - 100, y, 100, 50);
+			_srcLangSelector.SetBounds(x - 300, y, 100, 50);
+			_dstLangSelector.SetBounds(x - 200, y, 100, 50);
 		}
 
 		protected override void OnPaint(PaintEventArgs e)
@@ -159,7 +177,6 @@ namespace HakutakuDesktop
 
 			if (!RecognitionUtil._engineBusy && _repaintSelection)
 			{
-				_textArea.Visible = false;
 				ControlsSetState(false);
 			}
 		}
