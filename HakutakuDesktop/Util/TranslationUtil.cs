@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -15,6 +16,52 @@ namespace HakutakuDesktop.Util
 
 	public static class TranslationUtil
 	{
+		private static Dictionary<string, Func<string, string>> languageSpecificActions;
+		
+		private static Func<string, string> GetLanguageSpecificAction(string lang)
+		{
+			if(languageSpecificActions == null)
+			{
+				languageSpecificActions = new Dictionary<string, Func<string, string>>();
+				languageSpecificActions.Add("jap", (string text) =>
+				{
+					return text.Replace('ぁ', 'あ')
+								.Replace('ぃ', 'い')
+								.Replace('ぅ', 'う')
+								.Replace('ぇ', 'え')
+								.Replace('ぉ', 'お')
+								.Replace("カゝ", "か")
+								.Replace('ヵ', 'カ')
+								.Replace('ゎ', 'わ')
+								.Replace('〈', 'く')
+								.Replace("<", "く")
+								.Replace("＜", "く")
+								.Replace("︿", "く")
+								.Replace("\\|二", "に")
+								.Replace("_", "一")
+								.Replace("I", "ー")
+								.Replace("1", "ー")
+								.Replace(" ", "")
+								.Replace("\\.", "")
+								.Replace("}」", "こ")
+								.Replace("/.", "!")
+								.Replace(",=", "コ")
+								.Replace("、 ", "い")
+								.Replace("%", "")
+								.Replace("=", "コ")
+								.Replace(",", "");
+				});
+				languageSpecificActions.Add("eng", (string text) =>
+				{
+					return text.ToLower();
+				});
+			}
+			if (languageSpecificActions.ContainsKey(lang))
+				return languageSpecificActions[lang];
+			else
+				return null;
+		}
+
 		public static string Translate(string text, string srcLang, string dstLang)
 		{
 			Logger.WriteLog("Start translation");
@@ -27,10 +74,17 @@ namespace HakutakuDesktop.Util
 					text = text.Replace('\n', ' ').Replace('\r', ' ').Trim();
 					text = regex.Replace(text, " ");
 
+					Console.WriteLine("Text before action" + text);
+					Func<string, string> action = GetLanguageSpecificAction(srcLang);
+					if(action != null)
+						text = action(text);
+					Console.WriteLine("Text after action" + text);
 					string encodedText = HttpUtility.UrlEncode(text, Encoding.UTF8);
 					
 					srcLang = srcLang.Substring(0, 2);
 					dstLang = dstLang.Substring(0, 2);
+					if (srcLang == "co") srcLang = "en";
+					if (dstLang == "co") dstLang = "en";
 
 					string url = String.Format(
 						"https://translate.googleapis.com/translate_a/single?client=gtx&sl={0}&tl={1}&dt=t&q={2}",
