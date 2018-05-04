@@ -45,8 +45,7 @@ namespace HakutakuDesktop
 			{
 				new Language{Code = "eng", Name = "English"},
 				new Language{Code = "jap", Name = "Japanese"},
-				new Language{Code = "rus", Name = "Russian"},
-				new Language{Code = "comic", Name = "Comic"}
+				new Language{Code = "rus", Name = "Russian"}
 			};
 			_srcLangSelector.DisplayMember = "Name";
 			_srcLangSelector.ValueMember = "Code";
@@ -57,8 +56,7 @@ namespace HakutakuDesktop
 			{
 				new Language{Code = "eng", Name = "English"},
 				new Language{Code = "jap", Name = "Japanese"},
-				new Language{Code = "rus", Name = "Russian"},
-				new Language{Code = "comic", Name = "Comic"}
+				new Language{Code = "rus", Name = "Russian"}
 			};
 			_dstLangSelector.DisplayMember = "Name";
 			_dstLangSelector.ValueMember = "Code";
