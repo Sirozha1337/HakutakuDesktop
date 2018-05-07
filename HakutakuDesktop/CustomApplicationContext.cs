@@ -12,8 +12,9 @@ namespace HakutakuDesktop
 		private static readonly string IconFileName = "logo.ico";
 		private static readonly string DefaultTooltip = "Translate any text from screen";
 
-		public static OverlayForm _mainForm;
+		public static OverlayForm _overlayForm;
 		public static SelectionForm _selectionForm;
+		public static MainMenu _mainMenu;
 
 		/// <summary>
 		/// This class should be created and passed into Application.Run( ... )
@@ -21,11 +22,14 @@ namespace HakutakuDesktop
 		public CustomApplicationContext()
 		{
 			InitializeContext();
-			_mainForm = new OverlayForm();
+			_overlayForm = new OverlayForm();
 			_selectionForm = new SelectionForm();
-			_selectionForm.Owner = _mainForm;
+			_mainMenu = new MainMenu();
+			_mainMenu.Show();
+			_selectionForm.Owner = _overlayForm;
 			InterceptKeys.SetCallback(HotKey);
 			notifyIcon.ContextMenuStrip.Items.Clear();
+			notifyIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("&Help", null, helpItem_Click));
 			notifyIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("&Exit", null, exitItem_Click));
 		}
 		
@@ -40,7 +44,7 @@ namespace HakutakuDesktop
 		{
 			if (key == Keys.F7)
 			{
-				if (_mainForm.Visible)
+				if (_overlayForm.Visible)
 				{
 					DisableOverlay();
 				}
@@ -59,14 +63,14 @@ namespace HakutakuDesktop
 		private void DisableOverlay()
 		{
 			Logger.WriteLog("Disabling overlay");
-			_mainForm.Hide();
+			_overlayForm.Hide();
 			_selectionForm.Hide();
 		}
 
 		private void EnableOverlay()
 		{
 			Logger.WriteLog("Showing overlay");
-			_mainForm.Show();
+			_overlayForm.Show();
 			_selectionForm.Show();
 		}
 
@@ -114,6 +118,18 @@ namespace HakutakuDesktop
 		}
 
 		/// <summary>
+		/// When the help button pressed, open form with help.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void helpItem_Click(object sender, EventArgs e)
+		{
+			if(_mainMenu == null || _mainMenu.IsDisposed)
+				_mainMenu = new MainMenu();
+			_mainMenu.Show();
+		}
+
+		/// <summary>
 		/// When the exit menu item is clicked, make a call to terminate the ApplicationContext.
 		/// </summary>
 		/// <param name="sender"></param>
@@ -129,8 +145,9 @@ namespace HakutakuDesktop
 		protected override void ExitThreadCore()
 		{
 			// before we exit, let forms clean themselves up.
-			if (_mainForm != null) { _mainForm.Close(); }
+			if (_overlayForm != null) { _overlayForm.Close(); }
 			if (_selectionForm != null) { _selectionForm.Close(); }
+			if (_mainMenu != null) { _mainMenu.Close(); }
 
 			InterceptKeys.RemoveCallback();
 			notifyIcon.Visible = false; // should remove lingering tray icon
