@@ -30,9 +30,10 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
 			this.customTabControl1 = new System.Windows.Forms.CustomTabControl();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.label1 = new System.Windows.Forms.Label();
+			this.dontShow = new System.Windows.Forms.CheckBox();
 			this.customTabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.SuspendLayout();
@@ -68,9 +69,21 @@
 			this.customTabControl1.Size = new System.Drawing.Size(584, 361);
 			this.customTabControl1.TabIndex = 0;
 			// 
+			// tabPage2
+			// 
+			this.tabPage2.Font = new System.Drawing.Font("Open Sans ExtraBold", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.tabPage2.Location = new System.Drawing.Point(4, 32);
+			this.tabPage2.Name = "tabPage2";
+			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage2.Size = new System.Drawing.Size(576, 325);
+			this.tabPage2.TabIndex = 1;
+			this.tabPage2.Text = "Settings";
+			this.tabPage2.UseVisualStyleBackColor = true;
+			// 
 			// tabPage1
 			// 
-			this.tabPage1.Controls.Add(this.richTextBox1);
+			this.tabPage1.Controls.Add(this.dontShow);
+			this.tabPage1.Controls.Add(this.label1);
 			this.tabPage1.Font = new System.Drawing.Font("Open Sans ExtraBold", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.tabPage1.Location = new System.Drawing.Point(4, 32);
 			this.tabPage1.Name = "tabPage1";
@@ -80,29 +93,28 @@
 			this.tabPage1.Text = "Help";
 			this.tabPage1.UseVisualStyleBackColor = true;
 			// 
-			// tabPage2
+			// label1
 			// 
-			this.tabPage2.Font = new System.Drawing.Font("Open Sans ExtraBold", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.tabPage2.Location = new System.Drawing.Point(4, 30);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(576, 327);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "Settings";
-			this.tabPage2.UseVisualStyleBackColor = true;
+			this.label1.AutoSize = true;
+			this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label1.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label1.Location = new System.Drawing.Point(3, 3);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(164, 200);
+			this.label1.TabIndex = 3;
+			this.label1.Text = "HOW TO USE:\r\n1. Open overlay\r\n2. Select an area\r\n3. Choose languages\r\n4. Press tr" +
+    "anslate\r\n5. Get your translation\r\n\r\nHOTKEYS:\r\nF6 - Close program\r\nF7 - Show over" +
+    "lay\r\n";
 			// 
-			// richTextBox1
+			// dontShow
 			// 
-			this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.richTextBox1.Font = new System.Drawing.Font("Open Sans Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.richTextBox1.Location = new System.Drawing.Point(3, 3);
-			this.richTextBox1.Name = "richTextBox1";
-			this.richTextBox1.ReadOnly = true;
-			this.richTextBox1.Size = new System.Drawing.Size(570, 319);
-			this.richTextBox1.TabIndex = 0;
-			this.richTextBox1.Text = "HOW TO USE:\n1. Open overlay\n2. Select an area\n3. Choose languages\n4. Press transl" +
-    "ate\n5. Get your translation\n\nHOTKEYS:\nF6 - Close program\nF7 - Show overlay";
+			this.dontShow.AutoSize = true;
+			this.dontShow.Location = new System.Drawing.Point(393, 298);
+			this.dontShow.Name = "dontShow";
+			this.dontShow.Size = new System.Drawing.Size(175, 19);
+			this.dontShow.TabIndex = 4;
+			this.dontShow.Text = "Don\'t show this on startup";
+			this.dontShow.UseVisualStyleBackColor = true;
 			// 
 			// MainMenu
 			// 
@@ -118,6 +130,7 @@
 			this.Text = "Main Menu";
 			this.customTabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
+			this.tabPage1.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -125,8 +138,9 @@
 		#endregion
 
 		private System.Windows.Forms.CustomTabControl customTabControl1;
-		private System.Windows.Forms.TabPage tabPage1;
-		private System.Windows.Forms.RichTextBox richTextBox1;
 		private System.Windows.Forms.TabPage tabPage2;
+		private System.Windows.Forms.TabPage tabPage1;
+		private System.Windows.Forms.CheckBox dontShow;
+		private System.Windows.Forms.Label label1;
 	}
 }
