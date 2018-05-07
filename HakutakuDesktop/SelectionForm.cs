@@ -23,63 +23,22 @@ namespace HakutakuDesktop
 		public SelectionForm()
 		{
 			InitializeComponent();
-			TopMost = true;
-			ShowInTaskbar = false;
-			FormBorderStyle = FormBorderStyle.None;
-			BackColor = Color.LightGray;
-			TransparencyKey = Color.LightGray;
-			Left = 0;
-			Top = 0;
-			Width = LayoutUtil.ScreenWidth;
-			Height = LayoutUtil.ScreenHeight;
-			this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
-
-			_translateButton = new Button();
-			_translateButton.BackColor = Color.Wheat;
-			_translateButton.Text = "Translate";
 			_translateButton.Click += new EventHandler(Translate_ClickAsync);
-			this.Controls.Add(_translateButton);
-			
-			_srcLangSelector = new ComboBox();
+
 			_srcLangSelector.DataSource = new Language[]
 			{
 				new Language{Code = "eng", Name = "English"},
 				new Language{Code = "jap", Name = "Japanese"},
 				new Language{Code = "rus", Name = "Russian"}
 			};
-			_srcLangSelector.DisplayMember = "Name";
-			_srcLangSelector.ValueMember = "Code";
-			this.Controls.Add(_srcLangSelector);
 
-			_dstLangSelector = new ComboBox();
 			_dstLangSelector.DataSource = new Language[]
 			{
 				new Language{Code = "eng", Name = "English"},
 				new Language{Code = "jap", Name = "Japanese"},
 				new Language{Code = "rus", Name = "Russian"}
 			};
-			_dstLangSelector.DisplayMember = "Name";
-			_dstLangSelector.ValueMember = "Code";
-			this.Controls.Add(_dstLangSelector);
-
-			_loadingCircle = new LoadingCircle();
-			_loadingCircle.Active = false;
-			_loadingCircle.BackColor = Color.White;
-			_loadingCircle.Color = Color.Black;
-			_loadingCircle.ForeColor = SystemColors.HotTrack;
-			_loadingCircle.InnerCircleRadius = 15;
-			_loadingCircle.Location = new Point(151, 138);
-			_loadingCircle.Name = "loadingCircle";
-			_loadingCircle.NumberSpoke = 12;
-			_loadingCircle.OuterCircleRadius = 30;
-			_loadingCircle.RotationSpeed = 80;
-			_loadingCircle.SpokeThickness = 2;
-			_loadingCircle.StylePreset = LoadingCircle.StylePresets.MacOSX;
-			_loadingCircle.TabIndex = 14;
-			_loadingCircle.Text = "loadingCircle";
-			_loadingCircle.Visible = false;
-			this.Controls.Add(_loadingCircle);
-
+			
 			ControlsSetState(false);
 		}
 
