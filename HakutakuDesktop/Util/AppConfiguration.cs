@@ -86,5 +86,25 @@ namespace HakutakuDesktop.Util
 			}
 			return hk;
 		}
+
+		public static void SetConfigHotkey(string key, Hotkey hotkey)
+		{
+			Configuration configManager = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+			KeyValueConfigurationCollection confCollection = configManager.AppSettings.Settings;
+
+			string hotkeyString = hotkey.KeyCode + "," 
+									+ hotkey.Shift + "," 
+									+ hotkey.Control + ","
+									+ hotkey.Alt + ","
+									+ hotkey.Windows;
+
+			if (confCollection[key] != null)
+				confCollection[key].Value = hotkeyString;
+			else
+				confCollection.Add(key, hotkeyString);
+
+			configManager.Save(ConfigurationSaveMode.Modified);
+			ConfigurationManager.RefreshSection(configManager.AppSettings.SectionInformation.Name);
+		}
 	}
 }

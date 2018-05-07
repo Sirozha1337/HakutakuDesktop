@@ -36,15 +36,15 @@
 			this.dontShow = new System.Windows.Forms.CheckBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.closeProgramHotkeyInput = new HakutakuDesktop.Controls.HotkeyInputBox();
-			this.toggleOverlayHotkeyInput = new HakutakuDesktop.Controls.HotkeyInputBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.textDisplayCount = new System.Windows.Forms.NumericUpDown();
 			this.bShowScan = new System.Windows.Forms.CheckBox();
 			this.bAutoStart = new System.Windows.Forms.CheckBox();
 			this.bConcatStrings = new System.Windows.Forms.CheckBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
+			this.closeProgramHotkeyInput = new HakutakuDesktop.Controls.HotkeyInputBox();
+			this.toggleOverlayHotkeyInput = new HakutakuDesktop.Controls.HotkeyInputBox();
 			this.customTabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
@@ -141,43 +141,29 @@
 			this.tabPage2.Text = "Settings";
 			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
-			// closeProgramHotkeyInput
+			// label4
 			// 
-			this.closeProgramHotkeyInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			hotkey1.Alt = false;
-			hotkey1.Control = false;
-			hotkey1.KeyCode = System.Windows.Forms.Keys.None;
-			hotkey1.Shift = false;
-			hotkey1.Windows = false;
-			this.closeProgramHotkeyInput.HotKey = hotkey1;
-			this.closeProgramHotkeyInput.Location = new System.Drawing.Point(179, 156);
-			this.closeProgramHotkeyInput.Name = "closeProgramHotkeyInput";
-			this.closeProgramHotkeyInput.ShortcutsEnabled = false;
-			this.closeProgramHotkeyInput.Size = new System.Drawing.Size(100, 28);
-			this.closeProgramHotkeyInput.TabIndex = 6;
-			this.closeProgramHotkeyInput.WordWrap = false;
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(14, 158);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(155, 20);
+			this.label4.TabIndex = 8;
+			this.label4.Text = "Exit Program Hotkey:";
 			// 
-			// toggleOverlayHotkeyInput
+			// label3
 			// 
-			this.toggleOverlayHotkeyInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			hotkey2.Alt = false;
-			hotkey2.Control = false;
-			hotkey2.KeyCode = System.Windows.Forms.Keys.None;
-			hotkey2.Shift = false;
-			hotkey2.Windows = false;
-			this.toggleOverlayHotkeyInput.HotKey = hotkey2;
-			this.toggleOverlayHotkeyInput.Location = new System.Drawing.Point(179, 108);
-			this.toggleOverlayHotkeyInput.Name = "toggleOverlayHotkeyInput";
-			this.toggleOverlayHotkeyInput.ShortcutsEnabled = false;
-			this.toggleOverlayHotkeyInput.Size = new System.Drawing.Size(100, 28);
-			this.toggleOverlayHotkeyInput.TabIndex = 5;
-			this.toggleOverlayHotkeyInput.WordWrap = false;
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(8, 110);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(169, 20);
+			this.label3.TabIndex = 7;
+			this.label3.Text = "Toggle Overlay Hotkey:";
 			// 
 			// label2
 			// 
 			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(243, 12);
+			this.label2.Location = new System.Drawing.Point(243, 14);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(199, 20);
 			this.label2.TabIndex = 4;
@@ -186,7 +172,7 @@
 			// textDisplayCount
 			// 
 			this.textDisplayCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.textDisplayCount.Location = new System.Drawing.Point(448, 10);
+			this.textDisplayCount.Location = new System.Drawing.Point(448, 12);
 			this.textDisplayCount.Maximum = new decimal(new int[] {
             10,
             0,
@@ -236,23 +222,41 @@
 			this.bConcatStrings.Text = "Concatenate strings when selection unchanged";
 			this.bConcatStrings.UseVisualStyleBackColor = true;
 			// 
-			// label3
+			// closeProgramHotkeyInput
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(8, 110);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(169, 20);
-			this.label3.TabIndex = 7;
-			this.label3.Text = "Toggle Overlay Hotkey:";
+			this.closeProgramHotkeyInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			hotkey1.Alt = false;
+			hotkey1.Control = false;
+			hotkey1.KeyCode = System.Windows.Forms.Keys.None;
+			hotkey1.Shift = false;
+			hotkey1.Windows = false;
+			this.closeProgramHotkeyInput.HotKey = hotkey1;
+			this.closeProgramHotkeyInput.Location = new System.Drawing.Point(179, 156);
+			this.closeProgramHotkeyInput.Name = "closeProgramHotkeyInput";
+			this.closeProgramHotkeyInput.ShortcutsEnabled = false;
+			this.closeProgramHotkeyInput.Size = new System.Drawing.Size(100, 28);
+			this.closeProgramHotkeyInput.TabIndex = 6;
+			this.closeProgramHotkeyInput.Text = "(none)";
+			this.closeProgramHotkeyInput.WordWrap = false;
+			this.closeProgramHotkeyInput.HotkeyChanged += new System.EventHandler(this.closeProgramHotkeyInput_HotkeyChanged);
 			// 
-			// label4
+			// toggleOverlayHotkeyInput
 			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(14, 158);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(155, 20);
-			this.label4.TabIndex = 8;
-			this.label4.Text = "Exit Program Hotkey:";
+			this.toggleOverlayHotkeyInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			hotkey2.Alt = false;
+			hotkey2.Control = false;
+			hotkey2.KeyCode = System.Windows.Forms.Keys.None;
+			hotkey2.Shift = false;
+			hotkey2.Windows = false;
+			this.toggleOverlayHotkeyInput.HotKey = hotkey2;
+			this.toggleOverlayHotkeyInput.Location = new System.Drawing.Point(179, 108);
+			this.toggleOverlayHotkeyInput.Name = "toggleOverlayHotkeyInput";
+			this.toggleOverlayHotkeyInput.ShortcutsEnabled = false;
+			this.toggleOverlayHotkeyInput.Size = new System.Drawing.Size(100, 28);
+			this.toggleOverlayHotkeyInput.TabIndex = 5;
+			this.toggleOverlayHotkeyInput.Text = "(none)";
+			this.toggleOverlayHotkeyInput.WordWrap = false;
+			this.toggleOverlayHotkeyInput.HotkeyChanged += new System.EventHandler(this.toggleOverlayHotkeyInput_HotkeyChanged);
 			// 
 			// MainMenu
 			// 

@@ -28,6 +28,7 @@ namespace HakutakuDesktop.Controls
 		public new bool WordWrap { get; set; }
 		#endregion
 		private Hotkey _hotkey;
+
 		public Hotkey HotKey {
 			get
 			{
@@ -40,6 +41,12 @@ namespace HakutakuDesktop.Controls
 				_hotkey = value;
 				this.RefreshText();
 			}
+		}
+
+		public event EventHandler HotkeyChanged;
+		protected virtual void OnHotkeyChanged(EventArgs e)
+		{
+			HotkeyChanged?.Invoke(this, e);
 		}
 
 		public void Reset()
@@ -78,6 +85,7 @@ namespace HakutakuDesktop.Controls
 			if (m.Msg == WM_KEYUP || m.Msg == WM_SYSKEYUP)
 			{
 				_keysPressed--;
+				OnHotkeyChanged(new EventArgs());
 			}
 
 			if (m.Msg != WM_CHAR && m.Msg != WM_SYSCHAR && m.Msg != WM_IME_CHAR)

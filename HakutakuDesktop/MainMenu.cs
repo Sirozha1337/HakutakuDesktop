@@ -49,5 +49,17 @@ namespace HakutakuDesktop
 				LoadSettings();
 			}
 		}
+
+		private void toggleOverlayHotkeyInput_HotkeyChanged(object sender, EventArgs e)
+		{
+			AppConfiguration.SetConfigHotkey("OverlayHotkey", toggleOverlayHotkeyInput.HotKey);
+			CustomApplicationContext._mainContext.BindHotkeys();
+		}
+
+		private void closeProgramHotkeyInput_HotkeyChanged(object sender, EventArgs e)
+		{
+			AppConfiguration.SetConfigHotkey("CloseProgramHotkey", closeProgramHotkeyInput.HotKey);
+			CustomApplicationContext._mainContext.BindHotkeys();
+		}
 	}
 }

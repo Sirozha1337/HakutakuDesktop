@@ -10,13 +10,14 @@ namespace HakutakuDesktop
 {
 	class CustomApplicationContext : ApplicationContext
 	{
-		// Icon graphic from http://prothemedesign.com/circular-icons/
 		private static readonly string IconFileName = "logo.ico";
 		private static readonly string DefaultTooltip = "Translate any text from screen";
 
 		public static OverlayForm _overlayForm;
 		public static SelectionForm _selectionForm;
 		public static MainMenu _mainMenu;
+		public static CustomApplicationContext _mainContext;
+
 		private static Hotkey _hkToggleOverlay;
 		private static Hotkey _hkExitApp;
 		/// <summary>
@@ -25,28 +26,8 @@ namespace HakutakuDesktop
 		public CustomApplicationContext()
 		{
 			InitializeContext();
-			_hkExitApp = new Hotkey(Keys.F6, false, false, false, false);
-			_hkExitApp.Pressed += delegate { ExitThreadCore(); };
-			_hkToggleOverlay = new Hotkey(Keys.F7, false, false, false, false);
-			_hkToggleOverlay.Pressed += delegate { ToggleOverlay(); };
-			if (!_hkToggleOverlay.GetCanRegister(notifyIcon.ContextMenuStrip))
-			{
-				Logger.WriteLog("Unable to register open overlay hotkey.");
-			}
-			else
-			{
-				_hkToggleOverlay.Register(notifyIcon.ContextMenuStrip);
-			}
-			if (!_hkExitApp.GetCanRegister(notifyIcon.ContextMenuStrip))
-			{
-				Logger.WriteLog("Unable to register open overlay hotkey.");
-			}
-			else
-			{
-				_hkExitApp.Register(notifyIcon.ContextMenuStrip);
-			}
-
-
+			BindHotkeys();
+			_mainContext = this;
 			_overlayForm = new OverlayForm();
 			_selectionForm = new SelectionForm();
 			
@@ -65,6 +46,44 @@ namespace HakutakuDesktop
 		{
 			e.Cancel = false;
 		}
+
+		#region Hotkeys
+		public void BindHotkeys()
+		{
+			UnbindHotkeys();
+
+			_hkToggleOverlay = AppConfiguration.GetConfigHotkey("OverlayHotkey");
+			_hkExitApp = AppConfiguration.GetConfigHotkey("CloseProgramHotkey");
+
+			_hkExitApp.Pressed += delegate { ExitThreadCore(); };
+			_hkToggleOverlay.Pressed += delegate { ToggleOverlay(); };
+
+			if (!_hkToggleOverlay.GetCanRegister(notifyIcon.ContextMenuStrip))
+			{
+				Logger.WriteLog("Unable to register open overlay hotkey.");
+			}
+			else
+			{
+				_hkToggleOverlay.Register(notifyIcon.ContextMenuStrip);
+			}
+			if (!_hkExitApp.GetCanRegister(notifyIcon.ContextMenuStrip))
+			{
+				Logger.WriteLog("Unable to register open overlay hotkey.");
+			}
+			else
+			{
+				_hkExitApp.Register(notifyIcon.ContextMenuStrip);
+			}
+		}
+
+		private void UnbindHotkeys()
+		{
+			if (_hkToggleOverlay != null && _hkToggleOverlay.Registered)
+			{ _hkToggleOverlay.Unregister(); }
+			if (_hkExitApp != null && _hkExitApp.Registered)
+			{ _hkExitApp.Unregister(); }
+		}
+		#endregion
 
 		#region the child forms
 		private void ShowMain(int tabIndex)
@@ -178,10 +197,7 @@ namespace HakutakuDesktop
 		protected override void ExitThreadCore()
 		{
 			// Unregister hotkeys
-			if (_hkToggleOverlay.Registered)
-			{ _hkToggleOverlay.Unregister(); }
-			if (_hkExitApp.Registered)
-			{ _hkExitApp.Unregister(); }
+			UnbindHotkeys();
 			// before we exit, let forms clean themselves up.
 			if (_overlayForm != null) { _overlayForm.Close(); }
 			if (_selectionForm != null) { _selectionForm.Close(); }
