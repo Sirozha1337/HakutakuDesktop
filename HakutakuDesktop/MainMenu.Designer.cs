@@ -28,14 +28,27 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			MovablePython.Hotkey hotkey1 = new MovablePython.Hotkey();
+			MovablePython.Hotkey hotkey2 = new MovablePython.Hotkey();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
 			this.customTabControl1 = new System.Windows.Forms.CustomTabControl();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.label1 = new System.Windows.Forms.Label();
 			this.dontShow = new System.Windows.Forms.CheckBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.closeProgramHotkeyInput = new HakutakuDesktop.Controls.HotkeyInputBox();
+			this.toggleOverlayHotkeyInput = new HakutakuDesktop.Controls.HotkeyInputBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.textDisplayCount = new System.Windows.Forms.NumericUpDown();
+			this.bShowScan = new System.Windows.Forms.CheckBox();
+			this.bAutoStart = new System.Windows.Forms.CheckBox();
+			this.bConcatStrings = new System.Windows.Forms.CheckBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
 			this.customTabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
+			this.tabPage2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.textDisplayCount)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// customTabControl1
@@ -68,17 +81,7 @@
 			this.customTabControl1.SelectedIndex = 0;
 			this.customTabControl1.Size = new System.Drawing.Size(584, 361);
 			this.customTabControl1.TabIndex = 0;
-			// 
-			// tabPage2
-			// 
-			this.tabPage2.Font = new System.Drawing.Font("Open Sans ExtraBold", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.tabPage2.Location = new System.Drawing.Point(4, 32);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(576, 325);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "Settings";
-			this.tabPage2.UseVisualStyleBackColor = true;
+			this.customTabControl1.SelectedIndexChanged += new System.EventHandler(this.customTabControl1_SelectedIndexChanged);
 			// 
 			// tabPage1
 			// 
@@ -93,6 +96,18 @@
 			this.tabPage1.Text = "Help";
 			this.tabPage1.UseVisualStyleBackColor = true;
 			// 
+			// dontShow
+			// 
+			this.dontShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.dontShow.AutoSize = true;
+			this.dontShow.Location = new System.Drawing.Point(393, 298);
+			this.dontShow.Name = "dontShow";
+			this.dontShow.Size = new System.Drawing.Size(175, 19);
+			this.dontShow.TabIndex = 4;
+			this.dontShow.Text = "Don\'t show this on startup";
+			this.dontShow.UseVisualStyleBackColor = true;
+			this.dontShow.CheckedChanged += new System.EventHandler(this.dontShow_CheckedChanged);
+			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
@@ -106,15 +121,138 @@
     "anslate\r\n5. Get your translation\r\n\r\nHOTKEYS:\r\nF6 - Close program\r\nF7 - Show over" +
     "lay\r\n";
 			// 
-			// dontShow
+			// tabPage2
 			// 
-			this.dontShow.AutoSize = true;
-			this.dontShow.Location = new System.Drawing.Point(393, 298);
-			this.dontShow.Name = "dontShow";
-			this.dontShow.Size = new System.Drawing.Size(175, 19);
-			this.dontShow.TabIndex = 4;
-			this.dontShow.Text = "Don\'t show this on startup";
-			this.dontShow.UseVisualStyleBackColor = true;
+			this.tabPage2.Controls.Add(this.label4);
+			this.tabPage2.Controls.Add(this.label3);
+			this.tabPage2.Controls.Add(this.closeProgramHotkeyInput);
+			this.tabPage2.Controls.Add(this.toggleOverlayHotkeyInput);
+			this.tabPage2.Controls.Add(this.label2);
+			this.tabPage2.Controls.Add(this.textDisplayCount);
+			this.tabPage2.Controls.Add(this.bShowScan);
+			this.tabPage2.Controls.Add(this.bAutoStart);
+			this.tabPage2.Controls.Add(this.bConcatStrings);
+			this.tabPage2.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.tabPage2.Location = new System.Drawing.Point(4, 32);
+			this.tabPage2.Name = "tabPage2";
+			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage2.Size = new System.Drawing.Size(576, 325);
+			this.tabPage2.TabIndex = 1;
+			this.tabPage2.Text = "Settings";
+			this.tabPage2.UseVisualStyleBackColor = true;
+			// 
+			// closeProgramHotkeyInput
+			// 
+			this.closeProgramHotkeyInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			hotkey1.Alt = false;
+			hotkey1.Control = false;
+			hotkey1.KeyCode = System.Windows.Forms.Keys.None;
+			hotkey1.Shift = false;
+			hotkey1.Windows = false;
+			this.closeProgramHotkeyInput.HotKey = hotkey1;
+			this.closeProgramHotkeyInput.Location = new System.Drawing.Point(179, 156);
+			this.closeProgramHotkeyInput.Name = "closeProgramHotkeyInput";
+			this.closeProgramHotkeyInput.ShortcutsEnabled = false;
+			this.closeProgramHotkeyInput.Size = new System.Drawing.Size(100, 28);
+			this.closeProgramHotkeyInput.TabIndex = 6;
+			this.closeProgramHotkeyInput.WordWrap = false;
+			// 
+			// toggleOverlayHotkeyInput
+			// 
+			this.toggleOverlayHotkeyInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			hotkey2.Alt = false;
+			hotkey2.Control = false;
+			hotkey2.KeyCode = System.Windows.Forms.Keys.None;
+			hotkey2.Shift = false;
+			hotkey2.Windows = false;
+			this.toggleOverlayHotkeyInput.HotKey = hotkey2;
+			this.toggleOverlayHotkeyInput.Location = new System.Drawing.Point(179, 108);
+			this.toggleOverlayHotkeyInput.Name = "toggleOverlayHotkeyInput";
+			this.toggleOverlayHotkeyInput.ShortcutsEnabled = false;
+			this.toggleOverlayHotkeyInput.Size = new System.Drawing.Size(100, 28);
+			this.toggleOverlayHotkeyInput.TabIndex = 5;
+			this.toggleOverlayHotkeyInput.WordWrap = false;
+			// 
+			// label2
+			// 
+			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(243, 12);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(199, 20);
+			this.label2.TabIndex = 4;
+			this.label2.Text = "Max Text Display Windows:";
+			// 
+			// textDisplayCount
+			// 
+			this.textDisplayCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.textDisplayCount.Location = new System.Drawing.Point(448, 10);
+			this.textDisplayCount.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+			this.textDisplayCount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.textDisplayCount.Name = "textDisplayCount";
+			this.textDisplayCount.Size = new System.Drawing.Size(120, 28);
+			this.textDisplayCount.TabIndex = 3;
+			this.textDisplayCount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			// 
+			// bShowScan
+			// 
+			this.bShowScan.AutoSize = true;
+			this.bShowScan.Location = new System.Drawing.Point(8, 40);
+			this.bShowScan.Name = "bShowScan";
+			this.bShowScan.Size = new System.Drawing.Size(157, 24);
+			this.bShowScan.TabIndex = 2;
+			this.bShowScan.Text = "Show scanned text";
+			this.bShowScan.UseVisualStyleBackColor = true;
+			// 
+			// bAutoStart
+			// 
+			this.bAutoStart.AutoSize = true;
+			this.bAutoStart.Location = new System.Drawing.Point(8, 10);
+			this.bAutoStart.Name = "bAutoStart";
+			this.bAutoStart.Size = new System.Drawing.Size(203, 24);
+			this.bAutoStart.TabIndex = 1;
+			this.bAutoStart.Text = "Start on Windows startup";
+			this.bAutoStart.UseVisualStyleBackColor = true;
+			// 
+			// bConcatStrings
+			// 
+			this.bConcatStrings.AutoSize = true;
+			this.bConcatStrings.Location = new System.Drawing.Point(8, 70);
+			this.bConcatStrings.Name = "bConcatStrings";
+			this.bConcatStrings.Size = new System.Drawing.Size(350, 24);
+			this.bConcatStrings.TabIndex = 0;
+			this.bConcatStrings.Text = "Concatenate strings when selection unchanged";
+			this.bConcatStrings.UseVisualStyleBackColor = true;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(8, 110);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(169, 20);
+			this.label3.TabIndex = 7;
+			this.label3.Text = "Toggle Overlay Hotkey:";
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(14, 158);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(155, 20);
+			this.label4.TabIndex = 8;
+			this.label4.Text = "Exit Program Hotkey:";
 			// 
 			// MainMenu
 			// 
@@ -131,6 +269,9 @@
 			this.customTabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
 			this.tabPage1.PerformLayout();
+			this.tabPage2.ResumeLayout(false);
+			this.tabPage2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.textDisplayCount)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -142,5 +283,14 @@
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.CheckBox dontShow;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.NumericUpDown textDisplayCount;
+		private System.Windows.Forms.CheckBox bShowScan;
+		private System.Windows.Forms.CheckBox bAutoStart;
+		private System.Windows.Forms.CheckBox bConcatStrings;
+		private Controls.HotkeyInputBox toggleOverlayHotkeyInput;
+		private Controls.HotkeyInputBox closeProgramHotkeyInput;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Label label3;
 	}
 }

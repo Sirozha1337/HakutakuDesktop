@@ -1,4 +1,5 @@
 ﻿
+using HakutakuDesktop.Util;
 using MovablePython;
 using System;
 using System.Drawing;
@@ -48,10 +49,14 @@ namespace HakutakuDesktop
 
 			_overlayForm = new OverlayForm();
 			_selectionForm = new SelectionForm();
-			_mainMenu = new MainMenu();
-			_mainMenu.Show();
+			
+			if(!AppConfiguration.GetConfigBool("ShowHelpOnStartUp"))
+			{
+				ShowMain(0);
+			}
 			_selectionForm.Owner = _overlayForm;
 			notifyIcon.ContextMenuStrip.Items.Clear();
+			notifyIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("&Settings", null, settingsItem_Click));
 			notifyIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("&Help", null, helpItem_Click));
 			notifyIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("&Exit", null, exitItem_Click));
 		}
@@ -62,6 +67,13 @@ namespace HakutakuDesktop
 		}
 
 		#region the child forms
+		private void ShowMain(int tabIndex)
+		{
+			if (_mainMenu == null || _mainMenu.IsDisposed)
+				_mainMenu = new MainMenu();
+			_mainMenu.SelectedTabIndex = tabIndex;
+			_mainMenu.Show();
+		}
 
 		private void ToggleOverlay()
 		{
@@ -137,9 +149,17 @@ namespace HakutakuDesktop
 		/// <param name="e"></param>
 		private void helpItem_Click(object sender, EventArgs e)
 		{
-			if(_mainMenu == null || _mainMenu.IsDisposed)
-				_mainMenu = new MainMenu();
-			_mainMenu.Show();
+			ShowMain(0);
+		}
+
+		/// <summary>
+		/// When the settings button pressed, open form with settings.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void settingsItem_Click(object sender, EventArgs e)
+		{
+			ShowMain(1);
 		}
 
 		/// <summary>
