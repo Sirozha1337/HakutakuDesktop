@@ -74,9 +74,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CustomApplicationContext.cs" />
-    <Compile Include="Controls\ResizableTextArea.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
