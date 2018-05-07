@@ -1,4 +1,5 @@
 ﻿
+using MovablePython;
 using System;
 using System.Drawing;
 using System.Reflection;
@@ -15,19 +16,41 @@ namespace HakutakuDesktop
 		public static OverlayForm _overlayForm;
 		public static SelectionForm _selectionForm;
 		public static MainMenu _mainMenu;
-
+		private static Hotkey _hkToggleOverlay;
+		private static Hotkey _hkExitApp;
 		/// <summary>
 		/// This class should be created and passed into Application.Run( ... )
 		/// </summary>
 		public CustomApplicationContext()
 		{
 			InitializeContext();
+			_hkExitApp = new Hotkey(Keys.F6, false, false, false, false);
+			_hkExitApp.Pressed += delegate { ExitThreadCore(); };
+			_hkToggleOverlay = new Hotkey(Keys.F7, false, false, false, false);
+			_hkToggleOverlay.Pressed += delegate { ToggleOverlay(); };
+			if (!_hkToggleOverlay.GetCanRegister(notifyIcon.ContextMenuStrip))
+			{
+				Logger.WriteLog("Unable to register open overlay hotkey.");
+			}
+			else
+			{
+				_hkToggleOverlay.Register(notifyIcon.ContextMenuStrip);
+			}
+			if (!_hkExitApp.GetCanRegister(notifyIcon.ContextMenuStrip))
+			{
+				Logger.WriteLog("Unable to register open overlay hotkey.");
+			}
+			else
+			{
+				_hkExitApp.Register(notifyIcon.ContextMenuStrip);
+			}
+
+
 			_overlayForm = new OverlayForm();
 			_selectionForm = new SelectionForm();
 			_mainMenu = new MainMenu();
 			_mainMenu.Show();
 			_selectionForm.Owner = _overlayForm;
-			InterceptKeys.SetCallback(HotKey);
 			notifyIcon.ContextMenuStrip.Items.Clear();
 			notifyIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("&Help", null, helpItem_Click));
 			notifyIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("&Exit", null, exitItem_Click));
@@ -40,36 +63,26 @@ namespace HakutakuDesktop
 
 		#region the child forms
 
-		private void HotKey(Keys key)
+		private void ToggleOverlay()
 		{
-			if (key == Keys.F7)
+			if (_overlayForm.Visible)
 			{
-				if (_overlayForm.Visible)
-				{
-					DisableOverlay();
-				}
-				else
-				{
-					EnableOverlay();
-				}
+				DisableOverlay();
 			}
-			if (key == Keys.F6)
+			else
 			{
-				Logger.WriteLog("Exiting app");
-				ExitThread();
+				EnableOverlay();
 			}
 		}
 
 		private void DisableOverlay()
 		{
-			Logger.WriteLog("Disabling overlay");
 			_overlayForm.Hide();
 			_selectionForm.Hide();
 		}
 
 		private void EnableOverlay()
 		{
-			Logger.WriteLog("Showing overlay");
 			_overlayForm.Show();
 			_selectionForm.Show();
 		}
@@ -144,12 +157,16 @@ namespace HakutakuDesktop
 		/// </summary>
 		protected override void ExitThreadCore()
 		{
+			// Unregister hotkeys
+			if (_hkToggleOverlay.Registered)
+			{ _hkToggleOverlay.Unregister(); }
+			if (_hkExitApp.Registered)
+			{ _hkExitApp.Unregister(); }
 			// before we exit, let forms clean themselves up.
 			if (_overlayForm != null) { _overlayForm.Close(); }
 			if (_selectionForm != null) { _selectionForm.Close(); }
 			if (_mainMenu != null) { _mainMenu.Close(); }
-
-			InterceptKeys.RemoveCallback();
+			
 			notifyIcon.Visible = false; // should remove lingering tray icon
 			base.ExitThreadCore();
 		}
