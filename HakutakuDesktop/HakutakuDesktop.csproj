@@ -87,6 +87,7 @@
       <DependentUpon>TextDisplay.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\AppConfiguration.cs" />
+    <Compile Include="Util\GlobalConfigurationObject.cs" />
     <Compile Include="Util\Hotkey.cs" />
     <Compile Include="Util\ImageUtil.cs" />
     <Compile Include="Logger.cs" />

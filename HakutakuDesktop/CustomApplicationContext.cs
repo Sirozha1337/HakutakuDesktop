@@ -26,12 +26,14 @@ namespace HakutakuDesktop
 		public CustomApplicationContext()
 		{
 			InitializeContext();
+			GlobalConfigurationObject.Reload();
 			BindHotkeys();
+
 			_mainContext = this;
 			_overlayForm = new OverlayForm();
 			_selectionForm = new SelectionForm();
 			
-			if(!AppConfiguration.GetConfigBool("ShowHelpOnStartUp"))
+			if(!GlobalConfigurationObject.ShowHelpOnStartUp)
 			{
 				ShowMain(0);
 			}
@@ -52,8 +54,8 @@ namespace HakutakuDesktop
 		{
 			UnbindHotkeys();
 
-			_hkToggleOverlay = AppConfiguration.GetConfigHotkey("OverlayHotkey");
-			_hkExitApp = AppConfiguration.GetConfigHotkey("CloseProgramHotkey");
+			_hkToggleOverlay = GlobalConfigurationObject.toggleOverlayHotkey.Clone();
+			_hkExitApp = GlobalConfigurationObject.closeProgramHotkey.Clone();
 
 			_hkExitApp.Pressed += delegate { ExitThreadCore(); };
 			_hkToggleOverlay.Pressed += delegate { ToggleOverlay(); };

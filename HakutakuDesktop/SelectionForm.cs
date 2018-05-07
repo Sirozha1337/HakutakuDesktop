@@ -63,6 +63,13 @@ namespace HakutakuDesktop
 					i--;
 				}
 			}
+
+			if(textDisplays.Count > GlobalConfigurationObject.MaxTextDisplayCount)
+			{
+				for (int i = 0; i < textDisplays.Count - GlobalConfigurationObject.MaxTextDisplayCount; i++)
+					textDisplays[i].Close();
+				textDisplays.RemoveRange(0, (textDisplays.Count - GlobalConfigurationObject.MaxTextDisplayCount));
+			}
 		}
 
 		private void ShowText(string text, int x, int y, int width, int height, bool showInPrevious)
@@ -75,7 +82,9 @@ namespace HakutakuDesktop
 				textDisplays.Add(textDisplay);
 			}
 			else
+			{
 				textDisplays[textDisplays.Count - 1].SetText(text);
+			}
 			RemoveGarbageText();
 		}
 

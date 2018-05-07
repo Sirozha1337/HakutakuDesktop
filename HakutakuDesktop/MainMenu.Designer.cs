@@ -125,13 +125,13 @@
 			// 
 			this.tabPage2.Controls.Add(this.label4);
 			this.tabPage2.Controls.Add(this.label3);
-			this.tabPage2.Controls.Add(this.closeProgramHotkeyInput);
-			this.tabPage2.Controls.Add(this.toggleOverlayHotkeyInput);
 			this.tabPage2.Controls.Add(this.label2);
 			this.tabPage2.Controls.Add(this.textDisplayCount);
 			this.tabPage2.Controls.Add(this.bShowScan);
 			this.tabPage2.Controls.Add(this.bAutoStart);
 			this.tabPage2.Controls.Add(this.bConcatStrings);
+			this.tabPage2.Controls.Add(this.closeProgramHotkeyInput);
+			this.tabPage2.Controls.Add(this.toggleOverlayHotkeyInput);
 			this.tabPage2.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.tabPage2.Location = new System.Drawing.Point(4, 32);
 			this.tabPage2.Name = "tabPage2";
@@ -163,7 +163,7 @@
 			// 
 			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(243, 14);
+			this.label2.Location = new System.Drawing.Point(243, 10);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(199, 20);
 			this.label2.TabIndex = 4;
@@ -172,7 +172,7 @@
 			// textDisplayCount
 			// 
 			this.textDisplayCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.textDisplayCount.Location = new System.Drawing.Point(448, 12);
+			this.textDisplayCount.Location = new System.Drawing.Point(448, 8);
 			this.textDisplayCount.Maximum = new decimal(new int[] {
             10,
             0,
@@ -221,6 +221,7 @@
 			this.bConcatStrings.TabIndex = 0;
 			this.bConcatStrings.Text = "Concatenate strings when selection unchanged";
 			this.bConcatStrings.UseVisualStyleBackColor = true;
+			this.bConcatStrings.CheckedChanged += new System.EventHandler(this.bConcatStrings_CheckedChanged);
 			// 
 			// closeProgramHotkeyInput
 			// 
@@ -269,7 +270,7 @@
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(600, 400);
 			this.Name = "MainMenu";
-			this.Text = "Main Menu";
+			this.Text = "hakutaku";
 			this.customTabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
 			this.tabPage1.PerformLayout();

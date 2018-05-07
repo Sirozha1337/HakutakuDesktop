@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HakutakuDesktop.Util;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,11 +22,19 @@ namespace HakutakuDesktop
 			this.SetBounds(x, y, width, height);
 			this.TopMost = true;
 			this.ShowInTaskbar = false;
+			this.AutoScroll = true;
 		}
 
 		public void SetText(string text)
 		{
-			this.textArea.Text = text;
+			if (GlobalConfigurationObject.ConcatenateWhenUnchanged && !string.IsNullOrEmpty(this.textArea.Text))
+			{
+				textArea.Text = textArea.Text + "\n" + text;
+				textArea.Select(textArea.TextLength - 1, textArea.TextLength);
+				textArea.ScrollToCaret();
+			}
+			else
+				textArea.Text = text;
 		}
 	}
 }

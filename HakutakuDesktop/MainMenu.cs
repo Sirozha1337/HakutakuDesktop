@@ -35,11 +35,12 @@ namespace HakutakuDesktop
 
 		private void LoadSettings()
 		{
-			bShowScan.Checked = AppConfiguration.GetConfigBool("ShowScannedText");
-			bConcatStrings.Checked = AppConfiguration.GetConfigBool("ConcatenateWhenUnchanged");
-			bAutoStart.Checked = AppConfiguration.GetConfigBool("Autostart");
-			toggleOverlayHotkeyInput.HotKey = AppConfiguration.GetConfigHotkey("OverlayHotkey");
-		    closeProgramHotkeyInput.HotKey = AppConfiguration.GetConfigHotkey("CloseProgramHotkey");
+			bShowScan.Checked = GlobalConfigurationObject.ShowScannedText;
+			bConcatStrings.Checked = GlobalConfigurationObject.ConcatenateWhenUnchanged;
+			bAutoStart.Checked = GlobalConfigurationObject.AutoStart;
+			toggleOverlayHotkeyInput.HotKey = GlobalConfigurationObject.toggleOverlayHotkey.Clone();
+			closeProgramHotkeyInput.HotKey = GlobalConfigurationObject.closeProgramHotkey.Clone();
+			textDisplayCount.Value = GlobalConfigurationObject.MaxTextDisplayCount;
 		}
 
 		private void customTabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -53,13 +54,21 @@ namespace HakutakuDesktop
 		private void toggleOverlayHotkeyInput_HotkeyChanged(object sender, EventArgs e)
 		{
 			AppConfiguration.SetConfigHotkey("OverlayHotkey", toggleOverlayHotkeyInput.HotKey);
+			GlobalConfigurationObject.Reload();
 			CustomApplicationContext._mainContext.BindHotkeys();
 		}
 
 		private void closeProgramHotkeyInput_HotkeyChanged(object sender, EventArgs e)
 		{
 			AppConfiguration.SetConfigHotkey("CloseProgramHotkey", closeProgramHotkeyInput.HotKey);
+			GlobalConfigurationObject.Reload();
 			CustomApplicationContext._mainContext.BindHotkeys();
+		}
+
+		private void bConcatStrings_CheckedChanged(object sender, EventArgs e)
+		{
+			AppConfiguration.SetConfig("ConcatenateWhenUnchanged", bConcatStrings.Checked);
+			GlobalConfigurationObject.Reload();
 		}
 	}
 }

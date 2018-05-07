@@ -106,5 +106,30 @@ namespace HakutakuDesktop.Util
 			configManager.Save(ConfigurationSaveMode.Modified);
 			ConfigurationManager.RefreshSection(configManager.AppSettings.SectionInformation.Name);
 		}
+
+		public static void SetConfigInt(string key, int value)
+		{
+			Configuration configManager = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+			KeyValueConfigurationCollection confCollection = configManager.AppSettings.Settings;
+
+			if (confCollection[key] != null)
+				confCollection[key].Value = value.ToString();
+			else
+				confCollection.Add(key, value.ToString());
+
+			configManager.Save(ConfigurationSaveMode.Modified);
+			ConfigurationManager.RefreshSection(configManager.AppSettings.SectionInformation.Name);
+		}
+
+		public static int GetConfigInt(string key)
+		{
+			Configuration configManager = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+			KeyValueConfigurationCollection confCollection = configManager.AppSettings.Settings;
+
+			if(confCollection[key] != null && int.TryParse(confCollection[key].Value, out int val))
+				return val;
+
+			return 1;
+		}
 	}
 }
