@@ -33,6 +33,7 @@ namespace HakutakuDesktop.Util
 			set
 			{
 				AppConfiguration.SetConfigBool("Autostart", value);
+				AutostartUtil.RegisterStartup(value);
 				_autoStart = value;
 			}
 		}
