@@ -144,7 +144,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(14, 158);
+			this.label4.Location = new System.Drawing.Point(8, 158);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(155, 20);
 			this.label4.TabIndex = 8;
@@ -161,9 +161,7 @@
 			// 
 			// label2
 			// 
-			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(243, 10);
+			this.label2.Location = new System.Drawing.Point(8, 208);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(199, 20);
 			this.label2.TabIndex = 4;
@@ -171,8 +169,7 @@
 			// 
 			// textDisplayCount
 			// 
-			this.textDisplayCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.textDisplayCount.Location = new System.Drawing.Point(448, 8);
+			this.textDisplayCount.Location = new System.Drawing.Point(213, 206);
 			this.textDisplayCount.Maximum = new decimal(new int[] {
             10,
             0,
@@ -191,6 +188,7 @@
             0,
             0,
             0});
+			this.textDisplayCount.ValueChanged += new System.EventHandler(this.textDisplayCount_ValueChanged);
 			// 
 			// bShowScan
 			// 
@@ -201,6 +199,7 @@
 			this.bShowScan.TabIndex = 2;
 			this.bShowScan.Text = "Show scanned text";
 			this.bShowScan.UseVisualStyleBackColor = true;
+			this.bShowScan.CheckedChanged += new System.EventHandler(this.bShowScan_CheckedChanged);
 			// 
 			// bAutoStart
 			// 
@@ -211,6 +210,7 @@
 			this.bAutoStart.TabIndex = 1;
 			this.bAutoStart.Text = "Start on Windows startup";
 			this.bAutoStart.UseVisualStyleBackColor = true;
+			this.bAutoStart.CheckedChanged += new System.EventHandler(this.bAutoStart_CheckedChanged);
 			// 
 			// bConcatStrings
 			// 

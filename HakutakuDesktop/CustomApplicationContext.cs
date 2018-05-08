@@ -26,7 +26,6 @@ namespace HakutakuDesktop
 		public CustomApplicationContext()
 		{
 			InitializeContext();
-			GlobalConfigurationObject.Reload();
 			BindHotkeys();
 
 			_mainContext = this;
@@ -54,8 +53,8 @@ namespace HakutakuDesktop
 		{
 			UnbindHotkeys();
 
-			_hkToggleOverlay = GlobalConfigurationObject.toggleOverlayHotkey.Clone();
-			_hkExitApp = GlobalConfigurationObject.closeProgramHotkey.Clone();
+			_hkToggleOverlay = GlobalConfigurationObject.ToggleOverlayHotkey;
+			_hkExitApp = GlobalConfigurationObject.CloseProgramHotkey;
 
 			_hkExitApp.Pressed += delegate { ExitThreadCore(); };
 			_hkToggleOverlay.Pressed += delegate { ToggleOverlay(); };

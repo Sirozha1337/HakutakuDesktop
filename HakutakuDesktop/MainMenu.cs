@@ -25,12 +25,12 @@ namespace HakutakuDesktop
 		public MainMenu()
 		{
 			InitializeComponent();
-			dontShow.Checked = AppConfiguration.GetConfigBool("ShowHelpOnStartUp");
+			dontShow.Checked = GlobalConfigurationObject.ShowHelpOnStartUp;
 		}
 
 		private void dontShow_CheckedChanged(object sender, EventArgs e)
 		{
-			AppConfiguration.SetConfig("ShowHelpOnStartUp", dontShow.Checked);
+			GlobalConfigurationObject.ShowHelpOnStartUp = dontShow.Checked;
 		}
 
 		private void LoadSettings()
@@ -38,8 +38,8 @@ namespace HakutakuDesktop
 			bShowScan.Checked = GlobalConfigurationObject.ShowScannedText;
 			bConcatStrings.Checked = GlobalConfigurationObject.ConcatenateWhenUnchanged;
 			bAutoStart.Checked = GlobalConfigurationObject.AutoStart;
-			toggleOverlayHotkeyInput.HotKey = GlobalConfigurationObject.toggleOverlayHotkey.Clone();
-			closeProgramHotkeyInput.HotKey = GlobalConfigurationObject.closeProgramHotkey.Clone();
+			toggleOverlayHotkeyInput.HotKey = GlobalConfigurationObject.ToggleOverlayHotkey;
+			closeProgramHotkeyInput.HotKey = GlobalConfigurationObject.CloseProgramHotkey;
 			textDisplayCount.Value = GlobalConfigurationObject.MaxTextDisplayCount;
 		}
 
@@ -53,22 +53,34 @@ namespace HakutakuDesktop
 
 		private void toggleOverlayHotkeyInput_HotkeyChanged(object sender, EventArgs e)
 		{
-			AppConfiguration.SetConfigHotkey("OverlayHotkey", toggleOverlayHotkeyInput.HotKey);
-			GlobalConfigurationObject.Reload();
+			GlobalConfigurationObject.ToggleOverlayHotkey = toggleOverlayHotkeyInput.HotKey;
 			CustomApplicationContext._mainContext.BindHotkeys();
 		}
 
 		private void closeProgramHotkeyInput_HotkeyChanged(object sender, EventArgs e)
 		{
-			AppConfiguration.SetConfigHotkey("CloseProgramHotkey", closeProgramHotkeyInput.HotKey);
-			GlobalConfigurationObject.Reload();
+			GlobalConfigurationObject.CloseProgramHotkey = closeProgramHotkeyInput.HotKey;
 			CustomApplicationContext._mainContext.BindHotkeys();
 		}
 
 		private void bConcatStrings_CheckedChanged(object sender, EventArgs e)
 		{
-			AppConfiguration.SetConfig("ConcatenateWhenUnchanged", bConcatStrings.Checked);
-			GlobalConfigurationObject.Reload();
+			GlobalConfigurationObject.ConcatenateWhenUnchanged = bConcatStrings.Checked;
+		}
+
+		private void bShowScan_CheckedChanged(object sender, EventArgs e)
+		{
+			GlobalConfigurationObject.ShowScannedText = bShowScan.Checked;
+		}
+
+		private void textDisplayCount_ValueChanged(object sender, EventArgs e)
+		{
+			GlobalConfigurationObject.MaxTextDisplayCount = (int)textDisplayCount.Value;
+		}
+
+		private void bAutoStart_CheckedChanged(object sender, EventArgs e)
+		{
+			GlobalConfigurationObject.AutoStart = bAutoStart.Checked;
 		}
 	}
 }

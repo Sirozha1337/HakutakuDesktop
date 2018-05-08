@@ -11,7 +11,7 @@ namespace HakutakuDesktop.Util
 {
 	public static class AppConfiguration
 	{
-		public static void SetConfig(string key, bool value)
+		public static void SetConfigBool(string key, bool value)
 		{
 			Configuration configManager = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 			KeyValueConfigurationCollection confCollection = configManager.AppSettings.Settings;

@@ -34,6 +34,7 @@
 			// 
 			// textArea
 			// 
+			this.textArea.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			this.textArea.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.textArea.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.textArea.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));

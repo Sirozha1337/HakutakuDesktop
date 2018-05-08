@@ -9,23 +9,102 @@ namespace HakutakuDesktop.Util
 {
 	public static class GlobalConfigurationObject
 	{
-		public static int MaxTextDisplayCount;
-		public static bool AutoStart;
-		public static bool ShowScannedText;
-		public static bool ConcatenateWhenUnchanged;
-		public static bool ShowHelpOnStartUp;
-		public static Hotkey toggleOverlayHotkey;
-		public static Hotkey closeProgramHotkey;
-
-		public static void Reload()
+		private static int _maxTextDisplayCount = AppConfiguration.GetConfigInt("MaxTextDisplayCount");
+		public static int MaxTextDisplayCount
 		{
-			ShowScannedText = AppConfiguration.GetConfigBool("ShowScannedText");
-			ConcatenateWhenUnchanged = AppConfiguration.GetConfigBool("ConcatenateWhenUnchanged");
-			AutoStart = AppConfiguration.GetConfigBool("Autostart");
-			ShowHelpOnStartUp = AppConfiguration.GetConfigBool("ShowHelpOnStartUp");
-			toggleOverlayHotkey = AppConfiguration.GetConfigHotkey("OverlayHotkey");
-			closeProgramHotkey = AppConfiguration.GetConfigHotkey("CloseProgramHotkey");
-			MaxTextDisplayCount = AppConfiguration.GetConfigInt("MaxTextDisplayCount");
+			get
+			{
+				return _maxTextDisplayCount;
+			}
+			set
+			{
+				AppConfiguration.SetConfigInt("MaxTextDisplayCount", value);
+				_maxTextDisplayCount = value;
+			}
+		}
+		
+		private static bool _autoStart = AppConfiguration.GetConfigBool("Autostart");
+		public static bool AutoStart
+		{
+			get
+			{
+				return _autoStart;
+			}
+			set
+			{
+				AppConfiguration.SetConfigBool("Autostart", value);
+				_autoStart = value;
+			}
+		}
+
+		private static bool _showScannedText = AppConfiguration.GetConfigBool("ShowScannedText");
+		public static bool ShowScannedText
+		{
+			get
+			{
+				return _showScannedText;
+			}
+			set
+			{
+				AppConfiguration.SetConfigBool("ShowScannedText", value);
+				_showScannedText = value;
+			}
+		}
+
+		private static bool _concatenateWhenUnchanged = AppConfiguration.GetConfigBool("ConcatenateWhenUnchanged");
+		public static bool ConcatenateWhenUnchanged
+		{
+			get
+			{
+				return _concatenateWhenUnchanged;
+			}
+			set
+			{
+				AppConfiguration.SetConfigBool("ConcatenateWhenUnchanged", value);
+				_concatenateWhenUnchanged = value;
+			}
+		}
+
+		private static bool _showHelpOnStartUp = AppConfiguration.GetConfigBool("ShowHelpOnStartUp");
+		public static bool ShowHelpOnStartUp
+		{
+			get
+			{
+				return _showHelpOnStartUp;
+			}
+			set
+			{
+				AppConfiguration.SetConfigBool("ShowHelpOnStartUp", value);
+				_showHelpOnStartUp = value;
+			}
+		}
+
+		private static Hotkey _toggleOverlayHotkey = AppConfiguration.GetConfigHotkey("OverlayHotkey");
+		public static Hotkey ToggleOverlayHotkey
+		{
+			get
+			{
+				return _toggleOverlayHotkey.Clone();
+			}
+			set
+			{
+				AppConfiguration.SetConfigHotkey("OverlayHotkey", value);
+				_toggleOverlayHotkey = value;
+			}
+		}
+
+		private static Hotkey _closeProgramHotkey = AppConfiguration.GetConfigHotkey("CloseProgramHotkey");
+		public static Hotkey CloseProgramHotkey
+		{
+			get
+			{
+				return _closeProgramHotkey.Clone();
+			}
+			set
+			{
+				AppConfiguration.SetConfigHotkey("CloseProgramHotkey", value);
+				_closeProgramHotkey = value;
+			}
 		}
 	}
 }
