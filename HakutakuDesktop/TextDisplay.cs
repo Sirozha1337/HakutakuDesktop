@@ -17,7 +17,6 @@ namespace HakutakuDesktop
 		{
 			InitializeComponent();
 			this.textArea.Text = text;
-			Console.WriteLine(x + " " + y);
 			this.StartPosition = FormStartPosition.Manual;
 			this.SetBounds(x, y, width, height);
 			this.TopMost = true;

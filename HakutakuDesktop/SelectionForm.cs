@@ -115,9 +115,9 @@ namespace HakutakuDesktop
 				_loadingCircle.Active = true;
 
 				string text = await Task.Run(() => RecognitionUtil.Execute(x, y, width, height, srcLang, dstLang));
-
-				Point point = LayoutUtil.GetPositionForTextArea(new Rectangle(x, y, width, height), 400, 200);
-				ShowText(text, point.X, point.Y, Math.Max(width, 400), Math.Max(height, 200), selectionChanged);
+				
+				Rectangle textRect = LayoutUtil.GetParamsForTextArea(new Rectangle(x, y, width, height), text);
+				ShowText(text, textRect.X, textRect.Y, textRect.Width, textRect.Height, selectionChanged);
 
 				_loadingCircle.Visible = false;
 				_loadingCircle.Active = false;

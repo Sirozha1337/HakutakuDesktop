@@ -53,6 +53,8 @@
 			this.ClientSize = new System.Drawing.Size(800, 450);
 			this.Controls.Add(this.textArea);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "TextDisplay";
 			this.Text = "TextDisplay";
 			this.ResumeLayout(false);
