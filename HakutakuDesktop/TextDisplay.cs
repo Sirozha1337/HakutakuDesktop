@@ -20,16 +20,12 @@ namespace HakutakuDesktop
 			this.StartPosition = FormStartPosition.Manual;
 			Rectangle screenRectangle = RectangleToScreen(this.ClientRectangle);
 			int titleHeight = screenRectangle.Top - this.Top;
-			this.ClientSize = new Size(width, height + titleHeight);
-			this.Location = new Point(x, y - titleHeight);
-			//this.SetBounds(x, y - titleHeight, width, height + titleHeight);
+			int borderWidth = (this.Width - this.ClientSize.Width) / 2;
+			this.ClientSize = new Size(width, height);
+			this.Location = new Point(x - borderWidth, y - titleHeight);
 			this.TopMost = true;
 			this.ShowInTaskbar = false;
 			this.AutoScroll = true;
-			Console.WriteLine("TextDisp X:" + this.Left);
-			Console.WriteLine("TextDisp width:" + this.Width);
-			Console.WriteLine(this.ClientSize);
-			Console.WriteLine(this.ClientRectangle);
 		}
 
 		public void SetText(string text)
