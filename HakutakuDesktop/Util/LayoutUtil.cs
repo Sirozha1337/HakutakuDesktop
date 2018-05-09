@@ -95,9 +95,7 @@ namespace HakutakuDesktop.Util
 				rectangle.Width = selectedArea.Width;
 				rectangle.Height = selectedArea.Height;
 			}
-
-			Console.WriteLine("Rectangle X:" + rectangle.X);
-			Console.WriteLine("Rectangle width:" + rectangle.Width);
+			
 			return rectangle;
 		}
 	}

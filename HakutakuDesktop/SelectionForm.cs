@@ -106,8 +106,6 @@ namespace HakutakuDesktop
 				int height = Math.Abs(_startPoint.Y - _endPoint.Y);
 				string srcLang = (string)_srcLangSelector.SelectedValue;
 				string dstLang = (string)_dstLangSelector.SelectedValue;
-				Console.WriteLine("Selection X:" + x);
-				Console.WriteLine("Selection width:" + width);
 
 				_loadingCircle.Visible = true;
 				_loadingCircle.BringToFront();
