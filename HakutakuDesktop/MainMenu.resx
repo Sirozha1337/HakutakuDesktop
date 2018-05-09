@@ -125,6 +125,9 @@
   <data name="dontShow.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="dontShow.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="dontShow.Location" type="System.Drawing.Point, System.Drawing">
     <value>393, 298</value>
@@ -158,6 +161,9 @@
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Open Sans, 11.25pt</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -223,11 +229,41 @@ F7 - Show overlay
   <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="bDisplayTextOnTop.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bDisplayTextOnTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 100</value>
+  </data>
+  <data name="bDisplayTextOnTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 24</value>
+  </data>
+  <data name="bDisplayTextOnTop.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="bDisplayTextOnTop.Text" xml:space="preserve">
+    <value>Place translated text on top of original</value>
+  </data>
+  <data name="&gt;&gt;bDisplayTextOnTop.Name" xml:space="preserve">
+    <value>bDisplayTextOnTop</value>
+  </data>
+  <data name="&gt;&gt;bDisplayTextOnTop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bDisplayTextOnTop.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;bDisplayTextOnTop.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 158</value>
+    <value>2, 169</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>155, 20</value>
@@ -248,13 +284,16 @@ F7 - Show overlay
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 110</value>
+    <value>3, 132</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>169, 20</value>
@@ -275,10 +314,13 @@ F7 - Show overlay
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 208</value>
+    <value>2, 213</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>199, 20</value>
@@ -299,10 +341,10 @@ F7 - Show overlay
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="textDisplayCount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 206</value>
+    <value>207, 211</value>
   </data>
   <data name="textDisplayCount.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 28</value>
@@ -320,13 +362,16 @@ F7 - Show overlay
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;textDisplayCount.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="bShowScan.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="bShowScan.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="bShowScan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 40</value>
+    <value>6, 40</value>
   </data>
   <data name="bShowScan.Size" type="System.Drawing.Size, System.Drawing">
     <value>157, 24</value>
@@ -347,13 +392,16 @@ F7 - Show overlay
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;bShowScan.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="bAutoStart.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="bAutoStart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="bAutoStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 10</value>
+    <value>6, 10</value>
   </data>
   <data name="bAutoStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 24</value>
@@ -374,13 +422,16 @@ F7 - Show overlay
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;bAutoStart.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="bConcatStrings.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="bConcatStrings.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="bConcatStrings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 70</value>
+    <value>6, 70</value>
   </data>
   <data name="bConcatStrings.Size" type="System.Drawing.Size, System.Drawing">
     <value>350, 24</value>
@@ -401,10 +452,10 @@ F7 - Show overlay
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;bConcatStrings.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="closeProgramHotkeyInput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>179, 156</value>
+    <value>185, 167</value>
   </data>
   <data name="closeProgramHotkeyInput.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 28</value>
@@ -428,10 +479,10 @@ F7 - Show overlay
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;closeProgramHotkeyInput.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="toggleOverlayHotkeyInput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>179, 108</value>
+    <value>185, 130</value>
   </data>
   <data name="toggleOverlayHotkeyInput.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 28</value>
@@ -455,7 +506,7 @@ F7 - Show overlay
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;toggleOverlayHotkeyInput.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="tabPage2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Open Sans, 11.25pt</value>

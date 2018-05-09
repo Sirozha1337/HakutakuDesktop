@@ -106,6 +106,8 @@ namespace HakutakuDesktop
 				int height = Math.Abs(_startPoint.Y - _endPoint.Y);
 				string srcLang = (string)_srcLangSelector.SelectedValue;
 				string dstLang = (string)_dstLangSelector.SelectedValue;
+				Console.WriteLine("Selection X:" + x);
+				Console.WriteLine("Selection width:" + width);
 
 				_loadingCircle.Visible = true;
 				_loadingCircle.BringToFront();
@@ -115,7 +117,7 @@ namespace HakutakuDesktop
 				_loadingCircle.Active = true;
 
 				string text = await Task.Run(() => RecognitionUtil.Execute(x, y, width, height, srcLang, dstLang));
-				
+
 				Rectangle textRect = LayoutUtil.GetParamsForTextArea(new Rectangle(x, y, width, height), text);
 				ShowText(text, textRect.X, textRect.Y, textRect.Width, textRect.Height, selectionChanged);
 
@@ -133,8 +135,8 @@ namespace HakutakuDesktop
 			int x = Math.Max(_startPoint.X, _endPoint.X);
 			int y = Math.Max(_startPoint.Y, _endPoint.Y);
 			_translateButton.SetBounds(x - 100, y, 100, 50);
-			_srcLangSelector.SetBounds(x - 300, y, 100, 50);
-			_dstLangSelector.SetBounds(x - 200, y, 100, 50);
+			_dstLangSelector.SetBounds(x - 170, y, 70, 50);
+			_srcLangSelector.SetBounds(x - 240, y, 70, 50);
 		}
 
 		protected override void OnPaint(PaintEventArgs e)

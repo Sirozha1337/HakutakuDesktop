@@ -93,7 +93,10 @@ namespace HakutakuDesktop
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.LightGray;
-			this.ClientSize = new System.Drawing.Size(1366, 768);
+			this.Top = 0;
+			this.Left = 0;
+			this.Width = LayoutUtil.ScreenWidth;
+			this.Height = LayoutUtil.ScreenHeight;
 			this.Controls.Add(this._translateButton);
 			this.Controls.Add(this._srcLangSelector);
 			this.Controls.Add(this._dstLangSelector);

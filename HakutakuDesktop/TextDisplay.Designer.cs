@@ -48,15 +48,15 @@
 			// 
 			// TextDisplay
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			//this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			//this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = new System.Drawing.Size(400, 200);
 			this.Controls.Add(this.textArea);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "TextDisplay";
-			this.Text = "TextDisplay";
+			this.Text = "Text Display";
 			this.ResumeLayout(false);
 
 		}

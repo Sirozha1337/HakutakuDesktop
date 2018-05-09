@@ -107,5 +107,19 @@ namespace HakutakuDesktop.Util
 				_closeProgramHotkey = value;
 			}
 		}
+
+		private static bool _displayTextOnTop = AppConfiguration.GetConfigBool("DisplayTextOnTop");
+		public static bool DisplayTextOnTop
+		{
+			get
+			{
+				return _displayTextOnTop;
+			}
+			set
+			{
+				AppConfiguration.SetConfigBool("DisplayTextOnTop", value);
+				_displayTextOnTop = value;
+			}
+		}
 	}
 }

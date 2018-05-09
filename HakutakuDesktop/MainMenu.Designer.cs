@@ -36,6 +36,7 @@
 			this.dontShow = new System.Windows.Forms.CheckBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.bDisplayTextOnTop = new System.Windows.Forms.CheckBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
@@ -101,6 +102,7 @@
 			// 
 			// tabPage2
 			// 
+			this.tabPage2.Controls.Add(this.bDisplayTextOnTop);
 			this.tabPage2.Controls.Add(this.label4);
 			this.tabPage2.Controls.Add(this.label3);
 			this.tabPage2.Controls.Add(this.label2);
@@ -113,6 +115,13 @@
 			resources.ApplyResources(this.tabPage2, "tabPage2");
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.UseVisualStyleBackColor = true;
+			// 
+			// bDisplayTextOnTop
+			// 
+			resources.ApplyResources(this.bDisplayTextOnTop, "bDisplayTextOnTop");
+			this.bDisplayTextOnTop.Name = "bDisplayTextOnTop";
+			this.bDisplayTextOnTop.UseVisualStyleBackColor = true;
+			this.bDisplayTextOnTop.CheckedChanged += new System.EventHandler(this.bReplaceOriginalText_CheckedChanged);
 			// 
 			// label4
 			// 
@@ -233,5 +242,6 @@
 		private Controls.HotkeyInputBox closeProgramHotkeyInput;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.CheckBox bDisplayTextOnTop;
 	}
 }

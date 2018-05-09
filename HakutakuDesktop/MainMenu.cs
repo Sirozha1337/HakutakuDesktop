@@ -41,6 +41,7 @@ namespace HakutakuDesktop
 			toggleOverlayHotkeyInput.HotKey = GlobalConfigurationObject.ToggleOverlayHotkey;
 			closeProgramHotkeyInput.HotKey = GlobalConfigurationObject.CloseProgramHotkey;
 			textDisplayCount.Value = GlobalConfigurationObject.MaxTextDisplayCount;
+			bDisplayTextOnTop.Checked = GlobalConfigurationObject.DisplayTextOnTop;
 		}
 
 		private void customTabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -81,6 +82,11 @@ namespace HakutakuDesktop
 		private void bAutoStart_CheckedChanged(object sender, EventArgs e)
 		{
 			GlobalConfigurationObject.AutoStart = bAutoStart.Checked;
+		}
+
+		private void bReplaceOriginalText_CheckedChanged(object sender, EventArgs e)
+		{
+			GlobalConfigurationObject.DisplayTextOnTop = bDisplayTextOnTop.Checked;
 		}
 	}
 }

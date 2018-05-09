@@ -62,30 +62,42 @@ namespace HakutakuDesktop.Util
 			int lines = CountLines(text);
 			int width = lines > 1 ? 400 : text.Length * 10;
 			int height = lines * 15 + 60;
-			Console.WriteLine(height);
 
-			if (selectedArea.X + selectedArea.Width + width < ScreenWidth)
+			if (!GlobalConfigurationObject.DisplayTextOnTop)
 			{
-				rectangle.X = selectedArea.X + selectedArea.Width;
-				rectangle.Y = selectedArea.Y;
-			}
-			else if (selectedArea.X - width > 0)
-			{
-				rectangle.X = selectedArea.X - width;
-				rectangle.Y = selectedArea.Y;
-			}
-			else if (selectedArea.Y - height > 0)
-			{
-				rectangle.X = selectedArea.X;
-				rectangle.Y = selectedArea.Y - height;
+				if (selectedArea.X + selectedArea.Width + width < ScreenWidth)
+				{
+					rectangle.X = selectedArea.X + selectedArea.Width;
+					rectangle.Y = selectedArea.Y;
+				}
+				else if (selectedArea.X - width > 0)
+				{
+					rectangle.X = selectedArea.X - width;
+					rectangle.Y = selectedArea.Y;
+				}
+				else if (selectedArea.Y - height > 0)
+				{
+					rectangle.X = selectedArea.X;
+					rectangle.Y = selectedArea.Y - height;
+				}
+				else
+				{
+					rectangle.X = 0;
+					rectangle.Y = 0;
+				}
+				rectangle.Width = width;
+				rectangle.Height = height;
 			}
 			else
 			{
-				rectangle.X = 0;
-				rectangle.Y = 0;
+				rectangle.X = selectedArea.X;
+				rectangle.Y = selectedArea.Y;
+				rectangle.Width = selectedArea.Width;
+				rectangle.Height = selectedArea.Height;
 			}
-			rectangle.Width = width;
-			rectangle.Height = height;
+
+			Console.WriteLine("Rectangle X:" + rectangle.X);
+			Console.WriteLine("Rectangle width:" + rectangle.Width);
 			return rectangle;
 		}
 	}
