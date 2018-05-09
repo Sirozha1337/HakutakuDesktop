@@ -37,9 +37,10 @@ namespace HakutakuDesktop
 				ShowMain(0);
 			}
 			_selectionForm.Owner = _overlayForm;
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
 			notifyIcon.ContextMenuStrip.Items.Clear();
-			notifyIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("&Settings", null, settingsItem_Click));
-			notifyIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("&Help", null, helpItem_Click));
+			notifyIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem(resources.GetString("tabPage2.Text"), null, settingsItem_Click));
+			notifyIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem(resources.GetString("tabPage1.Text"), null, helpItem_Click));
 			notifyIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("&Exit", null, exitItem_Click));
 		}
 		

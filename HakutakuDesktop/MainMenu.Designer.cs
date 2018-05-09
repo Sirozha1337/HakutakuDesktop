@@ -28,9 +28,9 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
 			MovablePython.Hotkey hotkey1 = new MovablePython.Hotkey();
 			MovablePython.Hotkey hotkey2 = new MovablePython.Hotkey();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
 			this.customTabControl1 = new System.Windows.Forms.CustomTabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.dontShow = new System.Windows.Forms.CheckBox();
@@ -73,53 +73,31 @@
 			this.customTabControl1.DisplayStyleProvider.TextColor = System.Drawing.SystemColors.ControlText;
 			this.customTabControl1.DisplayStyleProvider.TextColorDisabled = System.Drawing.SystemColors.ControlDark;
 			this.customTabControl1.DisplayStyleProvider.TextColorSelected = System.Drawing.SystemColors.ControlText;
-			this.customTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.customTabControl1.Font = new System.Drawing.Font("Open Sans ExtraBold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			resources.ApplyResources(this.customTabControl1, "customTabControl1");
 			this.customTabControl1.HotTrack = true;
-			this.customTabControl1.Location = new System.Drawing.Point(0, 0);
 			this.customTabControl1.Name = "customTabControl1";
 			this.customTabControl1.SelectedIndex = 0;
-			this.customTabControl1.Size = new System.Drawing.Size(584, 361);
-			this.customTabControl1.TabIndex = 0;
 			this.customTabControl1.SelectedIndexChanged += new System.EventHandler(this.customTabControl1_SelectedIndexChanged);
 			// 
 			// tabPage1
 			// 
 			this.tabPage1.Controls.Add(this.dontShow);
 			this.tabPage1.Controls.Add(this.label1);
-			this.tabPage1.Font = new System.Drawing.Font("Open Sans ExtraBold", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.tabPage1.Location = new System.Drawing.Point(4, 32);
+			resources.ApplyResources(this.tabPage1, "tabPage1");
 			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(576, 325);
-			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "Help";
 			this.tabPage1.UseVisualStyleBackColor = true;
 			// 
 			// dontShow
 			// 
-			this.dontShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.dontShow.AutoSize = true;
-			this.dontShow.Location = new System.Drawing.Point(393, 298);
+			resources.ApplyResources(this.dontShow, "dontShow");
 			this.dontShow.Name = "dontShow";
-			this.dontShow.Size = new System.Drawing.Size(175, 19);
-			this.dontShow.TabIndex = 4;
-			this.dontShow.Text = "Don\'t show this on startup";
 			this.dontShow.UseVisualStyleBackColor = true;
 			this.dontShow.CheckedChanged += new System.EventHandler(this.dontShow_CheckedChanged);
 			// 
 			// label1
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label1.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label1.Location = new System.Drawing.Point(3, 3);
+			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(164, 200);
-			this.label1.TabIndex = 3;
-			this.label1.Text = "HOW TO USE:\r\n1. Open overlay\r\n2. Select an area\r\n3. Choose languages\r\n4. Press tr" +
-    "anslate\r\n5. Get your translation\r\n\r\nHOTKEYS:\r\nF6 - Close program\r\nF7 - Show over" +
-    "lay\r\n";
 			// 
 			// tabPage2
 			// 
@@ -132,44 +110,28 @@
 			this.tabPage2.Controls.Add(this.bConcatStrings);
 			this.tabPage2.Controls.Add(this.closeProgramHotkeyInput);
 			this.tabPage2.Controls.Add(this.toggleOverlayHotkeyInput);
-			this.tabPage2.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.tabPage2.Location = new System.Drawing.Point(4, 32);
+			resources.ApplyResources(this.tabPage2, "tabPage2");
 			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(576, 325);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "Settings";
 			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
 			// label4
 			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(8, 158);
+			resources.ApplyResources(this.label4, "label4");
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(155, 20);
-			this.label4.TabIndex = 8;
-			this.label4.Text = "Exit Program Hotkey:";
 			// 
 			// label3
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(8, 110);
+			resources.ApplyResources(this.label3, "label3");
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(169, 20);
-			this.label3.TabIndex = 7;
-			this.label3.Text = "Toggle Overlay Hotkey:";
 			// 
 			// label2
 			// 
-			this.label2.Location = new System.Drawing.Point(8, 208);
+			resources.ApplyResources(this.label2, "label2");
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(199, 20);
-			this.label2.TabIndex = 4;
-			this.label2.Text = "Max Text Display Windows:";
 			// 
 			// textDisplayCount
 			// 
-			this.textDisplayCount.Location = new System.Drawing.Point(213, 206);
+			resources.ApplyResources(this.textDisplayCount, "textDisplayCount");
 			this.textDisplayCount.Maximum = new decimal(new int[] {
             10,
             0,
@@ -181,8 +143,6 @@
             0,
             0});
 			this.textDisplayCount.Name = "textDisplayCount";
-			this.textDisplayCount.Size = new System.Drawing.Size(120, 28);
-			this.textDisplayCount.TabIndex = 3;
 			this.textDisplayCount.Value = new decimal(new int[] {
             1,
             0,
@@ -192,34 +152,22 @@
 			// 
 			// bShowScan
 			// 
-			this.bShowScan.AutoSize = true;
-			this.bShowScan.Location = new System.Drawing.Point(8, 40);
+			resources.ApplyResources(this.bShowScan, "bShowScan");
 			this.bShowScan.Name = "bShowScan";
-			this.bShowScan.Size = new System.Drawing.Size(157, 24);
-			this.bShowScan.TabIndex = 2;
-			this.bShowScan.Text = "Show scanned text";
 			this.bShowScan.UseVisualStyleBackColor = true;
 			this.bShowScan.CheckedChanged += new System.EventHandler(this.bShowScan_CheckedChanged);
 			// 
 			// bAutoStart
 			// 
-			this.bAutoStart.AutoSize = true;
-			this.bAutoStart.Location = new System.Drawing.Point(8, 10);
+			resources.ApplyResources(this.bAutoStart, "bAutoStart");
 			this.bAutoStart.Name = "bAutoStart";
-			this.bAutoStart.Size = new System.Drawing.Size(203, 24);
-			this.bAutoStart.TabIndex = 1;
-			this.bAutoStart.Text = "Start on Windows startup";
 			this.bAutoStart.UseVisualStyleBackColor = true;
 			this.bAutoStart.CheckedChanged += new System.EventHandler(this.bAutoStart_CheckedChanged);
 			// 
 			// bConcatStrings
 			// 
-			this.bConcatStrings.AutoSize = true;
-			this.bConcatStrings.Location = new System.Drawing.Point(8, 70);
+			resources.ApplyResources(this.bConcatStrings, "bConcatStrings");
 			this.bConcatStrings.Name = "bConcatStrings";
-			this.bConcatStrings.Size = new System.Drawing.Size(350, 24);
-			this.bConcatStrings.TabIndex = 0;
-			this.bConcatStrings.Text = "Concatenate strings when selection unchanged";
 			this.bConcatStrings.UseVisualStyleBackColor = true;
 			this.bConcatStrings.CheckedChanged += new System.EventHandler(this.bConcatStrings_CheckedChanged);
 			// 
@@ -232,13 +180,9 @@
 			hotkey1.Shift = false;
 			hotkey1.Windows = false;
 			this.closeProgramHotkeyInput.HotKey = hotkey1;
-			this.closeProgramHotkeyInput.Location = new System.Drawing.Point(179, 156);
+			resources.ApplyResources(this.closeProgramHotkeyInput, "closeProgramHotkeyInput");
 			this.closeProgramHotkeyInput.Name = "closeProgramHotkeyInput";
 			this.closeProgramHotkeyInput.ShortcutsEnabled = false;
-			this.closeProgramHotkeyInput.Size = new System.Drawing.Size(100, 28);
-			this.closeProgramHotkeyInput.TabIndex = 6;
-			this.closeProgramHotkeyInput.Text = "(none)";
-			this.closeProgramHotkeyInput.WordWrap = false;
 			this.closeProgramHotkeyInput.HotkeyChanged += new System.EventHandler(this.closeProgramHotkeyInput_HotkeyChanged);
 			// 
 			// toggleOverlayHotkeyInput
@@ -250,27 +194,19 @@
 			hotkey2.Shift = false;
 			hotkey2.Windows = false;
 			this.toggleOverlayHotkeyInput.HotKey = hotkey2;
-			this.toggleOverlayHotkeyInput.Location = new System.Drawing.Point(179, 108);
+			resources.ApplyResources(this.toggleOverlayHotkeyInput, "toggleOverlayHotkeyInput");
 			this.toggleOverlayHotkeyInput.Name = "toggleOverlayHotkeyInput";
 			this.toggleOverlayHotkeyInput.ShortcutsEnabled = false;
-			this.toggleOverlayHotkeyInput.Size = new System.Drawing.Size(100, 28);
-			this.toggleOverlayHotkeyInput.TabIndex = 5;
-			this.toggleOverlayHotkeyInput.Text = "(none)";
-			this.toggleOverlayHotkeyInput.WordWrap = false;
 			this.toggleOverlayHotkeyInput.HotkeyChanged += new System.EventHandler(this.toggleOverlayHotkeyInput_HotkeyChanged);
 			// 
 			// MainMenu
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(584, 361);
 			this.Controls.Add(this.customTabControl1);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.MinimumSize = new System.Drawing.Size(600, 400);
 			this.Name = "MainMenu";
-			this.Text = "hakutaku";
 			this.customTabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
 			this.tabPage1.PerformLayout();
