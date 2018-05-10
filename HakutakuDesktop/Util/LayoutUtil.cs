@@ -61,7 +61,7 @@ namespace HakutakuDesktop.Util
 			Rectangle rectangle = new Rectangle();
 			int lines = CountLines(text);
 			int width = lines > 1 ? 400 : text.Length * 10;
-			int height = lines * 15 + 60;
+			int height = lines * 15;
 
 			if (!GlobalConfigurationObject.DisplayTextOnTop)
 			{
