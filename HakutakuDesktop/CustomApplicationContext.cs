@@ -1,4 +1,6 @@
 ﻿
+using HakutakuDesktop.Util;
+using MovablePython;
 using System;
 using System.Drawing;
 using System.Reflection;
@@ -8,24 +10,37 @@ namespace HakutakuDesktop
 {
 	class CustomApplicationContext : ApplicationContext
 	{
-		// Icon graphic from http://prothemedesign.com/circular-icons/
 		private static readonly string IconFileName = "logo.ico";
 		private static readonly string DefaultTooltip = "Translate any text from screen";
 
-		public static OverlayForm _mainForm;
+		public static OverlayForm _overlayForm;
 		public static SelectionForm _selectionForm;
+		public static MainMenu _mainMenu;
+		public static CustomApplicationContext _mainContext;
 
+		private static Hotkey _hkToggleOverlay;
+		private static Hotkey _hkExitApp;
 		/// <summary>
 		/// This class should be created and passed into Application.Run( ... )
 		/// </summary>
 		public CustomApplicationContext()
 		{
 			InitializeContext();
-			_mainForm = new OverlayForm();
+			BindHotkeys();
+
+			_mainContext = this;
+			_overlayForm = new OverlayForm();
 			_selectionForm = new SelectionForm();
-			_selectionForm.Owner = _mainForm;
-			InterceptKeys.SetCallback(HotKey);
+			
+			if(!GlobalConfigurationObject.ShowHelpOnStartUp)
+			{
+				ShowMain(0);
+			}
+			_selectionForm.Owner = _overlayForm;
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
 			notifyIcon.ContextMenuStrip.Items.Clear();
+			notifyIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem(resources.GetString("tabPage2.Text"), null, settingsItem_Click));
+			notifyIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem(resources.GetString("tabPage1.Text"), null, helpItem_Click));
 			notifyIcon.ContextMenuStrip.Items.Add(new ToolStripMenuItem("&Exit", null, exitItem_Click));
 		}
 		
@@ -34,39 +49,74 @@ namespace HakutakuDesktop
 			e.Cancel = false;
 		}
 
-		#region the child forms
-
-		private void HotKey(Keys key)
+		#region Hotkeys
+		public void BindHotkeys()
 		{
-			if (key == Keys.F7)
+			UnbindHotkeys();
+
+			_hkToggleOverlay = GlobalConfigurationObject.ToggleOverlayHotkey;
+			_hkExitApp = GlobalConfigurationObject.CloseProgramHotkey;
+
+			_hkExitApp.Pressed += delegate { ExitThreadCore(); };
+			_hkToggleOverlay.Pressed += delegate { ToggleOverlay(); };
+
+			if (!_hkToggleOverlay.GetCanRegister(notifyIcon.ContextMenuStrip))
 			{
-				if (_mainForm.Visible)
-				{
-					DisableOverlay();
-				}
-				else
-				{
-					EnableOverlay();
-				}
+				Logger.WriteLog("Unable to register open overlay hotkey.");
 			}
-			if (key == Keys.F6)
+			else
 			{
-				Logger.WriteLog("Exiting app");
-				ExitThread();
+				_hkToggleOverlay.Register(notifyIcon.ContextMenuStrip);
+			}
+			if (!_hkExitApp.GetCanRegister(notifyIcon.ContextMenuStrip))
+			{
+				Logger.WriteLog("Unable to register open overlay hotkey.");
+			}
+			else
+			{
+				_hkExitApp.Register(notifyIcon.ContextMenuStrip);
+			}
+		}
+
+		private void UnbindHotkeys()
+		{
+			if (_hkToggleOverlay != null && _hkToggleOverlay.Registered)
+			{ _hkToggleOverlay.Unregister(); }
+			if (_hkExitApp != null && _hkExitApp.Registered)
+			{ _hkExitApp.Unregister(); }
+		}
+		#endregion
+
+		#region the child forms
+		private void ShowMain(int tabIndex)
+		{
+			if (_mainMenu == null || _mainMenu.IsDisposed)
+				_mainMenu = new MainMenu();
+			_mainMenu.SelectedTabIndex = tabIndex;
+			_mainMenu.Show();
+		}
+
+		private void ToggleOverlay()
+		{
+			if (_overlayForm.Visible)
+			{
+				DisableOverlay();
+			}
+			else
+			{
+				EnableOverlay();
 			}
 		}
 
 		private void DisableOverlay()
 		{
-			Logger.WriteLog("Disabling overlay");
-			_mainForm.Hide();
+			_overlayForm.Hide();
 			_selectionForm.Hide();
 		}
 
 		private void EnableOverlay()
 		{
-			Logger.WriteLog("Showing overlay");
-			_mainForm.Show();
+			_overlayForm.Show();
 			_selectionForm.Show();
 		}
 
@@ -114,6 +164,26 @@ namespace HakutakuDesktop
 		}
 
 		/// <summary>
+		/// When the help button pressed, open form with help.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void helpItem_Click(object sender, EventArgs e)
+		{
+			ShowMain(0);
+		}
+
+		/// <summary>
+		/// When the settings button pressed, open form with settings.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void settingsItem_Click(object sender, EventArgs e)
+		{
+			ShowMain(1);
+		}
+
+		/// <summary>
 		/// When the exit menu item is clicked, make a call to terminate the ApplicationContext.
 		/// </summary>
 		/// <param name="sender"></param>
@@ -128,11 +198,13 @@ namespace HakutakuDesktop
 		/// </summary>
 		protected override void ExitThreadCore()
 		{
+			// Unregister hotkeys
+			UnbindHotkeys();
 			// before we exit, let forms clean themselves up.
-			if (_mainForm != null) { _mainForm.Close(); }
+			if (_overlayForm != null) { _overlayForm.Close(); }
 			if (_selectionForm != null) { _selectionForm.Close(); }
-
-			InterceptKeys.RemoveCallback();
+			if (_mainMenu != null) { _mainMenu.Close(); }
+			
 			notifyIcon.Visible = false; // should remove lingering tray icon
 			base.ExitThreadCore();
 		}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HakutakuDesktop.Util;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,16 +17,27 @@ namespace HakutakuDesktop
 		{
 			InitializeComponent();
 			this.textArea.Text = text;
-			Console.WriteLine(x + " " + y);
 			this.StartPosition = FormStartPosition.Manual;
-			this.SetBounds(x, y, width, height);
+			Rectangle screenRectangle = RectangleToScreen(this.ClientRectangle);
+			int titleHeight = screenRectangle.Top - this.Top;
+			int borderWidth = (this.Width - this.ClientSize.Width) / 2;
+			this.ClientSize = new Size(width, height);
+			this.Location = new Point(x - borderWidth, y - titleHeight);
 			this.TopMost = true;
 			this.ShowInTaskbar = false;
+			this.AutoScroll = true;
 		}
 
 		public void SetText(string text)
 		{
-			this.textArea.Text = text;
+			if (GlobalConfigurationObject.ConcatenateWhenUnchanged && !string.IsNullOrEmpty(this.textArea.Text))
+			{
+				textArea.Text = textArea.Text + "\n" + text;
+				textArea.Select(textArea.TextLength - 1, textArea.TextLength);
+				textArea.ScrollToCaret();
+			}
+			else
+				textArea.Text = text;
 		}
 	}
 }

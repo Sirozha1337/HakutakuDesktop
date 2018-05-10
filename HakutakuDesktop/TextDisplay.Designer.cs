@@ -28,11 +28,13 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TextDisplay));
 			this.textArea = new System.Windows.Forms.RichTextBox();
 			this.SuspendLayout();
 			// 
 			// textArea
 			// 
+			this.textArea.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			this.textArea.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.textArea.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.textArea.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -46,12 +48,15 @@
 			// 
 			// TextDisplay
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			//this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			//this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = new System.Drawing.Size(400, 200);
 			this.Controls.Add(this.textArea);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "TextDisplay";
-			this.Text = "TextDisplay";
+			this.Text = "Text Display";
 			this.ResumeLayout(false);
 
 		}

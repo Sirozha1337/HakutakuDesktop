@@ -50,6 +50,13 @@ namespace HakutakuDesktop.Util
 								Logger.WriteLog("Recognized text: " + text);
 								if (!string.IsNullOrEmpty(text.Trim(' ', '\n', '\r')))
 									translatedText = TranslationUtil.Translate(text, srcLang, dstLang);
+								if (GlobalConfigurationObject.ShowScannedText && srcLang != dstLang)
+								{
+									text = text.Trim(' ', '\n', '\t', '\r');
+									if (!text.EndsWith("\n") || !text.EndsWith("\r"))
+										text = text + "\n";
+									translatedText = text + translatedText;
+								}
 								Logger.WriteLog("Translated text: " + translatedText);
 							}
 						}

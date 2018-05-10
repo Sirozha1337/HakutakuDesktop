@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{49CD71FA-5439-4769-B901-9EA6390DD132}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>HakutakuDesktop</RootNamespace>
-    <AssemblyName>HakutakuDesktop</AssemblyName>
+    <RootNamespace>hakutaku</RootNamespace>
+    <AssemblyName>hakutaku</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -20,7 +20,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>3</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,11 +34,22 @@
   <PropertyGroup>
     <ApplicationManifest>HakutakuDesktop.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>HakutakuDesktop.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JacksonSoft.CustomTabControl, Version=1.0.1.7, Culture=neutral, PublicKeyToken=53c237210c7e462d, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\JacksonSoft.CustomTabControl.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -55,6 +66,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\HotkeyInputBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\HotkeyInputBox.Designer.cs">
+      <DependentUpon>HotkeyInputBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\LoadingCircle.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -63,8 +80,11 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CustomApplicationContext.cs" />
-    <Compile Include="Controls\ResizableTextArea.cs">
-      <SubType>Component</SubType>
+    <Compile Include="MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="TextDisplay.cs">
       <SubType>Form</SubType>
@@ -72,8 +92,11 @@
     <Compile Include="TextDisplay.Designer.cs">
       <DependentUpon>TextDisplay.cs</DependentUpon>
     </Compile>
+    <Compile Include="Util\AppConfiguration.cs" />
+    <Compile Include="Util\AutostartUtil.cs" />
+    <Compile Include="Util\GlobalConfigurationObject.cs" />
+    <Compile Include="Util\Hotkey.cs" />
     <Compile Include="Util\ImageUtil.cs" />
-    <Compile Include="InterceptKeys.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="OverlayForm.cs">
       <SubType>Form</SubType>
@@ -92,6 +115,15 @@
     <Compile Include="Util\LayoutUtil.cs" />
     <Compile Include="Util\RecognitionUtil.cs" />
     <Compile Include="Util\TranslationUtil.cs" />
+    <EmbeddedResource Include="MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenu.ru.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OverlayForm.resx">
+      <DependentUpon>OverlayForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -100,7 +132,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SelectionForm.resx">
+      <DependentUpon>SelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TextDisplay.resx">
       <DependentUpon>TextDisplay.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +165,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="lib\JacksonSoft.CustomTabControl.dll" />
     <Content Include="logo.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -23,63 +23,22 @@ namespace HakutakuDesktop
 		public SelectionForm()
 		{
 			InitializeComponent();
-			TopMost = true;
-			ShowInTaskbar = false;
-			FormBorderStyle = FormBorderStyle.None;
-			BackColor = Color.LightGray;
-			TransparencyKey = Color.LightGray;
-			Left = 0;
-			Top = 0;
-			Width = LayoutUtil.ScreenWidth;
-			Height = LayoutUtil.ScreenHeight;
-			this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
-
-			_translateButton = new Button();
-			_translateButton.BackColor = Color.Wheat;
-			_translateButton.Text = "Translate";
 			_translateButton.Click += new EventHandler(Translate_ClickAsync);
-			this.Controls.Add(_translateButton);
-			
-			_srcLangSelector = new ComboBox();
+
 			_srcLangSelector.DataSource = new Language[]
 			{
 				new Language{Code = "eng", Name = "English"},
 				new Language{Code = "jap", Name = "Japanese"},
 				new Language{Code = "rus", Name = "Russian"}
 			};
-			_srcLangSelector.DisplayMember = "Name";
-			_srcLangSelector.ValueMember = "Code";
-			this.Controls.Add(_srcLangSelector);
 
-			_dstLangSelector = new ComboBox();
 			_dstLangSelector.DataSource = new Language[]
 			{
 				new Language{Code = "eng", Name = "English"},
 				new Language{Code = "jap", Name = "Japanese"},
 				new Language{Code = "rus", Name = "Russian"}
 			};
-			_dstLangSelector.DisplayMember = "Name";
-			_dstLangSelector.ValueMember = "Code";
-			this.Controls.Add(_dstLangSelector);
-
-			_loadingCircle = new LoadingCircle();
-			_loadingCircle.Active = false;
-			_loadingCircle.BackColor = Color.White;
-			_loadingCircle.Color = Color.Black;
-			_loadingCircle.ForeColor = SystemColors.HotTrack;
-			_loadingCircle.InnerCircleRadius = 15;
-			_loadingCircle.Location = new Point(151, 138);
-			_loadingCircle.Name = "loadingCircle";
-			_loadingCircle.NumberSpoke = 12;
-			_loadingCircle.OuterCircleRadius = 30;
-			_loadingCircle.RotationSpeed = 80;
-			_loadingCircle.SpokeThickness = 2;
-			_loadingCircle.StylePreset = LoadingCircle.StylePresets.MacOSX;
-			_loadingCircle.TabIndex = 14;
-			_loadingCircle.Text = "loadingCircle";
-			_loadingCircle.Visible = false;
-			this.Controls.Add(_loadingCircle);
-
+			
 			ControlsSetState(false);
 		}
 
@@ -104,6 +63,13 @@ namespace HakutakuDesktop
 					i--;
 				}
 			}
+
+			if(textDisplays.Count > GlobalConfigurationObject.MaxTextDisplayCount)
+			{
+				for (int i = 0; i < textDisplays.Count - GlobalConfigurationObject.MaxTextDisplayCount; i++)
+					textDisplays[i].Close();
+				textDisplays.RemoveRange(0, (textDisplays.Count - GlobalConfigurationObject.MaxTextDisplayCount));
+			}
 		}
 
 		private void ShowText(string text, int x, int y, int width, int height, bool showInPrevious)
@@ -116,7 +82,9 @@ namespace HakutakuDesktop
 				textDisplays.Add(textDisplay);
 			}
 			else
+			{
 				textDisplays[textDisplays.Count - 1].SetText(text);
+			}
 			RemoveGarbageText();
 		}
 
@@ -148,8 +116,8 @@ namespace HakutakuDesktop
 
 				string text = await Task.Run(() => RecognitionUtil.Execute(x, y, width, height, srcLang, dstLang));
 
-				Point point = LayoutUtil.GetPositionForTextArea(new Rectangle(x, y, width, height), 400, 200);
-				ShowText(text, point.X, point.Y, Math.Max(width, 400), Math.Max(height, 200), selectionChanged);
+				Rectangle textRect = LayoutUtil.GetParamsForTextArea(new Rectangle(x, y, width, height), text);
+				ShowText(text, textRect.X, textRect.Y, textRect.Width, textRect.Height, selectionChanged);
 
 				_loadingCircle.Visible = false;
 				_loadingCircle.Active = false;
@@ -165,8 +133,8 @@ namespace HakutakuDesktop
 			int x = Math.Max(_startPoint.X, _endPoint.X);
 			int y = Math.Max(_startPoint.Y, _endPoint.Y);
 			_translateButton.SetBounds(x - 100, y, 100, 50);
-			_srcLangSelector.SetBounds(x - 300, y, 100, 50);
-			_dstLangSelector.SetBounds(x - 200, y, 100, 50);
+			_dstLangSelector.SetBounds(x - 170, y, 70, 50);
+			_srcLangSelector.SetBounds(x - 240, y, 70, 50);
 		}
 
 		protected override void OnPaint(PaintEventArgs e)
