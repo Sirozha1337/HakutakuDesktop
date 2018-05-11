@@ -300,6 +300,9 @@
   <data name="bConcatStrings.Text" xml:space="preserve">
     <value>Объединить результаты перевода</value>
   </data>
+  <data name="bDisplayTextOnTop.Text" xml:space="preserve">
+    <value>Показывать перевод поверх оригинала</value>
+  </data>
   <data name="bShowScan.Text" xml:space="preserve">
     <value>Показать отсканированный текст</value>
   </data>
