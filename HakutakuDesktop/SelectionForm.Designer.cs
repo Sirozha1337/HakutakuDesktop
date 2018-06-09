@@ -47,7 +47,7 @@ namespace HakutakuDesktop
 			this._translateButton.Name = "_translateButton";
 			this._translateButton.Size = new System.Drawing.Size(75, 23);
 			this._translateButton.TabIndex = 0;
-			this._translateButton.Font = new System.Drawing.Font("Open Sans ExtraBold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this._translateButton.Font = FontUtil.GetExtrabold(12F);
 			this._translateButton.Text = "Translate";
 			this._translateButton.UseVisualStyleBackColor = false;
 			// 

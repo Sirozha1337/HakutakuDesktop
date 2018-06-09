@@ -1,4 +1,6 @@
-﻿namespace HakutakuDesktop
+﻿using HakutakuDesktop.Util;
+
+namespace HakutakuDesktop
 {
 	partial class MainMenu
 	{
@@ -79,6 +81,7 @@
 			this.customTabControl1.Name = "customTabControl1";
 			this.customTabControl1.SelectedIndex = 0;
 			this.customTabControl1.SelectedIndexChanged += new System.EventHandler(this.customTabControl1_SelectedIndexChanged);
+			this.customTabControl1.Font = FontUtil.GetExtrabold(12F);
 			// 
 			// tabPage1
 			// 
@@ -87,10 +90,12 @@
 			resources.ApplyResources(this.tabPage1, "tabPage1");
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.UseVisualStyleBackColor = true;
+			this.tabPage1.Font = FontUtil.GetRegular(11F);
 			// 
 			// dontShow
 			// 
 			resources.ApplyResources(this.dontShow, "dontShow");
+			this.dontShow.Font = FontUtil.GetExtrabold(8.25f);
 			this.dontShow.Name = "dontShow";
 			this.dontShow.UseVisualStyleBackColor = true;
 			this.dontShow.CheckedChanged += new System.EventHandler(this.dontShow_CheckedChanged);
@@ -99,6 +104,7 @@
 			// 
 			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
+			this.label1.Font = FontUtil.GetRegular(11.25f);
 			// 
 			// tabPage2
 			// 
@@ -115,6 +121,7 @@
 			resources.ApplyResources(this.tabPage2, "tabPage2");
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.UseVisualStyleBackColor = true;
+			this.tabPage2.Font = FontUtil.GetRegular(12F);
 			// 
 			// bDisplayTextOnTop
 			// 

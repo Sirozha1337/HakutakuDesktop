@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="Util\AppConfiguration.cs" />
     <Compile Include="Util\AutostartUtil.cs" />
+    <Compile Include="Util\FontUtil.cs" />
     <Compile Include="Util\GlobalConfigurationObject.cs" />
     <Compile Include="Util\Hotkey.cs" />
     <Compile Include="Util\ImageUtil.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Util\TranslationUtil.cs" />
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.ru.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
@@ -140,6 +142,15 @@
     <EmbeddedResource Include="TextDisplay.resx">
       <DependentUpon>TextDisplay.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Fonts\OpenSans-ExtraBoldItalic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Fonts\OpenSans-Light.ttf" />
+    <None Include="Fonts\OpenSans-Regular_0.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Fonts\OpenSans-SemiBold.ttf" />
+    <None Include="Fonts\OpenSans-SemiBoldItalic.ttf" />
     <None Include="HakutakuDesktop.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

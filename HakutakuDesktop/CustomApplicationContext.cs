@@ -26,6 +26,7 @@ namespace HakutakuDesktop
 		public CustomApplicationContext()
 		{
 			InitializeContext();
+			FontUtil.InitCustomFonts();
 			BindHotkeys();
 
 			_mainContext = this;

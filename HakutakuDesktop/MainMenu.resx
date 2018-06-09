@@ -159,9 +159,6 @@
   <data name="label1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Open Sans, 11.25pt</value>
-  </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -198,9 +195,6 @@ F7 - Show overlay
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="tabPage1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Open Sans ExtraBold, 8.25pt, style=Bold, Italic</value>
   </data>
   <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 32</value>
@@ -508,9 +502,6 @@ F7 - Show overlay
   <data name="&gt;&gt;toggleOverlayHotkeyInput.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="tabPage2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Open Sans, 11.25pt</value>
-  </data>
   <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 32</value>
   </data>
@@ -540,9 +531,6 @@ F7 - Show overlay
   </data>
   <data name="customTabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="customTabControl1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Open Sans ExtraBold, 12pt, style=Bold, Italic</value>
   </data>
   <data name="customTabControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>

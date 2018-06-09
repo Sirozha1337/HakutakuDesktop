@@ -38,7 +38,7 @@ namespace HakutakuDesktop
 			textArea.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			textArea.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			textArea.Dock = System.Windows.Forms.DockStyle.Fill;
-			textArea.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			textArea.Font = FontUtil.GetRegular(14.25f);//new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			textArea.Location = new System.Drawing.Point(0, 0);
 			textArea.Margin = new System.Windows.Forms.Padding(0);
 			textArea.Name = name;
@@ -72,7 +72,7 @@ namespace HakutakuDesktop
 			this.languages.DisplayStyleProvider.TextColorDisabled = System.Drawing.SystemColors.ControlDark;
 			this.languages.DisplayStyleProvider.TextColorSelected = System.Drawing.SystemColors.ControlText;
 			this.languages.SizeMode = TabSizeMode.Fixed;
-			this.languages.Font = new System.Drawing.Font("Open Sans ExtraBold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.languages.Font = FontUtil.GetExtrabold(12F);
 			this.languages.SuspendLayout();
 
 			this.translation = new System.Windows.Forms.TabPage();
