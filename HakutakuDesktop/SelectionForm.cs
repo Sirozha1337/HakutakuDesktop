@@ -72,11 +72,11 @@ namespace HakutakuDesktop
 			}
 		}
 
-		private void ShowText(string text, int x, int y, int width, int height, bool showInPrevious)
+		private void ShowText(string text, Rectangle selectedArea, bool showInPrevious)
 		{
 			if (textDisplays.Count == 0 || !(showInPrevious && !textDisplays[textDisplays.Count - 1].IsDisposed))
 			{
-				var textDisplay = new TextDisplay(text, x, y, width, height);
+				var textDisplay = new TextDisplay(selectedArea, text);
 				textDisplay.Owner = this;
 				textDisplay.Show();
 				textDisplays.Add(textDisplay);
@@ -116,8 +116,7 @@ namespace HakutakuDesktop
 
 				string text = await Task.Run(() => RecognitionUtil.Execute(x, y, width, height, srcLang, dstLang));
 
-				Rectangle textRect = LayoutUtil.GetParamsForTextArea(new Rectangle(x, y, width, height), text);
-				ShowText(text, textRect.X, textRect.Y, textRect.Width, textRect.Height, selectionChanged || GlobalConfigurationObject.MaxTextDisplayCount == 1);
+				ShowText(text, new Rectangle(x, y, width, height), selectionChanged || GlobalConfigurationObject.MaxTextDisplayCount == 1);
 
 				_loadingCircle.Visible = false;
 				_loadingCircle.Active = false;

@@ -32,18 +32,6 @@ namespace HakutakuDesktop.Util
 			}
 		}
 
-		public static Point GetPositionForTextArea(Rectangle selectedArea, int width, int height)
-		{
-			if (selectedArea.X + selectedArea.Width + width < ScreenWidth)
-				return new Point(selectedArea.X + selectedArea.Width, selectedArea.Y);
-			if (selectedArea.X - width > 0)
-				return new Point(selectedArea.X - width, selectedArea.Y);
-			if (selectedArea.Y - height > 0)
-				return new Point(selectedArea.X, selectedArea.Y - height);
-
-			return new Point(0, 0);
-		}
-
 		private static int CountLines(string text)
 		{
 			int count = 0;
@@ -56,7 +44,7 @@ namespace HakutakuDesktop.Util
 			return count;
 		}
 
-		public static Rectangle GetParamsForTextArea(Rectangle selectedArea, string text)
+		public static Rectangle GetParamsForTextArea(Rectangle selectedArea, string text, int borderWidth, int titleHeight)
 		{
 			Rectangle rectangle = new Rectangle();
 			int lines = CountLines(text);
@@ -65,16 +53,27 @@ namespace HakutakuDesktop.Util
 
 			if (!GlobalConfigurationObject.DisplayTextOnTop)
 			{
+				// Right side
 				if (selectedArea.X + selectedArea.Width + width < ScreenWidth)
 				{
 					rectangle.X = selectedArea.X + selectedArea.Width;
 					rectangle.Y = selectedArea.Y;
+					if (Environment.OSVersion.Version.Major == 10)
+					{
+						rectangle.X -= borderWidth;
+					}
 				}
+				// Left side
 				else if (selectedArea.X - width > 0)
 				{
-					rectangle.X = selectedArea.X - width;
+					rectangle.X = selectedArea.X - width - borderWidth;
 					rectangle.Y = selectedArea.Y;
+					if (Environment.OSVersion.Version.Major != 10)
+					{
+						rectangle.X -= borderWidth;
+					}
 				}
+				// Up side
 				else if (selectedArea.Y - height > 0)
 				{
 					rectangle.X = selectedArea.X;
@@ -82,8 +81,8 @@ namespace HakutakuDesktop.Util
 				}
 				else
 				{
-					rectangle.X = 0;
-					rectangle.Y = 0;
+					rectangle.X = 0 - borderWidth;
+					rectangle.Y = 0 - titleHeight;
 				}
 				rectangle.Width = width;
 				rectangle.Height = height;
