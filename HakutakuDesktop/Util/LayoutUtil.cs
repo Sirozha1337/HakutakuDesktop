@@ -49,7 +49,7 @@ namespace HakutakuDesktop.Util
 			Rectangle rectangle = new Rectangle();
 			int lines = CountLines(text);
 			int width = lines > 1 ? 400 : text.Length * 10;
-			int height = lines * 15;
+			int height = lines * 15 + titleHeight;
 
 			if (!GlobalConfigurationObject.DisplayTextOnTop)
 			{
@@ -57,7 +57,7 @@ namespace HakutakuDesktop.Util
 				if (selectedArea.X + selectedArea.Width + width < ScreenWidth)
 				{
 					rectangle.X = selectedArea.X + selectedArea.Width;
-					rectangle.Y = selectedArea.Y;
+					rectangle.Y = selectedArea.Y - titleHeight;
 					if (Environment.OSVersion.Version.Major == 10)
 					{
 						rectangle.X -= borderWidth;
@@ -67,7 +67,7 @@ namespace HakutakuDesktop.Util
 				else if (selectedArea.X - width > 0)
 				{
 					rectangle.X = selectedArea.X - width - borderWidth;
-					rectangle.Y = selectedArea.Y;
+					rectangle.Y = selectedArea.Y - titleHeight;
 					if (Environment.OSVersion.Version.Major != 10)
 					{
 						rectangle.X -= borderWidth;

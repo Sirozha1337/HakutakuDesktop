@@ -72,18 +72,18 @@ namespace HakutakuDesktop
 			}
 		}
 
-		private void ShowText(string text, Rectangle selectedArea, bool showInPrevious)
+		private void ShowText(Tuple<string, string> recognitionResult, Rectangle selectedArea, bool showInPrevious)
 		{
 			if (textDisplays.Count == 0 || !(showInPrevious && !textDisplays[textDisplays.Count - 1].IsDisposed))
 			{
-				var textDisplay = new TextDisplay(selectedArea, text);
+				var textDisplay = new TextDisplay(selectedArea, recognitionResult);
 				textDisplay.Owner = this;
 				textDisplay.Show();
 				textDisplays.Add(textDisplay);
 			}
 			else
 			{
-				textDisplays[textDisplays.Count - 1].SetText(text);
+				textDisplays[textDisplays.Count - 1].SetText(recognitionResult);
 			}
 			RemoveGarbageText();
 		}
@@ -114,9 +114,9 @@ namespace HakutakuDesktop
 				_loadingCircle.SetBounds(buttonLocation.X, buttonLocation.Y, _translateButton.Width, _translateButton.Height);
 				_loadingCircle.Active = true;
 
-				string text = await Task.Run(() => RecognitionUtil.Execute(x, y, width, height, srcLang, dstLang));
-
-				ShowText(text, new Rectangle(x, y, width, height), selectionChanged || GlobalConfigurationObject.MaxTextDisplayCount == 1);
+				Tuple<string, string> recognitionResult = await Task.Run(() => RecognitionUtil.Execute(x, y, width, height, srcLang, dstLang));
+				
+				ShowText(recognitionResult, new Rectangle(x, y, width, height), selectionChanged || GlobalConfigurationObject.MaxTextDisplayCount == 1);
 
 				_loadingCircle.Visible = false;
 				_loadingCircle.Active = false;

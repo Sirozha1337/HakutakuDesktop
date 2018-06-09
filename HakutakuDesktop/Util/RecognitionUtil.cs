@@ -24,10 +24,11 @@ namespace HakutakuDesktop.Util
 			return _engine;
 		}
 
-		public static string Execute(int x, int y, int width, int height, string srcLang, string dstLang)
+		public static Tuple<string, string> Execute(int x, int y, int width, int height, string srcLang, string dstLang)
 		{
 			Logger.WriteLog("Start execution");
 			string translatedText = "";
+			string sourceText = "";
 			if (!_engineBusy)
 			{
 				_engineBusy = true;
@@ -46,17 +47,10 @@ namespace HakutakuDesktop.Util
 						{
 							using (var page = GetEngine(srcLang).Process(img))
 							{
-								string text = page.GetText();
-								Logger.WriteLog("Recognized text: " + text);
-								if (!string.IsNullOrEmpty(text.Trim(' ', '\n', '\r')))
-									translatedText = TranslationUtil.Translate(text, srcLang, dstLang);
-								if (GlobalConfigurationObject.ShowScannedText && srcLang != dstLang)
-								{
-									text = text.Trim(' ', '\n', '\t', '\r');
-									if (!text.EndsWith("\n") || !text.EndsWith("\r"))
-										text = text + "\n";
-									translatedText = text + translatedText;
-								}
+								sourceText = TranslationUtil.TrimText(page.GetText());
+								Logger.WriteLog("Recognized text: " + sourceText);
+								if (!string.IsNullOrEmpty(sourceText))
+									translatedText = TranslationUtil.Translate(sourceText, srcLang, dstLang);
 								Logger.WriteLog("Translated text: " + translatedText);
 							}
 						}
@@ -70,7 +64,7 @@ namespace HakutakuDesktop.Util
 				_engineBusy = false;
 				Logger.WriteLog("Finish execution");
 			}
-			return translatedText;
+			return new Tuple<string, string>(translatedText, sourceText);
 		}
 	}
 }

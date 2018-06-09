@@ -62,6 +62,15 @@ namespace HakutakuDesktop.Util
 				return null;
 		}
 
+		public static string TrimText(string text)
+		{
+			Regex regex = new Regex("[ ]{2,}");
+			text = text.Replace('\n', ' ').Replace('\r', ' ').Trim();
+			text = regex.Replace(text, " ");
+
+			return text;
+		}
+
 		public static string Translate(string text, string srcLang, string dstLang)
 		{
 			Logger.WriteLog("Start translation");
@@ -70,9 +79,6 @@ namespace HakutakuDesktop.Util
 			{
 				try
 				{
-					Regex regex = new Regex("[ ]{2,}");
-					text = text.Replace('\n', ' ').Replace('\r', ' ').Trim();
-					text = regex.Replace(text, " ");
 
 					Console.WriteLine("Text before action" + text);
 					Func<string, string> action = GetLanguageSpecificAction(srcLang);
