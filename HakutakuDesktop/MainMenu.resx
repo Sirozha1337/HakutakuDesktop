@@ -141,18 +141,6 @@
   <data name="dontShow.Text" xml:space="preserve">
     <value>Don't show this on startup</value>
   </data>
-  <data name="&gt;&gt;dontShow.Name" xml:space="preserve">
-    <value>dontShow</value>
-  </data>
-  <data name="&gt;&gt;dontShow.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dontShow.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;dontShow.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -184,18 +172,6 @@ F6 - Close program
 F7 - Show overlay
 </value>
   </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 32</value>
   </data>
@@ -211,18 +187,6 @@ F7 - Show overlay
   <data name="tabPage1.Text" xml:space="preserve">
     <value>Help</value>
   </data>
-  <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
-    <value>customTabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="bDisplayTextOnTop.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -237,18 +201,6 @@ F7 - Show overlay
   </data>
   <data name="bDisplayTextOnTop.Text" xml:space="preserve">
     <value>Place translated text on top of original</value>
-  </data>
-  <data name="&gt;&gt;bDisplayTextOnTop.Name" xml:space="preserve">
-    <value>bDisplayTextOnTop</value>
-  </data>
-  <data name="&gt;&gt;bDisplayTextOnTop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bDisplayTextOnTop.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;bDisplayTextOnTop.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -268,18 +220,6 @@ F7 - Show overlay
   <data name="label4.Text" xml:space="preserve">
     <value>Exit Program Hotkey:</value>
   </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -298,18 +238,6 @@ F7 - Show overlay
   <data name="label3.Text" xml:space="preserve">
     <value>Toggle Overlay Hotkey:</value>
   </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -325,18 +253,6 @@ F7 - Show overlay
   <data name="label2.Text" xml:space="preserve">
     <value>Max Text Display Windows:</value>
   </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="textDisplayCount.Location" type="System.Drawing.Point, System.Drawing">
     <value>207, 211</value>
   </data>
@@ -345,18 +261,6 @@ F7 - Show overlay
   </data>
   <data name="textDisplayCount.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
-  </data>
-  <data name="&gt;&gt;textDisplayCount.Name" xml:space="preserve">
-    <value>textDisplayCount</value>
-  </data>
-  <data name="&gt;&gt;textDisplayCount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textDisplayCount.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;textDisplayCount.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="bShowScan.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -376,18 +280,6 @@ F7 - Show overlay
   <data name="bShowScan.Text" xml:space="preserve">
     <value>Show scanned text</value>
   </data>
-  <data name="&gt;&gt;bShowScan.Name" xml:space="preserve">
-    <value>bShowScan</value>
-  </data>
-  <data name="&gt;&gt;bShowScan.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bShowScan.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;bShowScan.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="bAutoStart.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -405,18 +297,6 @@ F7 - Show overlay
   </data>
   <data name="bAutoStart.Text" xml:space="preserve">
     <value>Start on Windows startup</value>
-  </data>
-  <data name="&gt;&gt;bAutoStart.Name" xml:space="preserve">
-    <value>bAutoStart</value>
-  </data>
-  <data name="&gt;&gt;bAutoStart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bAutoStart.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;bAutoStart.ZOrder" xml:space="preserve">
-    <value>6</value>
   </data>
   <data name="bConcatStrings.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -436,18 +316,6 @@ F7 - Show overlay
   <data name="bConcatStrings.Text" xml:space="preserve">
     <value>Concatenate strings when selection unchanged</value>
   </data>
-  <data name="&gt;&gt;bConcatStrings.Name" xml:space="preserve">
-    <value>bConcatStrings</value>
-  </data>
-  <data name="&gt;&gt;bConcatStrings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bConcatStrings.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;bConcatStrings.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="closeProgramHotkeyInput.Location" type="System.Drawing.Point, System.Drawing">
     <value>185, 167</value>
   </data>
@@ -462,18 +330,6 @@ F7 - Show overlay
   </data>
   <data name="closeProgramHotkeyInput.WordWrap" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="&gt;&gt;closeProgramHotkeyInput.Name" xml:space="preserve">
-    <value>closeProgramHotkeyInput</value>
-  </data>
-  <data name="&gt;&gt;closeProgramHotkeyInput.Type" xml:space="preserve">
-    <value>HakutakuDesktop.Controls.HotkeyInputBox, hakutaku, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;closeProgramHotkeyInput.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;closeProgramHotkeyInput.ZOrder" xml:space="preserve">
-    <value>8</value>
   </data>
   <data name="toggleOverlayHotkeyInput.Location" type="System.Drawing.Point, System.Drawing">
     <value>185, 130</value>
@@ -490,18 +346,6 @@ F7 - Show overlay
   <data name="toggleOverlayHotkeyInput.WordWrap" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;toggleOverlayHotkeyInput.Name" xml:space="preserve">
-    <value>toggleOverlayHotkeyInput</value>
-  </data>
-  <data name="&gt;&gt;toggleOverlayHotkeyInput.Type" xml:space="preserve">
-    <value>HakutakuDesktop.Controls.HotkeyInputBox, hakutaku, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;toggleOverlayHotkeyInput.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;toggleOverlayHotkeyInput.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
   <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 32</value>
   </data>
@@ -517,18 +361,6 @@ F7 - Show overlay
   <data name="tabPage2.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
-    <value>customTabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="customTabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -541,21 +373,9 @@ F7 - Show overlay
   <data name="customTabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;customTabControl1.Name" xml:space="preserve">
-    <value>customTabControl1</value>
-  </data>
-  <data name="&gt;&gt;customTabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CustomTabControl, JacksonSoft.CustomTabControl, Version=1.0.1.7, Culture=neutral, PublicKeyToken=53c237210c7e462d</value>
-  </data>
-  <data name="&gt;&gt;customTabControl1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;customTabControl1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
@@ -1051,11 +871,5 @@ F7 - Show overlay
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>hakutaku</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>MainMenu</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
