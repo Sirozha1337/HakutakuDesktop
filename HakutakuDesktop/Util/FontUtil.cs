@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HakutakuDesktop.Util
 {
@@ -22,11 +17,15 @@ namespace HakutakuDesktop.Util
 
 		public static Font GetExtrabold(float size)
 		{
+			if (pfc == null)
+				InitCustomFonts();
 			return new Font(pfc.Families[1], size);
 		}
 
 		public static Font GetRegular(float size)
 		{
+			if (pfc == null)
+				InitCustomFonts();
 			return new Font(pfc.Families[0], size);
 		}
 	}
