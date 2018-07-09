@@ -29,9 +29,9 @@
 		private void InitializeComponent()
 		{
 			this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-			this.language = new System.Windows.Forms.Label();
 			this.downloadButton = new System.Windows.Forms.Button();
 			this.showInSelect = new System.Windows.Forms.CheckBox();
+			this.language = new System.Windows.Forms.Label();
 			this.tableLayoutPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -49,27 +49,15 @@
 			this.tableLayoutPanel.Name = "tableLayoutPanel";
 			this.tableLayoutPanel.RowCount = 1;
 			this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel.Size = new System.Drawing.Size(350, 50);
+			this.tableLayoutPanel.Size = new System.Drawing.Size(350, 35);
 			this.tableLayoutPanel.TabIndex = 0;
-			// 
-			// language
-			// 
-			this.language.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.language.AutoSize = true;
-			this.language.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.language.Location = new System.Drawing.Point(31, 13);
-			this.language.Margin = new System.Windows.Forms.Padding(0);
-			this.language.Name = "language";
-			this.language.Size = new System.Drawing.Size(77, 24);
-			this.language.TabIndex = 0;
-			this.language.Text = "Russian";
 			// 
 			// downloadButton
 			// 
 			this.downloadButton.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.downloadButton.Location = new System.Drawing.Point(143, 3);
 			this.downloadButton.Name = "downloadButton";
-			this.downloadButton.Size = new System.Drawing.Size(99, 44);
+			this.downloadButton.Size = new System.Drawing.Size(99, 29);
 			this.downloadButton.TabIndex = 1;
 			this.downloadButton.Text = "Download";
 			this.downloadButton.UseVisualStyleBackColor = true;
@@ -81,10 +69,21 @@
 			this.showInSelect.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.showInSelect.Location = new System.Drawing.Point(248, 3);
 			this.showInSelect.Name = "showInSelect";
-			this.showInSelect.Size = new System.Drawing.Size(99, 44);
+			this.showInSelect.Size = new System.Drawing.Size(99, 29);
 			this.showInSelect.TabIndex = 2;
 			this.showInSelect.Text = "Show in select";
 			this.showInSelect.UseVisualStyleBackColor = true;
+			// 
+			// language
+			// 
+			this.language.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.language.AutoSize = true;
+			this.language.Location = new System.Drawing.Point(39, 8);
+			this.language.Margin = new System.Windows.Forms.Padding(0);
+			this.language.Name = "language";
+			this.language.Size = new System.Drawing.Size(62, 18);
+			this.language.TabIndex = 0;
+			this.language.Text = "Russian";
 			// 
 			// SourceLanguageItem
 			// 
@@ -92,7 +91,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.tableLayoutPanel);
 			this.Name = "SourceLanguageItem";
-			this.Size = new System.Drawing.Size(350, 50);
+			this.Size = new System.Drawing.Size(350, 35);
 			this.tableLayoutPanel.ResumeLayout(false);
 			this.tableLayoutPanel.PerformLayout();
 			this.ResumeLayout(false);

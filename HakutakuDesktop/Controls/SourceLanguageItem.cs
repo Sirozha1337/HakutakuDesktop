@@ -1,5 +1,6 @@
 ﻿using hakutaku.DataModels;
 using hakutaku.Util;
+using HakutakuDesktop.Util;
 using System.Windows.Forms;
 
 namespace hakutaku.Controls
@@ -19,6 +20,7 @@ namespace hakutaku.Controls
 		public SourceLanguageItem()
 		{
 			InitializeComponent();
+			this.language.Font = FontUtil.GetExtrabold(10F);
 		}
 
 		public void SetData(SourceLanguageUpdateData sourceLanguageUpdateData)

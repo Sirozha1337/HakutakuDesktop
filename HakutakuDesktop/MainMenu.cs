@@ -29,6 +29,7 @@ namespace HakutakuDesktop
 		{
 			InitializeComponent();
 			dontShow.Checked = GlobalConfigurationObject.ShowHelpOnStartUp;
+			this.srcLanguagesPage.Font = FontUtil.GetRegular(10f);
 		}
 
 		private void dontShow_CheckedChanged(object sender, EventArgs e)
