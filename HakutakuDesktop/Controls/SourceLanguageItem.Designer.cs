@@ -38,9 +38,9 @@
 			// tableLayoutPanel
 			// 
 			this.tableLayoutPanel.ColumnCount = 3;
-			this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+			this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
 			this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-			this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+			this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
 			this.tableLayoutPanel.Controls.Add(this.downloadButton, 1, 0);
 			this.tableLayoutPanel.Controls.Add(this.showInSelect, 2, 0);
 			this.tableLayoutPanel.Controls.Add(this.language, 0, 0);
@@ -55,7 +55,7 @@
 			// downloadButton
 			// 
 			this.downloadButton.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.downloadButton.Location = new System.Drawing.Point(143, 3);
+			this.downloadButton.Location = new System.Drawing.Point(125, 3);
 			this.downloadButton.Name = "downloadButton";
 			this.downloadButton.Size = new System.Drawing.Size(99, 29);
 			this.downloadButton.TabIndex = 1;
@@ -67,9 +67,9 @@
 			// 
 			this.showInSelect.AutoSize = true;
 			this.showInSelect.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.showInSelect.Location = new System.Drawing.Point(248, 3);
+			this.showInSelect.Location = new System.Drawing.Point(230, 3);
 			this.showInSelect.Name = "showInSelect";
-			this.showInSelect.Size = new System.Drawing.Size(99, 29);
+			this.showInSelect.Size = new System.Drawing.Size(117, 29);
 			this.showInSelect.TabIndex = 2;
 			this.showInSelect.Text = "Show in select";
 			this.showInSelect.UseVisualStyleBackColor = true;
@@ -78,10 +78,10 @@
 			// 
 			this.language.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.language.AutoSize = true;
-			this.language.Location = new System.Drawing.Point(39, 8);
+			this.language.Location = new System.Drawing.Point(38, 11);
 			this.language.Margin = new System.Windows.Forms.Padding(0);
 			this.language.Name = "language";
-			this.language.Size = new System.Drawing.Size(62, 18);
+			this.language.Size = new System.Drawing.Size(45, 13);
 			this.language.TabIndex = 0;
 			this.language.Text = "Russian";
 			// 
