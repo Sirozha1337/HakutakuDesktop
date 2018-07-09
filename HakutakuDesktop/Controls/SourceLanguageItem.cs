@@ -21,6 +21,8 @@ namespace hakutaku.Controls
 		{
 			InitializeComponent();
 			this.language.Font = FontUtil.GetExtrabold(10F);
+			this.showInSelect.Font = FontUtil.GetRegular(10F);
+			this.downloadButton.Font = FontUtil.GetRegular(10F);
 		}
 
 		public void SetData(SourceLanguageUpdateData sourceLanguageUpdateData)

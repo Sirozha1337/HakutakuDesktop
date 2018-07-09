@@ -38,14 +38,16 @@ namespace HakutakuDesktop
 
 		private async void LoadSourceLanguagesAsync()
 		{
-			this.srcLanguagesList.Controls.Clear();
-			SourceLanguageUpdateData[] sourceLanguages = await UpdateUtility.CheckUpdate();
-			this.srcLanguagesList.RowCount = sourceLanguages.Length;
-			for (int i = 0; i < sourceLanguages.Length; i++)
+			if(this.srcLanguagesList.RowCount == 0)
 			{
-				SourceLanguageItem sourceLanguageItem = new SourceLanguageItem();
-				sourceLanguageItem.SetData(sourceLanguages[i]);
-				this.srcLanguagesList.Controls.Add(sourceLanguageItem, 0, i);
+				SourceLanguageUpdateData[] sourceLanguages = await UpdateUtility.CheckUpdate();
+				this.srcLanguagesList.RowCount = sourceLanguages.Length;
+				for (int i = 0; i < sourceLanguages.Length; i++)
+				{
+					SourceLanguageItem sourceLanguageItem = new SourceLanguageItem();
+					sourceLanguageItem.SetData(sourceLanguages[i]);
+					this.srcLanguagesList.Controls.Add(sourceLanguageItem, 0, i);
+				}
 			}
 		}
 
