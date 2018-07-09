@@ -96,7 +96,7 @@ namespace HakutakuDesktop
 			resources.ApplyResources(this.helpPage, "helpPage");
 			this.helpPage.Name = "helpPage";
 			this.helpPage.UseVisualStyleBackColor = true;
-			this.tabPage1.Font = FontUtil.GetRegular(11F);
+			this.helpPage.Font = FontUtil.GetRegular(11F);
 			// 
 			// dontShow
 			// 
@@ -127,7 +127,7 @@ namespace HakutakuDesktop
 			resources.ApplyResources(this.settingsPage, "settingsPage");
 			this.settingsPage.Name = "settingsPage";
 			this.settingsPage.UseVisualStyleBackColor = true;
-			this.tabPage2.Font = FontUtil.GetRegular(12F);
+			this.settingsPage.Font = FontUtil.GetRegular(12F);
 			// 
 			// bDisplayTextOnTop
 			// 
