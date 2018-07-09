@@ -30,14 +30,14 @@ namespace HakutakuDesktop
 		/// </summary>
 		private void InitializeComponent()
 		{
+			MovablePython.Hotkey hotkey3 = new MovablePython.Hotkey();
+			MovablePython.Hotkey hotkey4 = new MovablePython.Hotkey();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
-			MovablePython.Hotkey hotkey1 = new MovablePython.Hotkey();
-			MovablePython.Hotkey hotkey2 = new MovablePython.Hotkey();
 			this.customTabControl1 = new System.Windows.Forms.CustomTabControl();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.helpPage = new System.Windows.Forms.TabPage();
 			this.dontShow = new System.Windows.Forms.CheckBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.settingsPage = new System.Windows.Forms.TabPage();
 			this.bDisplayTextOnTop = new System.Windows.Forms.CheckBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -48,16 +48,22 @@ namespace HakutakuDesktop
 			this.bConcatStrings = new System.Windows.Forms.CheckBox();
 			this.closeProgramHotkeyInput = new HakutakuDesktop.Controls.HotkeyInputBox();
 			this.toggleOverlayHotkeyInput = new HakutakuDesktop.Controls.HotkeyInputBox();
+			this.srcLanguagesPage = new System.Windows.Forms.TabPage();
+			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.srcLanguagesList = new System.Windows.Forms.TableLayoutPanel();
 			this.customTabControl1.SuspendLayout();
-			this.tabPage1.SuspendLayout();
-			this.tabPage2.SuspendLayout();
+			this.helpPage.SuspendLayout();
+			this.settingsPage.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.textDisplayCount)).BeginInit();
+			this.srcLanguagesPage.SuspendLayout();
+			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// customTabControl1
 			// 
-			this.customTabControl1.Controls.Add(this.tabPage1);
-			this.customTabControl1.Controls.Add(this.tabPage2);
+			this.customTabControl1.Controls.Add(this.helpPage);
+			this.customTabControl1.Controls.Add(this.settingsPage);
+			this.customTabControl1.Controls.Add(this.srcLanguagesPage);
 			// 
 			// 
 			// 
@@ -83,13 +89,13 @@ namespace HakutakuDesktop
 			this.customTabControl1.SelectedIndexChanged += new System.EventHandler(this.customTabControl1_SelectedIndexChanged);
 			this.customTabControl1.Font = FontUtil.GetExtrabold(12F);
 			// 
-			// tabPage1
+			// helpPage
 			// 
-			this.tabPage1.Controls.Add(this.dontShow);
-			this.tabPage1.Controls.Add(this.label1);
-			resources.ApplyResources(this.tabPage1, "tabPage1");
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.UseVisualStyleBackColor = true;
+			this.helpPage.Controls.Add(this.dontShow);
+			this.helpPage.Controls.Add(this.label1);
+			resources.ApplyResources(this.helpPage, "helpPage");
+			this.helpPage.Name = "helpPage";
+			this.helpPage.UseVisualStyleBackColor = true;
 			this.tabPage1.Font = FontUtil.GetRegular(11F);
 			// 
 			// dontShow
@@ -106,21 +112,21 @@ namespace HakutakuDesktop
 			this.label1.Name = "label1";
 			this.label1.Font = FontUtil.GetRegular(11.25f);
 			// 
-			// tabPage2
+			// settingsPage
 			// 
-			this.tabPage2.Controls.Add(this.bDisplayTextOnTop);
-			this.tabPage2.Controls.Add(this.label4);
-			this.tabPage2.Controls.Add(this.label3);
-			this.tabPage2.Controls.Add(this.label2);
-			this.tabPage2.Controls.Add(this.textDisplayCount);
-			this.tabPage2.Controls.Add(this.bShowScan);
-			this.tabPage2.Controls.Add(this.bAutoStart);
-			this.tabPage2.Controls.Add(this.bConcatStrings);
-			this.tabPage2.Controls.Add(this.closeProgramHotkeyInput);
-			this.tabPage2.Controls.Add(this.toggleOverlayHotkeyInput);
-			resources.ApplyResources(this.tabPage2, "tabPage2");
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.UseVisualStyleBackColor = true;
+			this.settingsPage.Controls.Add(this.bDisplayTextOnTop);
+			this.settingsPage.Controls.Add(this.label4);
+			this.settingsPage.Controls.Add(this.label3);
+			this.settingsPage.Controls.Add(this.label2);
+			this.settingsPage.Controls.Add(this.textDisplayCount);
+			this.settingsPage.Controls.Add(this.bShowScan);
+			this.settingsPage.Controls.Add(this.bAutoStart);
+			this.settingsPage.Controls.Add(this.bConcatStrings);
+			this.settingsPage.Controls.Add(this.closeProgramHotkeyInput);
+			this.settingsPage.Controls.Add(this.toggleOverlayHotkeyInput);
+			resources.ApplyResources(this.settingsPage, "settingsPage");
+			this.settingsPage.Name = "settingsPage";
+			this.settingsPage.UseVisualStyleBackColor = true;
 			this.tabPage2.Font = FontUtil.GetRegular(12F);
 			// 
 			// bDisplayTextOnTop
@@ -190,12 +196,12 @@ namespace HakutakuDesktop
 			// closeProgramHotkeyInput
 			// 
 			this.closeProgramHotkeyInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			hotkey1.Alt = false;
-			hotkey1.Control = false;
-			hotkey1.KeyCode = System.Windows.Forms.Keys.None;
-			hotkey1.Shift = false;
-			hotkey1.Windows = false;
-			this.closeProgramHotkeyInput.HotKey = hotkey1;
+			hotkey3.Alt = false;
+			hotkey3.Control = false;
+			hotkey3.KeyCode = System.Windows.Forms.Keys.None;
+			hotkey3.Shift = false;
+			hotkey3.Windows = false;
+			this.closeProgramHotkeyInput.HotKey = hotkey3;
 			resources.ApplyResources(this.closeProgramHotkeyInput, "closeProgramHotkeyInput");
 			this.closeProgramHotkeyInput.Name = "closeProgramHotkeyInput";
 			this.closeProgramHotkeyInput.ShortcutsEnabled = false;
@@ -204,16 +210,41 @@ namespace HakutakuDesktop
 			// toggleOverlayHotkeyInput
 			// 
 			this.toggleOverlayHotkeyInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			hotkey2.Alt = false;
-			hotkey2.Control = false;
-			hotkey2.KeyCode = System.Windows.Forms.Keys.None;
-			hotkey2.Shift = false;
-			hotkey2.Windows = false;
-			this.toggleOverlayHotkeyInput.HotKey = hotkey2;
+			hotkey4.Alt = false;
+			hotkey4.Control = false;
+			hotkey4.KeyCode = System.Windows.Forms.Keys.None;
+			hotkey4.Shift = false;
+			hotkey4.Windows = false;
+			this.toggleOverlayHotkeyInput.HotKey = hotkey4;
 			resources.ApplyResources(this.toggleOverlayHotkeyInput, "toggleOverlayHotkeyInput");
 			this.toggleOverlayHotkeyInput.Name = "toggleOverlayHotkeyInput";
 			this.toggleOverlayHotkeyInput.ShortcutsEnabled = false;
 			this.toggleOverlayHotkeyInput.HotkeyChanged += new System.EventHandler(this.toggleOverlayHotkeyInput_HotkeyChanged);
+			// 
+			// srcLanguagesPage
+			// 
+			this.srcLanguagesPage.Controls.Add(this.tableLayoutPanel1);
+			resources.ApplyResources(this.srcLanguagesPage, "srcLanguagesPage");
+			this.srcLanguagesPage.Name = "srcLanguagesPage";
+			this.srcLanguagesPage.UseVisualStyleBackColor = true;
+			// 
+			// tableLayoutPanel1
+			// 
+			resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+			this.tableLayoutPanel1.Controls.Add(this.srcLanguagesList, 0, 0);
+			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			// 
+			// srcLanguagesList
+			// 
+			resources.ApplyResources(this.srcLanguagesList, "srcLanguagesList");
+			this.srcLanguagesList.Name = "srcLanguagesList";
+			this.srcLanguagesList.AutoScroll = false;
+			this.srcLanguagesList.HorizontalScroll.Enabled = false;
+			this.srcLanguagesList.HorizontalScroll.Visible = false;
+			this.srcLanguagesList.HorizontalScroll.Maximum = 0;
+			this.srcLanguagesList.HorizontalScroll.Minimum = 0;
+			this.srcLanguagesList.AutoScroll = true;
+
 			// 
 			// MainMenu
 			// 
@@ -224,11 +255,13 @@ namespace HakutakuDesktop
 			this.MinimizeBox = false;
 			this.Name = "MainMenu";
 			this.customTabControl1.ResumeLayout(false);
-			this.tabPage1.ResumeLayout(false);
-			this.tabPage1.PerformLayout();
-			this.tabPage2.ResumeLayout(false);
-			this.tabPage2.PerformLayout();
+			this.helpPage.ResumeLayout(false);
+			this.helpPage.PerformLayout();
+			this.settingsPage.ResumeLayout(false);
+			this.settingsPage.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.textDisplayCount)).EndInit();
+			this.srcLanguagesPage.ResumeLayout(false);
+			this.tableLayoutPanel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -236,8 +269,8 @@ namespace HakutakuDesktop
 		#endregion
 
 		private System.Windows.Forms.CustomTabControl customTabControl1;
-		private System.Windows.Forms.TabPage tabPage2;
-		private System.Windows.Forms.TabPage tabPage1;
+		private System.Windows.Forms.TabPage settingsPage;
+		private System.Windows.Forms.TabPage helpPage;
 		private System.Windows.Forms.CheckBox dontShow;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
@@ -250,5 +283,8 @@ namespace HakutakuDesktop
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.CheckBox bDisplayTextOnTop;
+		private System.Windows.Forms.TabPage srcLanguagesPage;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+		private System.Windows.Forms.TableLayoutPanel srcLanguagesList;
 	}
 }

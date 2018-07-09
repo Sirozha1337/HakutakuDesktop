@@ -131,5 +131,53 @@ namespace HakutakuDesktop.Util
 
 			return 1;
 		}
+
+		public static void SetConfigDictionary(string key, Dictionary<string, bool> value)
+		{
+			Configuration configManager = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+			KeyValueConfigurationCollection confCollection = configManager.AppSettings.Settings;
+			string keyValueStr = "";
+			foreach(var pair in value)
+			{
+				keyValueStr = pair.Key.ToString() + ":" + pair.Value.ToString() + ",";
+			}
+
+			if (confCollection[key] != null)
+				confCollection[key].Value = keyValueStr;
+			else
+				confCollection.Add(key, keyValueStr);
+
+			configManager.Save(ConfigurationSaveMode.Modified);
+			ConfigurationManager.RefreshSection(configManager.AppSettings.SectionInformation.Name);
+		}
+
+		public static Dictionary<string, bool> GetConfigDictionary(string key)
+		{
+			Configuration configManager = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+			KeyValueConfigurationCollection confCollection = configManager.AppSettings.Settings;
+			
+			if (confCollection[key] != null)
+			{
+				Dictionary<string, bool> keyValuePairs = new Dictionary<string, bool>();
+				string[] pairs = confCollection[key].ToString().Split(',');
+				foreach(var pair in pairs)
+				{
+					if (!string.IsNullOrWhiteSpace(pair))
+					{
+						string[] splittedPair = pair.Split(':');
+						if(splittedPair.Length == 2)
+							keyValuePairs.Add(splittedPair[0], bool.Parse(splittedPair[1]));
+					}
+				}
+				return keyValuePairs;
+			}
+
+			return new Dictionary<string, bool>();
+		}
+
+		public static string GetUpdateServerUrl()
+		{
+			return ConfigurationManager.AppSettings["UpdateServer"];
+		}
 	}
 }

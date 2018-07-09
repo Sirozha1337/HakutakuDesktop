@@ -117,29 +117,350 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&gt;&gt;dontShow.Name" xml:space="preserve">
+    <value>dontShow</value>
+  </data>
+  <data name="&gt;&gt;dontShow.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dontShow.Parent" xml:space="preserve">
+    <value>helpPage</value>
+  </data>
+  <data name="&gt;&gt;dontShow.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>helpPage</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="helpPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 23</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="helpPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="helpPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>576, 334</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="helpPage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="helpPage.Text" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="&gt;&gt;helpPage.Name" xml:space="preserve">
+    <value>helpPage</value>
+  </data>
+  <data name="&gt;&gt;helpPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;helpPage.Parent" xml:space="preserve">
+    <value>customTabControl1</value>
+  </data>
+  <data name="&gt;&gt;helpPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;bDisplayTextOnTop.Name" xml:space="preserve">
+    <value>bDisplayTextOnTop</value>
+  </data>
+  <data name="&gt;&gt;bDisplayTextOnTop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bDisplayTextOnTop.Parent" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;bDisplayTextOnTop.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;textDisplayCount.Name" xml:space="preserve">
+    <value>textDisplayCount</value>
+  </data>
+  <data name="&gt;&gt;textDisplayCount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textDisplayCount.Parent" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;textDisplayCount.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;bShowScan.Name" xml:space="preserve">
+    <value>bShowScan</value>
+  </data>
+  <data name="&gt;&gt;bShowScan.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bShowScan.Parent" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;bShowScan.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;bAutoStart.Name" xml:space="preserve">
+    <value>bAutoStart</value>
+  </data>
+  <data name="&gt;&gt;bAutoStart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bAutoStart.Parent" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;bAutoStart.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;bConcatStrings.Name" xml:space="preserve">
+    <value>bConcatStrings</value>
+  </data>
+  <data name="&gt;&gt;bConcatStrings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bConcatStrings.Parent" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;bConcatStrings.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;closeProgramHotkeyInput.Name" xml:space="preserve">
+    <value>closeProgramHotkeyInput</value>
+  </data>
+  <data name="&gt;&gt;closeProgramHotkeyInput.Type" xml:space="preserve">
+    <value>HakutakuDesktop.Controls.HotkeyInputBox, hakutaku, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;closeProgramHotkeyInput.Parent" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;closeProgramHotkeyInput.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;toggleOverlayHotkeyInput.Name" xml:space="preserve">
+    <value>toggleOverlayHotkeyInput</value>
+  </data>
+  <data name="&gt;&gt;toggleOverlayHotkeyInput.Type" xml:space="preserve">
+    <value>HakutakuDesktop.Controls.HotkeyInputBox, hakutaku, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toggleOverlayHotkeyInput.Parent" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;toggleOverlayHotkeyInput.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="settingsPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 23</value>
+  </data>
+  <data name="settingsPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="settingsPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>576, 334</value>
+  </data>
+  <data name="settingsPage.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="settingsPage.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="&gt;&gt;settingsPage.Name" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;settingsPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;settingsPage.Parent" xml:space="preserve">
+    <value>customTabControl1</value>
+  </data>
+  <data name="&gt;&gt;settingsPage.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="srcLanguagesList.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="srcLanguagesList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="srcLanguagesList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="srcLanguagesList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>397, 328</value>
+  </data>
+  <data name="srcLanguagesList.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;srcLanguagesList.Name" xml:space="preserve">
+    <value>srcLanguagesList</value>
+  </data>
+  <data name="&gt;&gt;srcLanguagesList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;srcLanguagesList.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;srcLanguagesList.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="srcLanguagesList.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls /&gt;&lt;Columns Styles="" /&gt;&lt;Rows Styles="" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>576, 334</value>
+  </data>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
+    <value>srcLanguagesPage</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="srcLanguagesList" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,70,Percent,30" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="srcLanguagesPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 23</value>
+  </data>
+  <data name="srcLanguagesPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>576, 334</value>
+  </data>
+  <data name="srcLanguagesPage.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="srcLanguagesPage.Text" xml:space="preserve">
+    <value>Source Languages</value>
+  </data>
+  <data name="&gt;&gt;srcLanguagesPage.Name" xml:space="preserve">
+    <value>srcLanguagesPage</value>
+  </data>
+  <data name="&gt;&gt;srcLanguagesPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;srcLanguagesPage.Parent" xml:space="preserve">
+    <value>customTabControl1</value>
+  </data>
+  <data name="&gt;&gt;srcLanguagesPage.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="customTabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="customTabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="customTabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>584, 361</value>
+  </data>
+  <data name="customTabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;customTabControl1.Name" xml:space="preserve">
+    <value>customTabControl1</value>
+  </data>
+  <data name="&gt;&gt;customTabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CustomTabControl, JacksonSoft.CustomTabControl, Version=1.0.1.7, Culture=neutral, PublicKeyToken=53c237210c7e462d</value>
+  </data>
+  <data name="&gt;&gt;customTabControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;customTabControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="dontShow.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="dontShow.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="dontShow.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="dontShow.Location" type="System.Drawing.Point, System.Drawing">
-    <value>393, 298</value>
+    <value>420, 300</value>
   </data>
   <data name="dontShow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 19</value>
+    <value>148, 17</value>
   </data>
   <data name="dontShow.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="dontShow.Text" xml:space="preserve">
     <value>Don't show this on startup</value>
+  </data>
+  <data name="&gt;&gt;dontShow.Name" xml:space="preserve">
+    <value>dontShow</value>
+  </data>
+  <data name="&gt;&gt;dontShow.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dontShow.Parent" xml:space="preserve">
+    <value>helpPage</value>
+  </data>
+  <data name="&gt;&gt;dontShow.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -154,7 +475,7 @@
     <value>3, 3</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 200</value>
+    <value>110, 130</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -172,20 +493,17 @@ F6 - Close program
 F7 - Show overlay
 </value>
   </data>
-  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 32</value>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
   </data>
-  <data name="tabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>576, 325</value>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>helpPage</value>
   </data>
-  <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabPage1.Text" xml:space="preserve">
-    <value>Help</value>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="bDisplayTextOnTop.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -194,13 +512,25 @@ F7 - Show overlay
     <value>6, 100</value>
   </data>
   <data name="bDisplayTextOnTop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 24</value>
+    <value>203, 17</value>
   </data>
   <data name="bDisplayTextOnTop.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
   <data name="bDisplayTextOnTop.Text" xml:space="preserve">
     <value>Place translated text on top of original</value>
+  </data>
+  <data name="&gt;&gt;bDisplayTextOnTop.Name" xml:space="preserve">
+    <value>bDisplayTextOnTop</value>
+  </data>
+  <data name="&gt;&gt;bDisplayTextOnTop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bDisplayTextOnTop.Parent" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;bDisplayTextOnTop.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -212,13 +542,25 @@ F7 - Show overlay
     <value>2, 169</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 20</value>
+    <value>106, 13</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Exit Program Hotkey:</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -230,13 +572,25 @@ F7 - Show overlay
     <value>3, 132</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 20</value>
+    <value>119, 13</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Toggle Overlay Hotkey:</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -253,14 +607,38 @@ F7 - Show overlay
   <data name="label2.Text" xml:space="preserve">
     <value>Max Text Display Windows:</value>
   </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="textDisplayCount.Location" type="System.Drawing.Point, System.Drawing">
     <value>207, 211</value>
   </data>
   <data name="textDisplayCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 28</value>
+    <value>120, 20</value>
   </data>
   <data name="textDisplayCount.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="&gt;&gt;textDisplayCount.Name" xml:space="preserve">
+    <value>textDisplayCount</value>
+  </data>
+  <data name="&gt;&gt;textDisplayCount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textDisplayCount.Parent" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;textDisplayCount.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="bShowScan.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -272,13 +650,25 @@ F7 - Show overlay
     <value>6, 40</value>
   </data>
   <data name="bShowScan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 24</value>
+    <value>117, 17</value>
   </data>
   <data name="bShowScan.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="bShowScan.Text" xml:space="preserve">
     <value>Show scanned text</value>
+  </data>
+  <data name="&gt;&gt;bShowScan.Name" xml:space="preserve">
+    <value>bShowScan</value>
+  </data>
+  <data name="&gt;&gt;bShowScan.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bShowScan.Parent" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;bShowScan.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="bAutoStart.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -290,13 +680,25 @@ F7 - Show overlay
     <value>6, 10</value>
   </data>
   <data name="bAutoStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 24</value>
+    <value>145, 17</value>
   </data>
   <data name="bAutoStart.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="bAutoStart.Text" xml:space="preserve">
     <value>Start on Windows startup</value>
+  </data>
+  <data name="&gt;&gt;bAutoStart.Name" xml:space="preserve">
+    <value>bAutoStart</value>
+  </data>
+  <data name="&gt;&gt;bAutoStart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bAutoStart.Parent" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;bAutoStart.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="bConcatStrings.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -308,7 +710,7 @@ F7 - Show overlay
     <value>6, 70</value>
   </data>
   <data name="bConcatStrings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 24</value>
+    <value>251, 17</value>
   </data>
   <data name="bConcatStrings.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -316,11 +718,23 @@ F7 - Show overlay
   <data name="bConcatStrings.Text" xml:space="preserve">
     <value>Concatenate strings when selection unchanged</value>
   </data>
+  <data name="&gt;&gt;bConcatStrings.Name" xml:space="preserve">
+    <value>bConcatStrings</value>
+  </data>
+  <data name="&gt;&gt;bConcatStrings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bConcatStrings.Parent" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;bConcatStrings.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="closeProgramHotkeyInput.Location" type="System.Drawing.Point, System.Drawing">
     <value>185, 167</value>
   </data>
   <data name="closeProgramHotkeyInput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 28</value>
+    <value>100, 20</value>
   </data>
   <data name="closeProgramHotkeyInput.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -331,11 +745,23 @@ F7 - Show overlay
   <data name="closeProgramHotkeyInput.WordWrap" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="&gt;&gt;closeProgramHotkeyInput.Name" xml:space="preserve">
+    <value>closeProgramHotkeyInput</value>
+  </data>
+  <data name="&gt;&gt;closeProgramHotkeyInput.Type" xml:space="preserve">
+    <value>HakutakuDesktop.Controls.HotkeyInputBox, hakutaku, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;closeProgramHotkeyInput.Parent" xml:space="preserve">
+    <value>settingsPage</value>
+  </data>
+  <data name="&gt;&gt;closeProgramHotkeyInput.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
   <data name="toggleOverlayHotkeyInput.Location" type="System.Drawing.Point, System.Drawing">
     <value>185, 130</value>
   </data>
   <data name="toggleOverlayHotkeyInput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 28</value>
+    <value>100, 20</value>
   </data>
   <data name="toggleOverlayHotkeyInput.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -346,36 +772,21 @@ F7 - Show overlay
   <data name="toggleOverlayHotkeyInput.WordWrap" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 32</value>
+  <data name="&gt;&gt;toggleOverlayHotkeyInput.Name" xml:space="preserve">
+    <value>toggleOverlayHotkeyInput</value>
   </data>
-  <data name="tabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="&gt;&gt;toggleOverlayHotkeyInput.Type" xml:space="preserve">
+    <value>HakutakuDesktop.Controls.HotkeyInputBox, hakutaku, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>576, 325</value>
+  <data name="&gt;&gt;toggleOverlayHotkeyInput.Parent" xml:space="preserve">
+    <value>settingsPage</value>
   </data>
-  <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;toggleOverlayHotkeyInput.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="customTabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="customTabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="customTabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>584, 361</value>
-  </data>
-  <data name="customTabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
@@ -871,5 +1282,11 @@ F7 - Show overlay
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>hakutaku</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>MainMenu</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

@@ -121,5 +121,20 @@ namespace HakutakuDesktop.Util
 				_displayTextOnTop = value;
 			}
 		}
+
+		private static Dictionary<string, bool> _showSourceLanguageInSelect = AppConfiguration.GetConfigDictionary("srclang");
+		public static Dictionary<string, bool> ShowSourceLanguageInSelect
+		{
+			get
+			{
+				return _showSourceLanguageInSelect;
+			}
+			set
+			{
+				AppConfiguration.SetConfigDictionary("srclang", value);
+				_showSourceLanguageInSelect = value;
+			}
+		}
+
 	}
 }

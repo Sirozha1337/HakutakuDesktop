@@ -1,4 +1,7 @@
-﻿using HakutakuDesktop.Util;
+﻿using hakutaku.Controls;
+using hakutaku.DataModels;
+using hakutaku.Util;
+using HakutakuDesktop.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,6 +36,19 @@ namespace HakutakuDesktop
 			GlobalConfigurationObject.ShowHelpOnStartUp = dontShow.Checked;
 		}
 
+		private async void LoadSourceLanguagesAsync()
+		{
+			this.srcLanguagesList.Controls.Clear();
+			SourceLanguageUpdateData[] sourceLanguages = await UpdateUtility.CheckUpdate();
+			this.srcLanguagesList.RowCount = sourceLanguages.Length;
+			for (int i = 0; i < sourceLanguages.Length; i++)
+			{
+				SourceLanguageItem sourceLanguageItem = new SourceLanguageItem();
+				sourceLanguageItem.SetData(sourceLanguages[i]);
+				this.srcLanguagesList.Controls.Add(sourceLanguageItem, 0, i);
+			}
+		}
+
 		private void LoadSettings()
 		{
 			bShowScan.Checked = GlobalConfigurationObject.ShowScannedText;
@@ -49,6 +65,10 @@ namespace HakutakuDesktop
 			if (customTabControl1.SelectedIndex == 1)
 			{
 				LoadSettings();
+			}
+			if(customTabControl1.SelectedIndex == 2)
+			{
+				LoadSourceLanguagesAsync();
 			}
 		}
 

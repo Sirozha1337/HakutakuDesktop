@@ -79,7 +79,14 @@
     <Compile Include="Controls\LoadingCircleToolStripMenuItem.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\SourceLanguageItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SourceLanguageItem.Designer.cs">
+      <DependentUpon>SourceLanguageItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomApplicationContext.cs" />
+    <Compile Include="DataModels\DataModels.cs" />
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +123,11 @@
     <Compile Include="Util\LayoutUtil.cs" />
     <Compile Include="Util\RecognitionUtil.cs" />
     <Compile Include="Util\TranslationUtil.cs" />
+    <Compile Include="Util\UpdateUtility.cs" />
+    <Compile Include="Util\WebUtil.cs" />
+    <EmbeddedResource Include="Controls\SourceLanguageItem.resx">
+      <DependentUpon>SourceLanguageItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
       <SubType>Designer</SubType>
