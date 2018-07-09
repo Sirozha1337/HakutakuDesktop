@@ -11,22 +11,36 @@ namespace HakutakuDesktop.Util
 		{
 			//Create your private font collection object.
 			pfc = new PrivateFontCollection();
-			pfc.AddFontFile("Fonts/OpenSans-ExtraBoldItalic.ttf");
-			pfc.AddFontFile("Fonts/OpenSans-Regular_0.ttf");
+			pfc.AddFontFile("./Fonts/OpenSans-ExtraBoldItalic.ttf");
+			pfc.AddFontFile("./Fonts/OpenSans-Regular_0.ttf");
 		}
 
 		public static Font GetExtrabold(float size)
 		{
-			if (pfc == null)
-				InitCustomFonts();
-			return new Font(pfc.Families[1], size);
+			try
+			{
+				if (pfc == null)
+					InitCustomFonts();
+				return new Font(pfc.Families[1], size);
+			}
+			catch
+			{
+				return new Font("Arial", size);
+			}
 		}
 
 		public static Font GetRegular(float size)
 		{
-			if (pfc == null)
-				InitCustomFonts();
-			return new Font(pfc.Families[0], size);
+			try
+			{
+				if (pfc == null)
+					InitCustomFonts();
+				return new Font(pfc.Families[0], size);
+			}
+			catch
+			{
+				return new Font("Arial", size);
+			}
 		}
 	}
 }
