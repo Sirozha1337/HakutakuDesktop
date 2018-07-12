@@ -1,0 +1,15 @@
+﻿[
+  {
+    "code": "eng",
+    "name": "English" 
+
+  },
+  {
+    "code": "rus",
+    "name": "Russian"
+  },
+  {
+    "code": "jap",
+    "name": "Japanese"
+  }
+]

@@ -25,12 +25,7 @@ namespace HakutakuDesktop
 			InitializeComponent();
 			_translateButton.Click += new EventHandler(Translate_ClickAsync);
 
-			_srcLangSelector.DataSource = new Language[]
-			{
-				new Language{Code = "eng", Name = "English"},
-				new Language{Code = "jap", Name = "Japanese"},
-				new Language{Code = "rus", Name = "Russian"}
-			};
+			_srcLangSelector.DataSource = GlobalConfigurationObject.SourceLanguages;
 
 			_dstLangSelector.DataSource = new Language[]
 			{

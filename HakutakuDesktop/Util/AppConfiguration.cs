@@ -1,7 +1,9 @@
 ﻿using MovablePython;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -159,7 +161,7 @@ namespace HakutakuDesktop.Util
 			if (confCollection[key] != null)
 			{
 				Dictionary<string, bool> keyValuePairs = new Dictionary<string, bool>();
-				string[] pairs = confCollection[key].ToString().Split(',');
+				string[] pairs = confCollection[key].Value.Split(',');
 				foreach(var pair in pairs)
 				{
 					if (!string.IsNullOrWhiteSpace(pair))
@@ -172,12 +174,35 @@ namespace HakutakuDesktop.Util
 				return keyValuePairs;
 			}
 
-			return new Dictionary<string, bool>();
+			return null;
 		}
 
 		public static string GetUpdateServerUrl()
 		{
 			return ConfigurationManager.AppSettings["UpdateServer"];
+		}
+
+		public static string[] GetConfigStringArray(string key)
+		{
+			Configuration configManager = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+			KeyValueConfigurationCollection confCollection = configManager.AppSettings.Settings;
+
+			if (confCollection[key] != null)
+			{
+				string[] array = confCollection[key].Value.Split(',');
+				return array;
+			}
+
+			return null;
+		}
+
+		public static Language[] GetInstalledLanguages()
+		{
+			string json = File.ReadAllText("./tessdata/tessdata.json");
+
+			Language[] aRet = JsonConvert.DeserializeObject<Language[]>(json);
+
+			return aRet;
 		}
 	}
 }

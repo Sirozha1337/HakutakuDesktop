@@ -35,13 +35,14 @@ namespace hakutaku.Util
 								Downloaded = downloaded.ContainsKey(lang.Code),
 								DownloadURL = lang.DownloadURL,
 								LastModifyDate = lang.LastModifyDate,
-								NeedUpdate = downloaded.ContainsKey(lang.Code) ? (lang.LastModifyDate > downloaded[lang.Code]) : false
+								NeedUpdate = downloaded.ContainsKey(lang.Code) ? (lang.LastModifyDate > downloaded[lang.Code]) : false,
+								ShowInSelect = showStatus != null && showStatus.ContainsKey(lang.Code)
 							})
 						.ToArray();
 			});
 		}
 
-		private static Dictionary<string, DateTime> GetCurrentDownloadedLanguages()
+		public static Dictionary<string, DateTime> GetCurrentDownloadedLanguages()
 		{
 			Dictionary<string, DateTime> keyValuePairs = new Dictionary<string, DateTime>();
 
@@ -73,7 +74,7 @@ namespace hakutaku.Util
 			{
 				File.Delete(GetFullPathForLanguage(data.Code));
 				var dict = GlobalConfigurationObject.ShowSourceLanguageInSelect;
-				if(dict.ContainsKey(data.Code))
+				if(dict != null && dict.ContainsKey(data.Code))
 					dict.Remove(data.Code);
 				GlobalConfigurationObject.ShowSourceLanguageInSelect = dict;
 			});
