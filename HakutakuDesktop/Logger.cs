@@ -18,9 +18,18 @@ namespace HakutakuDesktop
 				System.Diagnostics.Debug.WriteLine(text);
 			#endif
 
-			using (StreamWriter stream = File.AppendText(LogPath))
+			try
 			{
-				stream.WriteLine(String.Format("{0} {1}", DateTime.Now, text));
+				using (StreamWriter stream = File.AppendText(LogPath))
+				{
+					stream.WriteLine(String.Format("{0} {1}", DateTime.Now, text));
+				}
+			}
+			catch(Exception ex)
+			{
+				#if DEBUG
+					System.Diagnostics.Debug.WriteLine(ex.Message);
+				#endif
 			}
 		}
 	}
