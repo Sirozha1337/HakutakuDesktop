@@ -45,6 +45,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\JacksonSoft.CustomTabControl.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -120,6 +121,7 @@
     <Compile Include="SelectionForm.Designer.cs">
       <DependentUpon>SelectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Util\ISOCodesUtil.cs" />
     <Compile Include="Util\LayoutUtil.cs" />
     <Compile Include="Util\RecognitionUtil.cs" />
     <Compile Include="Util\TranslationUtil.cs" />
@@ -164,6 +166,9 @@
     <None Include="Fonts\OpenSans-SemiBold.ttf" />
     <None Include="Fonts\OpenSans-SemiBoldItalic.ttf" />
     <None Include="HakutakuDesktop.manifest" />
+    <None Include="langdata\country_codes.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

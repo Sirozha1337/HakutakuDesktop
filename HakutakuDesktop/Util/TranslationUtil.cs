@@ -87,8 +87,8 @@ namespace HakutakuDesktop.Util
 					Console.WriteLine("Text after action" + text);
 					string encodedText = HttpUtility.UrlEncode(text, Encoding.UTF8);
 					
-					srcLang = srcLang.Substring(0, 2);
-					dstLang = dstLang.Substring(0, 2);
+					srcLang = ISOCodesUtil.GetISO2Code(srcLang);
+					dstLang = ISOCodesUtil.GetISO2Code(dstLang);
 
 					string url = String.Format(
 						"https://translate.googleapis.com/translate_a/single?client=gtx&sl={0}&tl={1}&dt=t&q={2}",
