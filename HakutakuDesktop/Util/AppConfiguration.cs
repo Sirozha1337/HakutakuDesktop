@@ -1,4 +1,5 @@
-﻿using MovablePython;
+﻿using hakutaku.DataModels;
+using MovablePython;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -138,10 +139,15 @@ namespace HakutakuDesktop.Util
 		{
 			Configuration configManager = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 			KeyValueConfigurationCollection confCollection = configManager.AppSettings.Settings;
-			string keyValueStr = "";
-			foreach(var pair in value)
+			string keyValueStr = null;
+
+			if (value != null)
 			{
-				keyValueStr = pair.Key.ToString() + ":" + pair.Value.ToString() + ",";
+				keyValueStr = "";
+				foreach (var pair in value)
+				{
+					keyValueStr += pair.Key.ToString() + ":" + pair.Value.ToString() + ",";
+				}
 			}
 
 			if (confCollection[key] != null)
@@ -196,13 +202,24 @@ namespace HakutakuDesktop.Util
 			return null;
 		}
 
-		public static Language[] GetInstalledLanguages()
+		public static SourceLanguage[] GetInstalledLanguages()
 		{
 			string json = File.ReadAllText("./tessdata/tessdata.json");
 
-			Language[] aRet = JsonConvert.DeserializeObject<Language[]>(json);
+			SourceLanguage[] aRet = JsonConvert.DeserializeObject<SourceLanguage[]>(json);
 
 			return aRet;
+		}
+
+		public static void WriteInstalledLanguages(SourceLanguage[] languages)
+		{
+			string json = JsonConvert.SerializeObject
+				(
+					languages.Select(lang => new SourceLanguage { Code = lang.Code, Name = lang.Name, LastModifyDate = lang.LastModifyDate }), 
+					Formatting.Indented
+				);
+
+			File.WriteAllText("./tessdata/tessdata.json", json);
 		}
 	}
 }

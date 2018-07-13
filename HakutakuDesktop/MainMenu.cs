@@ -40,7 +40,7 @@ namespace HakutakuDesktop
 		{
 			if(this.srcLanguagesList.RowCount == 0)
 			{
-				SourceLanguageUpdateData[] sourceLanguages = await UpdateUtility.CheckUpdate();
+				SourceLanguageItemData[] sourceLanguages = await UpdateUtility.CheckUpdate();
 				this.srcLanguagesList.RowCount = sourceLanguages.Length;
 				for (int i = 0; i < sourceLanguages.Length; i++)
 				{

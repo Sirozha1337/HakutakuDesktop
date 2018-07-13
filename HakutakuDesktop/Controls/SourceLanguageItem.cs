@@ -15,7 +15,7 @@ namespace hakutaku.Controls
 		}
 
 		private ButtonAction currentAction;
-		private SourceLanguageUpdateData data;
+		private SourceLanguageItemData data;
 
 		public SourceLanguageItem()
 		{
@@ -25,7 +25,7 @@ namespace hakutaku.Controls
 			this.downloadButton.Font = FontUtil.GetRegular(10F);
 		}
 
-		public void SetData(SourceLanguageUpdateData sourceLanguageUpdateData)
+		public void SetData(SourceLanguageItemData sourceLanguageUpdateData)
 		{
 			this.data = sourceLanguageUpdateData;
 			this.language.Text = sourceLanguageUpdateData.Name;
@@ -70,6 +70,25 @@ namespace hakutaku.Controls
 					SetButtonAction(ButtonAction.Delete);
 					break;
 			}
+		}
+
+		private void showInSelect_CheckedChanged(object sender, System.EventArgs e)
+		{
+			var showLanguageInSelectDict = GlobalConfigurationObject.ShowSourceLanguageInSelect;
+			if(showLanguageInSelectDict == null)
+			{
+				showLanguageInSelectDict = new System.Collections.Generic.Dictionary<string, bool>();
+			}
+
+			if (this.showInSelect.Checked)
+			{
+				if (!showLanguageInSelectDict.ContainsKey(data.Code))
+					showLanguageInSelectDict.Add(data.Code, true);
+			}
+			else
+				showLanguageInSelectDict.Remove(data.Code);
+
+			GlobalConfigurationObject.ShowSourceLanguageInSelect = showLanguageInSelectDict;
 		}
 	}
 }

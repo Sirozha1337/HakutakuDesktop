@@ -1,4 +1,5 @@
-﻿using hakutaku.Util;
+﻿using hakutaku.DataModels;
+using hakutaku.Util;
 using MovablePython;
 using System;
 using System.Collections.Generic;
@@ -137,15 +138,20 @@ namespace HakutakuDesktop.Util
 			}
 		}
 
-		private static Language[] _sourceLanguages = AppConfiguration.GetInstalledLanguages();
-		public static Language[] SourceLanguages
+		private static SourceLanguage[] _sourceLanguages = AppConfiguration.GetInstalledLanguages();
+		public static SourceLanguage[] SourceLanguages
 		{
 			get
 			{
-				if (ShowSourceLanguageInSelect == null)
+				if (ShowSourceLanguageInSelect == null || ShowSourceLanguageInSelect.Count == 0)
 					return _sourceLanguages;
 
 				return _sourceLanguages.Where(lang => ShowSourceLanguageInSelect.ContainsKey(lang.Code)).ToArray();
+			}
+			set
+			{
+				_sourceLanguages = value;
+				AppConfiguration.WriteInstalledLanguages(_sourceLanguages);
 			}
 		}
 	}

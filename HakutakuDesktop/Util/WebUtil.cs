@@ -12,16 +12,16 @@ namespace hakutaku.Util
 {
 	public static class WebUtil
 	{
-		public static SourceLanguage[] GetSourceLanguages()
+		public static SourceLanguageUpdateData[] GetSourceLanguages()
 		{
-			SourceLanguage[] aRet = null;
+			SourceLanguageUpdateData[] aRet = null;
 			var url = AppConfiguration.GetUpdateServerUrl();
 			if (!string.IsNullOrEmpty(url))
 			{
 				using (var webClient = new WebClient())
 				{
 					var json = webClient.DownloadString(url);
-					aRet = JsonConvert.DeserializeObject<SourceLanguage[]>(json);
+					aRet = JsonConvert.DeserializeObject<SourceLanguageUpdateData[]>(json);
 				}
 			}
 			return aRet;

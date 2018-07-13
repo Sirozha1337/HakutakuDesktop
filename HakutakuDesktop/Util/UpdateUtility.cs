@@ -11,9 +11,9 @@ namespace hakutaku.Util
 {
 	public static class UpdateUtility
 	{
-		private static SourceLanguageUpdateData[] sourceLanguagesUpdateData = null;
+		private static SourceLanguageItemData[] sourceLanguagesUpdateData = null;
 
-		public static Task<SourceLanguageUpdateData[]> CheckUpdate()
+		public static Task<SourceLanguageItemData[]> CheckUpdate()
 		{
 			return Task.Run(() =>
 			{
@@ -22,37 +22,26 @@ namespace hakutaku.Util
 					return sourceLanguagesUpdateData;
 				}
 
-				SourceLanguage[] sourceLanguages = WebUtil.GetSourceLanguages();
-				var downloaded = GetCurrentDownloadedLanguages();
+				SourceLanguageUpdateData[] sourceLanguages = WebUtil.GetSourceLanguages();
+				SourceLanguage[] downloaded = AppConfiguration.GetInstalledLanguages();
+				Dictionary<string, SourceLanguage> downloadedDict = downloaded.ToDictionary(lang => lang.Code);
+
 				var showStatus = GlobalConfigurationObject.ShowSourceLanguageInSelect;
 
 				return sourceLanguages
 						.Select(lang =>
-							new SourceLanguageUpdateData
+							new SourceLanguageItemData
 							{
 								Name = lang.Name,
 								Code = lang.Code,
-								Downloaded = downloaded.ContainsKey(lang.Code),
+								Downloaded = downloadedDict.ContainsKey(lang.Code),
 								DownloadURL = lang.DownloadURL,
 								LastModifyDate = lang.LastModifyDate,
-								NeedUpdate = downloaded.ContainsKey(lang.Code) ? (lang.LastModifyDate > downloaded[lang.Code]) : false,
+								NeedUpdate = downloadedDict.ContainsKey(lang.Code) ? (lang.LastModifyDate > downloadedDict[lang.Code].LastModifyDate) : false,
 								ShowInSelect = showStatus != null && showStatus.ContainsKey(lang.Code)
 							})
 						.ToArray();
 			});
-		}
-
-		public static Dictionary<string, DateTime> GetCurrentDownloadedLanguages()
-		{
-			Dictionary<string, DateTime> keyValuePairs = new Dictionary<string, DateTime>();
-
-			string[] files = Directory.GetFiles("tessdata");
-			foreach(var file in files)
-			{
-				keyValuePairs.Add(Path.GetFileNameWithoutExtension(file), File.GetLastWriteTime(file));
-			}
-
-			return keyValuePairs;
 		}
 		
 		private static string GetFullPathForLanguage(string code)
@@ -65,10 +54,14 @@ namespace hakutaku.Util
 			return Task.Run(() =>
 			{
 				WebUtil.Download(data.DownloadURL, GetFullPathForLanguage(data.Code));
+
+				var srcLangList = GlobalConfigurationObject.SourceLanguages.ToList();
+				srcLangList.Add(data);
+				GlobalConfigurationObject.SourceLanguages = srcLangList.ToArray();
 			});
 		}
 
-		public static Task Remove(SourceLanguageUpdateData data)
+		public static Task Remove(SourceLanguage data)
 		{
 			return Task.Run(() =>
 			{
@@ -77,8 +70,12 @@ namespace hakutaku.Util
 				if(dict != null && dict.ContainsKey(data.Code))
 					dict.Remove(data.Code);
 				GlobalConfigurationObject.ShowSourceLanguageInSelect = dict;
+
+				var srcLangList = GlobalConfigurationObject.SourceLanguages.ToList();
+				var index = srcLangList.FindIndex(lang => lang.Code == data.Code);
+				srcLangList.RemoveAt(index);
+				GlobalConfigurationObject.SourceLanguages = srcLangList.ToArray();
 			});
-			throw new NotImplementedException();
 		}
 
 		public static Task Update(SourceLanguageUpdateData data)

@@ -8,12 +8,6 @@ using Newtonsoft.Json.Linq;
 
 namespace HakutakuDesktop.Util
 {
-	public class Language
-	{
-		public string Code { get; set; }
-		public string Name { get; set; }
-	}
-
 	public static class TranslationUtil
 	{
 		private static Dictionary<string, Func<string, string>> languageSpecificActions;

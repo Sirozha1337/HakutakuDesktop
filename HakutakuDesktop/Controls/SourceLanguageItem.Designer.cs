@@ -73,6 +73,7 @@
 			this.showInSelect.TabIndex = 2;
 			this.showInSelect.Text = "Show in select";
 			this.showInSelect.UseVisualStyleBackColor = true;
+			this.showInSelect.CheckedChanged += new System.EventHandler(this.showInSelect_CheckedChanged);
 			// 
 			// language
 			// 

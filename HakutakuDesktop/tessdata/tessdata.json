@@ -1,15 +1,17 @@
 ﻿[
   {
     "code": "eng",
-    "name": "English" 
-
+    "name": "English",
+    "lastModifyDate": "12.07.2018 00:00"
   },
   {
     "code": "rus",
-    "name": "Russian"
+    "name": "Russian",
+    "lastModifyDate": "12.07.2018 00:00"
   },
   {
-    "code": "jap",
-    "name": "Japanese"
+    "code": "jpn",
+    "name": "Japanese",
+    "lastModifyDate": "12.07.2018 00:00"
   }
 ]

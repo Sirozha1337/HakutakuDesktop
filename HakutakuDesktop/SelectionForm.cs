@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HakutakuDesktop.Controls;
 using System.Collections.Generic;
+using hakutaku.DataModels;
 
 namespace HakutakuDesktop
 {
@@ -25,12 +26,10 @@ namespace HakutakuDesktop
 			InitializeComponent();
 			_translateButton.Click += new EventHandler(Translate_ClickAsync);
 
-			_srcLangSelector.DataSource = GlobalConfigurationObject.SourceLanguages;
-
 			_dstLangSelector.DataSource = new Language[]
 			{
 				new Language{Code = "eng", Name = "English"},
-				new Language{Code = "jap", Name = "Japanese"},
+				new Language{Code = "jpn", Name = "Japanese"},
 				new Language{Code = "rus", Name = "Russian"}
 			};
 			
@@ -40,6 +39,8 @@ namespace HakutakuDesktop
 		protected override void OnVisibleChanged(EventArgs e)
 		{
 			base.OnVisibleChanged(e);
+			if(this.Visible)
+				_srcLangSelector.DataSource = GlobalConfigurationObject.SourceLanguages as Language[];
 			foreach (var txt in textDisplays)
 				if (!txt.IsDisposed)
 					if (this.Visible)
